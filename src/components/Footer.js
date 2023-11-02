@@ -51,7 +51,7 @@ const Footer = () => {
                         })}
                     </ul>
                 </div>
-                <div className='sm:border-none sm:py-0 py-3 border-b-creamOpaque border-b-[1px]'>
+                <div className='sm:border-none sm:py-0 py-3 border-b-siennaOpaque border-b-[1px]'>
                     <ul>
                         {footerCategories.map(nav => {
                             return (
