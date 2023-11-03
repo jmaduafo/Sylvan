@@ -45,7 +45,7 @@ const Footer = () => {
                         {footerNav.map(nav => {
                             return (
                                 <li className='uppercase w-fit' key={nav.name}>
-                                    <Link>{nav.name}</Link>
+                                    <Link to={nav.link}>{nav.name}</Link>
                                 </li>     
                             )
                         })}
