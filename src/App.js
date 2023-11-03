@@ -15,7 +15,7 @@ import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (   
-    <div className='container  bg-cream max-w-full mx-auto font-sans'>
+    <div className='container bg-cream max-w-full mx-auto font-sans'>
       <Navbar/>
       <Routes>
         <Route exact path='/' element={<Home/>}/>

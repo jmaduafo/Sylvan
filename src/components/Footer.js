@@ -26,7 +26,7 @@ const Footer = () => {
         }, 
     ]
 
-    const footerCategories = ['All', 'Chairs', 'Sofas', 'Dining', 'Home Decor', 'Accents']
+    const footerCategories = ['All', 'Chairs', 'Sofas', 'Couches', 'Beds', 'Dining', 'Home Decor', 'Accents', 'Appliances']
 
   return (
     <footer>

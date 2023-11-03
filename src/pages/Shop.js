@@ -1,5 +1,7 @@
 import React from 'react'
 import WrongPage from './WrongPage'
+import Filter from '../components/Shop/Filter'
+import CardDisplay from '../components/Shop/CardDisplay'
 
 const Shop = () => {
   let path = window.location.pathname.split('/')[2]
@@ -22,9 +24,16 @@ const Shop = () => {
 
 function DisplayShop() {
   return (
-    <div>
-      Shop
-    </div>
+    <section>
+      <div className='flex flex-col md:flex-row'>
+        <div className='md:basis-[30%] md:h-screen md:border-r-siennaOpaque md:border-r-[1px] border-b-siennaOpaque border-b-[1px]'>
+          <Filter/>
+        </div>
+        <div className='md:basis-[70%] overflow-y-auto'>
+          <CardDisplay/>
+        </div>
+      </div>
+    </section>
   )
 }
 
