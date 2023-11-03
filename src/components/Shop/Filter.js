@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
+import PlusCircle from '../icons/PlusCircle'
+import { motion } from 'framer-motion'
+import { categories } from '../../utils/shopCategories'
+import { Link } from 'react-router-dom'
 
-const Filter = () => {
-    const categories = ['All', 'Chairs', 'Sofas', 'Couches', 'Beds', 'Dining', 'Home Decor', 'Accents', 'Appliances']
+const Filter = ({setSelectedCategory, selectedCategory }) => {
+    const [isSortClick, setIsSortClick ] = useState(false)
+
     const sortCategories = [
         {
             'sortCategory': 'A-Z',
@@ -33,36 +38,37 @@ const Filter = () => {
             'types': ['Wood', 'Iron', 'Suede', 'Ceramics', 'Leather']
         }
     ]
+
   return (
     <>
-        <div className='p-3 border-b-siennaOpaque border-b-[1px]'>
+        <div className='px-6 py-3 border-b-siennaOpaque border-b-[1px]'>
             <h6 className='text-sienna'>FILTER BY:</h6>
             <div className='flex flex-wrap gap-2 mt-6'>
                 {categories.map(category => {
                     return (
-                        <p key={category} className='uppercase text-[12px] font-light px-4 py-[3px] rounded-full bg-olive text-cream text-center cursor-pointer'>{category}</p>
+                        <Link  key={category} to={`/shop/${category.toLowerCase()}`}><p onClick={() => setSelectedCategory(category)} className='uppercase text-[12px] font-light px-4 py-[3px] rounded-full bg-olive text-cream text-center cursor-pointer'>{category}</p></Link>
                     )
                 })}
             </div>
         </div>
-        <div className='p-3'>
-            <div>
+        <div className='px-6 py-3'>
+            <div className='flex items-center gap-2'>
                 <h6 className='text-sienna'>SORT BY:</h6>
-                <div className='border-sienna border-[1px] h-[30px] w-[30px] rounded-full'>
-                    
+                <div onClick={() => {setIsSortClick(prev => !prev)}} className={`cursor-pointer text-sienna duration-[.4s] ${isSortClick ? 'rotate-[45deg]' : 'rotate-0'}`}>
+                    <PlusCircle/>
                 </div>
             </div>
             
-            <div className='mt-6 border-t-siennaOpaque border-t-[1px]'>
+            <motion.div initial={{ opacity: isSortClick ? 0 : 1 }} animate={{ opacity: isSortClick ? 1 : 0 }} className={`mt-6 border-t-siennaOpaque border-t-[1px] ${isSortClick ? 'visible' : 'invisible'} ${isSortClick ? 'h-full' : 'h-0'}`}>
                 {sortCategories.map(sort => {
                     return (
                         <div key={sort.sortCategory} className='border-b-siennaOpaque border-b-[1px] p-1 cursor-pointer group duration-[.4s] ease-in'>
-                           <p className='text-[13px] text-chocolate group-hover:text-sienna'>{sort.sortCategory}</p>
+                           <p className='text-[13px] text-[#743406d8] group-hover:text-sienna'>{sort.sortCategory}</p>
                            {sort.types ? 
                             <div className='mt-4 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 grid grid-cols-1 gap-1'>
                                     {sort.types.map(type => {
-                                    return <div key={type} className='p-1 text-center border-siennaOpaque border-[1px]'>
-                                        <p className='text-[13px] text-chocolate hover:text-sienna'>{type}</p>
+                                    return <div key={type} className='p-1 duration-[.4s] text-center border-siennaOpaque border-[1px] hover:bg-[#9b4e17b2] group'>
+                                        <p className='text-[13px] duration-[.4s] text-[#743406d8] hover:text-cream '>{type}</p>
                                     </div>
                                     })}
                             </div>
@@ -72,7 +78,7 @@ const Filter = () => {
                         </div>
                     )
                 })}
-            </div>
+            </motion.div>
         </div>
     </>
   )

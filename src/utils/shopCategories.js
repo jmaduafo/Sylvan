@@ -1,0 +1,1 @@
+export const categories = ['All', 'Chairs', 'Sofas', 'Couches', 'Beds', 'Dining', 'Home Decor', 'Accents', 'Appliances']

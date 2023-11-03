@@ -1,6 +1,7 @@
 import React from 'react'
 import Cover from './Cover'
 import { Link } from 'react-router-dom'
+import { categories } from '../utils/shopCategories'
 
 const Footer = () => {
     const footerNav = [
@@ -25,8 +26,6 @@ const Footer = () => {
             'link': '/register'
         }, 
     ]
-
-    const footerCategories = ['All', 'Chairs', 'Sofas', 'Couches', 'Beds', 'Dining', 'Home Decor', 'Accents', 'Appliances']
 
   return (
     <footer>
@@ -53,7 +52,7 @@ const Footer = () => {
                 </div>
                 <div className='sm:border-none sm:py-0 py-3 border-b-siennaOpaque border-b-[1px]'>
                     <ul>
-                        {footerCategories.map(nav => {
+                        {categories.map(nav => {
                             return (
                                 <li className='uppercase w-fit' key={nav}>
                                     <Link to={`/shop/${nav.toLowerCase()}`}>SHOP {nav}</Link>

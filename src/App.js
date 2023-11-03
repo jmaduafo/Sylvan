@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css';
 import Navbar from '../src/components/Navbar'
 import Footer from './components/Footer';
@@ -14,6 +15,12 @@ import WrongPage from './pages/WrongPage'
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
+  let path = window.location.pathname
+
+  useEffect(function() {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }, [path])
+
   return (   
     <div className='container bg-cream max-w-full mx-auto font-sans'>
       <Navbar/>
