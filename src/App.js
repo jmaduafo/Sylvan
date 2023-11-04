@@ -18,7 +18,7 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
   let path = window.location.pathname
 
-  const [ cartOpen, setCartOpen ] = useState(true)
+  const [ cartOpen, setCartOpen ] = useState(false)
 
   useEffect(function() {
     window.scrollTo({top: 0, behavior: 'smooth'})
@@ -37,7 +37,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/success' element={<Success/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
-        <Route path='/search/:searchString' element={<Search/>}/>
+        <Route path='/search' element={<Search/>}/>
         <Route path='/:category/:productId' element={<Detail cartOpen={cartOpen} setCartOpen={setCartOpen}/>}/>
         <Route path='*' element={<WrongPage/>}/>
       </Routes>

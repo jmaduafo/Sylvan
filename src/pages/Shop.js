@@ -3,6 +3,7 @@ import WrongPage from './WrongPage'
 import Filter from '../components/Shop/Filter'
 import CardDisplay from '../components/Shop/CardDisplay'
 import { categories } from '../utils/shopCategories'
+import Toast from '../components/Toast'
 
 const Shop = ({ cartOpen, setCartOpen }) => {
   let path = window.location.pathname.split('/')[2]
@@ -27,6 +28,7 @@ function DisplayShop() {
 
   return (
     <section>
+      <Toast message={''}/>
       <div className='px-6 py-3 border-b-siennaOpaque border-b-[1px]'>
         <h4 className='uppercase text-[22px] text-sienna'>{selectedCategory} (5)</h4>
       </div>

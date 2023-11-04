@@ -2,18 +2,29 @@ import React, { useRef, useEffect, useState } from 'react'
 import ShoppingBagIcon from './icons/ShoppingBag'
 import SearchIcon from './icons/Search'
 import UserIcon from './icons/UserIcon'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import Cart from './Cart'
+import { easeInOut, motion } from 'framer-motion'
 
 const Navbar = ({ cartOpen, setCartOpen }) => {
     const headerHeight = useRef()
-    const [ height, setHeight ] = useState()
 
-    useEffect(function() {
-        const headHeight = headerHeight.current.clientHeight
+    const [ searchParams, setSearchParams ] = useSearchParams()    
+    const [ searchName, setSearchName ] = useState('')    
+    const [ shrink, setShrink] = useState(true)
 
-        setHeight(window.screen.height - headHeight)
-    }, [])
+    let navigate = useNavigate()
+
+    function handleEnter(e) {
+        if (e.key === 'Enter') {
+            setSearchParams(searchName)
+            navigate({
+                pathname: 'search',
+                search: `?product=${searchName.toLowerCase()}`,
+            })
+        }
+    }
+    
 
     return (
     <>
@@ -43,10 +54,19 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
             {/* BOTTOM NAV WITH USER AND SEARCH */}
             <div className='border-b-siennaOpaque border-b-[1px] flex justify-between px-6 py-2'>
                 <div className=''>
-                    <Link to='/login'><UserIcon/></Link>
+                    <Link to='/login'>
+                        <UserIcon/>
+                    </Link>
                 </div>
-                <div className=''>
-                    <SearchIcon/>
+                <div className='flex items-center gap-2'>
+                    <div className={`overflow-hidden ${shrink ? 'invisible' : 'visible'} duration-[.4s]`}>
+                        <motion.input type='text' onChange={(e) => setSearchName(e.target.value)} onKeyDown={handleEnter} initial={{ opacity: shrink ? 1 : 0, x: shrink ? 0 : '100%' }} animate={{ opacity: shrink ? 0 : 1, x: shrink ? '100%' : 0 }} transition={{ duration: .6, ease: easeInOut}}
+                        id='navSearch' className={`py-[3px] px-2 font-sans bg-transparent outline-none border-b-sienna border-b-[1.5px] text-[#9b4e17b2] text-[13px]`} placeholder='Search'/>
+                    </div>
+                    <div onClick={() => setShrink(prev => !prev)}>
+                        <SearchIcon/>
+                    </div>
+                    
                 </div>
             </div>
         </nav>

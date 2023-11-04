@@ -37,3 +37,18 @@ body::-webkit-scrollbar-track {
 .cartBag::-webkit-scrollbar {
   width: 2px;
 }
+
+#navSearch::placeholder, #loginEmail::placeholder, #loginPassword::placeholder, #registerUsername::placeholder, 
+#registerEmail::placeholder, #registerPassword::placeholder {
+  color: #74340675;
+}
+
+#navSearch::-webkit-placeholder, #loginEmail::placeholder, #loginPassword::placeholder, #registerUsername::placeholder,
+#registerEmail::placeholder, #registerPassword::placeholder {
+  color: #74340675;
+}
+
+#navSearch::-moz-placeholder, #loginEmail::placeholder, #loginPassword::placeholder, #registerUsername::placeholder,
+#registerEmail::placeholder, #registerPassword::placeholder {
+  color: #74340675;
+}
