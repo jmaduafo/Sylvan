@@ -20,8 +20,6 @@ const Filter = ({setSelectedCategory, selectedCategory }) => {
                     'sort': 'name',
                     'order': 'asc'
                 }
-            
-
         },
         {
             'sortCategory': 'Z-A',
@@ -38,7 +36,7 @@ const Filter = ({setSelectedCategory, selectedCategory }) => {
             'sortParams': 
                 {
                     'sort': 'date',
-                    'order': 'oldest'
+                    'order': 'asc'
                 }
         },
         {
@@ -47,7 +45,7 @@ const Filter = ({setSelectedCategory, selectedCategory }) => {
             'sortParams': 
                 {
                     'sort': 'date',
-                    'order': 'newest'
+                    'order': 'desc'
                 }
         },
         {

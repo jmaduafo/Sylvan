@@ -24,6 +24,7 @@ function App() {
   return (   
     <div className='container bg-cream max-w-full mx-auto font-sans'>
       <Navbar/>
+      <main>
       <Routes>
         <Route exact path='/' element={<Home/>}/>
         <Route path='/shop/:category' element={<Shop/>}/>
@@ -36,6 +37,7 @@ function App() {
         <Route path='/:category/:productId' element={<Detail/>}/>
         <Route path='*' element={<WrongPage/>}/>
       </Routes>
+      </main>
       <Footer/>
     </div>
     

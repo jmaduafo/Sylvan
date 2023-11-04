@@ -75,7 +75,7 @@ const Footer = () => {
                     <li><a>GITHUB</a></li>
                 </ul>
             </div>
-            <div className='px-5 py-1 border-b-siennaOpaque border-b-[1px] flex justify-between items-center '>
+            <div className='font-normal px-5 py-1 border-b-siennaOpaque border-b-[1px] flex justify-between items-center '>
                 <div>
                     <p className='text-[11px]'>Sylvan &copy; 2023</p>
                 </div>
