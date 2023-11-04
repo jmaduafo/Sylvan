@@ -5,7 +5,7 @@ import ImageRow from '../components/ImageRow'
 import Heading from '../components/Heading'
 import Cover from '../components/Cover'
 
-const Detail = () => {
+const Detail = ({ cartOpen, setCartOpen }) => {
   const [hoveredImage, setHoveredImage] = useState('')
 
   return (
@@ -21,7 +21,7 @@ const Detail = () => {
           <AddToCart/>
         </div>
       </div>
-      <ImageRow images={[1, 2]} hoveredImage={hoveredImage} setHoveredImage={setHoveredImage}/>
+      <ImageRow images={[1, 2, 3]} hoveredImage={hoveredImage} setHoveredImage={setHoveredImage}/>
       <div className='mt-4'>
         <Heading headerText='More like this'/>
         <div className='my-2 grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-1'>
@@ -35,7 +35,6 @@ const Detail = () => {
           })}
         </div>
       </div>
-      
     </section>
   )
 }

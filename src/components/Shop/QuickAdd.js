@@ -6,7 +6,7 @@ const QuickAdd = ({}) => {
     
   return (
     <>
-        <div>
+        <div className='z-[5]'>
             <div className='flex items-center gap-2'>
                 {['S', 'M', 'L'].map((size) => {
                 return (
@@ -22,7 +22,7 @@ const QuickAdd = ({}) => {
                 })}
             </div> 
         </div>
-        <div>
+        <div className='z-[5]'>
             <p className='bg-cream rounded-full px-3 py-[3px] text-sienna uppercase text-[13px]
             border-sienna border-[1px] cursor-pointer'>Add to cart</p>
         </div> 

@@ -36,7 +36,7 @@ function AddToCart() {
             </div>
         </div>
         <div className='px-2 py-1 border-t-siennaOpaque border-t-[1px] flex justify-between items-center'>
-            <p className='text-[red] text-[11px] uppercase'>You must select a color and size before adding to cart</p>
+            <p className='text-[red] text-[10px] uppercase'>You must select a color and size before adding to cart</p>
         </div>
         <div className='px-2 py-3 border-t-siennaOpaque border-t-[1.5px] border-b-siennaOpaque border-b-[1.5px] flex justify-between items-center cursor-pointer'>
             <h3>ADD TO CART</h3>

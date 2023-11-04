@@ -4,7 +4,7 @@ import Filter from '../components/Shop/Filter'
 import CardDisplay from '../components/Shop/CardDisplay'
 import { categories } from '../utils/shopCategories'
 
-const Shop = () => {
+const Shop = ({ cartOpen, setCartOpen }) => {
   let path = window.location.pathname.split('/')[2]
 
   function show() {
@@ -23,8 +23,6 @@ const Shop = () => {
 
 function DisplayShop() {
   let path = window.location.pathname.split('/')[2]
-
-  
   const [selectedCategory, setSelectedCategory] = useState(path)
 
   return (

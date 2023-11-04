@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import ShoppingBagIcon from './icons/ShoppingBag'
 import SearchIcon from './icons/Search'
 import UserIcon from './icons/UserIcon'
 import { Link } from 'react-router-dom'
+import Cart from './Cart'
 
-const Navbar = () => {
-  return (
-    <header className='w-full bg-cream text-sienna sticky top-0 z-[99]'>
+const Navbar = ({ cartOpen, setCartOpen }) => {
+    const headerHeight = useRef()
+    const [ height, setHeight ] = useState()
+
+    useEffect(function() {
+        const headHeight = headerHeight.current.clientHeight
+
+        setHeight(window.screen.height - headHeight)
+    }, [])
+
+    return (
+    <>
+    <header className='w-full bg-cream text-sienna sticky top-0 z-[99]' ref={headerHeight}>
         <nav>
             {/* TOP NAV WITH MENU, LOGO, AND CART */}
             <div className='relative border-b-siennaOpaque border-b-[1px] flex justify-between px-6 py-5'>
@@ -20,7 +31,9 @@ const Navbar = () => {
                     <Link to='/'><h3 className='sm:text-[34px] 2xl:text-[40px] text-[28px] font-serif cursor-pointer'>SYLVAN</h3></Link>
                 </div>
                 <div className='relative'>
-                    <ShoppingBagIcon/>
+                    <div onClick={() => setCartOpen(true)}>
+                        <ShoppingBagIcon/>
+                    </div>
                     {/* BAG COUNT */}
                     <div className='absolute top-0 left-2/3 border border-sienna bg-cream w-4 h-4 rounded-full flex justify-center items-center'>
                         <p className='text-chocolate text-[10px]'>3</p>
@@ -30,7 +43,7 @@ const Navbar = () => {
             {/* BOTTOM NAV WITH USER AND SEARCH */}
             <div className='border-b-siennaOpaque border-b-[1px] flex justify-between px-6 py-2'>
                 <div className=''>
-                    <UserIcon/>
+                    <Link to='/login'><UserIcon/></Link>
                 </div>
                 <div className=''>
                     <SearchIcon/>
@@ -38,6 +51,8 @@ const Navbar = () => {
             </div>
         </nav>
     </header>
+    <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
+    </>
   )
 }
 

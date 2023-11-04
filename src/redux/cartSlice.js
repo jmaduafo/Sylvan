@@ -6,7 +6,7 @@ const cartSlice = createSlice({
         cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
         totalQuantity: 0,
         totalPrice: 0, 
-        cartOpen: false
+        cartOpen: true
     },
     reducers: {
         ADD_TO_CART(state, action) {
@@ -66,11 +66,17 @@ const cartSlice = createSlice({
 
             state.totalPrice = total;
             state.totalQuantity = quantity
+        },
+        CLOSE_CART(state) {
+            state.cartOpen = false
+        },
+        OPEN_CART(state) {
+            state.cartOpen = true
         }
 
     }
 })
 
-export const { ADD_TO_CART, REMOVE_FROM_CART, DECREASE_QUANTITY, GET_TOTALS } = cartSlice.actions
+export const { ADD_TO_CART, REMOVE_FROM_CART, DECREASE_QUANTITY, GET_TOTALS, CLOSE_CART, OPEN_CART } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Navbar from '../src/components/Navbar'
 import Footer from './components/Footer';
@@ -12,10 +12,13 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Success from './pages/Success'
 import WrongPage from './pages/WrongPage'
+import Search from './pages/Search';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
   let path = window.location.pathname
+
+  const [ cartOpen, setCartOpen ] = useState(true)
 
   useEffect(function() {
     window.scrollTo({top: 0, behavior: 'smooth'})
@@ -23,18 +26,19 @@ function App() {
 
   return (   
     <div className='container bg-cream max-w-full mx-auto font-sans'>
-      <Navbar/>
+      <Navbar cartOpen={cartOpen} setCartOpen={setCartOpen}/>
       <main>
       <Routes>
         <Route exact path='/' element={<Home/>}/>
-        <Route path='/shop/:category' element={<Shop/>}/>
+        <Route path='/shop/:category' element={<Shop cartOpen={cartOpen} setCartOpen={setCartOpen}/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/lookbook' element={<Lookbook/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/success' element={<Success/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
-        <Route path='/:category/:productId' element={<Detail/>}/>
+        <Route path='/search/:searchString' element={<Search/>}/>
+        <Route path='/:category/:productId' element={<Detail cartOpen={cartOpen} setCartOpen={setCartOpen}/>}/>
         <Route path='*' element={<WrongPage/>}/>
       </Routes>
       </main>
