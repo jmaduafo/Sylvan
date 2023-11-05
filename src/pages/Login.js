@@ -17,9 +17,9 @@ const Login = () => {
         <h3 className='text-[40px] font-semibold text-sienna font-serif'>LOG IN</h3>
         <form onSubmit={handleSubmit} className='mt-5 flex flex-col'>
           <input onChange={(e) => setEmail(e.target.value)} value={email} id='loginEmail' type='email' placeholder='Email' 
-          className='font-sans px-3 py-[3px] outline-none text-[#9b4e17b2] border-b-sienna bg-transparent border-b-[1.5px]'/>
+          className='font-light font-sans px-3 py-[3px] outline-none text-[#9b4e17b2] border-b-sienna bg-transparent border-b-[1.5px]'/>
           <input onChange={(e) => setPassword(e.target.value)} value={password} id='loginPassword' type='password' placeholder='Password' 
-          className='font-sans mt-4 px-3 py-[3px] outline-none text-[#9b4e17b2] border-b-sienna bg-transparent border-b-[1.5px]'/>
+          className='font-light font-sans mt-4 px-3 py-[3px] outline-none text-[#9b4e17b2] border-b-sienna bg-transparent border-b-[1.5px]'/>
           <button type='submit' className='mt-5 py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light'>Sign in</button>
         </form>
         <Link to='/register'>

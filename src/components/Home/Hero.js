@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../Button'
+import Button from '../HomeButton'
 import Cover from '../Cover'
 
 const Hero = () => {

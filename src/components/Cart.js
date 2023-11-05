@@ -4,8 +4,8 @@ import image from '../assets/landon4.png'
 import TrashCan from './icons/TrashCan'
 import Cancel from './icons/Cancel'
 import QuantityCounter from './QuantityCounter'
-import { CLOSE_CART, OPEN_CART } from '../redux/cartSlice';
-import { easeIn, easeInOut, motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { easeInOut, motion } from 'framer-motion';
 
 const Cart = ({setCartOpen, cartOpen }) => {
 
@@ -64,9 +64,11 @@ const Cart = ({setCartOpen, cartOpen }) => {
                     <p className='uppercase text-[13px]'>clear all</p>
                     <h3 className='text-[28px]'>$2,645.76</h3>
                 </div>
-                <button className='py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light'>
-                    Proceed to Checkout
-                </button>
+                <Link to='/checkout'>
+                    <button className='py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light'>
+                        Proceed to Checkout
+                    </button>
+                </Link>
             </div>
             
         </motion.div>

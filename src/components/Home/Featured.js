@@ -1,6 +1,7 @@
 import React from 'react'
 import Heading from '../Heading'
 import Cover from '../Cover'
+import Label from '../Label'
 
 const Featured = () => {
   return (
@@ -25,15 +26,6 @@ const Featured = () => {
         </div>
     </section>
   )
-}
-
-function Label({title, price}) {
-    return (
-        <div className='text-cream z-[5]'>
-            <p className='uppercase font-light text-[14px]'>{title}</p>
-            <p className='font-medium text-[14px]'><span className='font-serif'>$</span>{price}</p>
-        </div>
-    )
 }
 
 export default Featured
