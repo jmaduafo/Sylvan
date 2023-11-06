@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import AddToCart from "../components/Detail/AddToCart";
 import SimilarItems from "../components/Detail/SimilarItems";
 import ImageRow from "../components/ImageRow";
+import ReturnPolicy from "../components/ReturnPolicy";
+
 
 const Detail = ({ cartOpen, setCartOpen }) => {
   const [hoveredImage, setHoveredImage] = useState("");
+  const [ policyOpen, setPolicyOpen ] = useState(false)
 
   return (
-    <section>
+    <section className="relative">
+      <ReturnPolicy setPolicyOpen={setPolicyOpen} policyOpen={policyOpen}/>
       <div className="flex sm:flex-row sm:items-end flex-col-reverse">
         <div className="my-1 sm:flex-1 2xl:basis-[60%] sm:h-[75vh] 2xl:h-[85vh] 2xl:flex 2xl:gap-1 bg-slate-500 2xl:bg-transparent h-[50vh]">
           <div
@@ -18,7 +22,7 @@ const Detail = ({ cartOpen, setCartOpen }) => {
           ></div>
         </div>
         <div className="sm:flex-1 2xl:basis-[40%] basis-full text-chocolate">
-          <AddToCart />
+          <AddToCart setPolicyOpen={setPolicyOpen} policyOpen={policyOpen} />
         </div>
       </div>
       <ImageRow

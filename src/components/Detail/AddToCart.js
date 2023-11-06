@@ -1,6 +1,7 @@
 import React from "react";
+import QuantityCounter from "../QuantityCounter";
 
-function AddToCart() {
+function AddToCart({ setPolicyOpen, policyOpen}) {
   return (
     <>
       <div className="border-t-siennaOpaque border-t-[1px] px-2 py-1 flex justify-between items-center">
@@ -48,10 +49,19 @@ function AddToCart() {
           })}
         </div>
       </div>
-      <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px] flex justify-between items-center">
+      <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px]">
+        <p onClick={() => setPolicyOpen(true)} className="text-[11px] text-sienna uppercase cursor-pointer">Shipping & Return Policy</p>
+      </div>
+      {/* <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px] flex justify-between items-center">
         <p className="text-[red] text-[10px] uppercase">
           You must select a color and size before adding to cart
         </p>
+      </div> */}
+      <div className="px-2 py-3 border-t-siennaOpaque border-t-[1px] flex justify-evenly items-center">
+        <p className="text-[18px] text-chocolate uppercase">-</p>
+       
+        <p className="text-[18px] text-chocolate uppercase">1</p>
+        <p className="text-[18px] text-chocolate uppercase">+</p>
       </div>
       <div className="px-2 py-3 border-t-siennaOpaque border-t-[1.5px] border-b-siennaOpaque border-b-[1.5px] flex justify-between items-center cursor-pointer">
         <h3>ADD TO CART</h3>

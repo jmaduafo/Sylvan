@@ -18,7 +18,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #9b4e17b2;
 }
 
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track{
   background-color: #F9F1E6;
 }
 
@@ -30,11 +30,11 @@ body::-webkit-scrollbar-track {
   height: 3px;
 }
 
-.imageRow::-webkit-scrollbar-thumb {
+.imageRow::-webkit-scrollbar-thumb, .policy::-webkit-scrollbar-thumb {
   background-color: #9b4e17b2;
 }
 
-.cartBag::-webkit-scrollbar {
+.cartBag::-webkit-scrollbar, .policy::-webkit-scrollbar {
   width: 2px;
 }
 
@@ -44,11 +44,11 @@ body::-webkit-scrollbar-track {
 }
 
 #navSearch::-webkit-placeholder, #loginEmail::placeholder, #loginPassword::placeholder, #registerUsername::placeholder,
-#registerEmail::placeholder, #registerPassword::placeholder {
+#registerEmail::placeholder, #registerPassword::placeholder, #policy::placeholder {
   color: #74340675;
 }
 
 #navSearch::-moz-placeholder, #loginEmail::placeholder, #loginPassword::placeholder, #registerUsername::placeholder,
-#registerEmail::placeholder, #registerPassword::placeholder {
+#registerEmail::placeholder, #registerPassword::placeholder, #policy::placeholder {
   color: #74340675;
 }

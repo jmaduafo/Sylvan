@@ -71,23 +71,23 @@ const Api = () => {
         } else {
             setLoading(true)
             async function createProduct() {
-                const postRef = collection(db, 'posts') 
+                const productRef = collection(db, 'products') 
 
                 try {
-                    await addDoc(postRef, {
+                    await addDoc(productRef, {
                         name: name,
                         category: category,
-                        price: price,
-                        quantity: quantity,
+                        price: +price,
+                        quantity: +quantity,
                         description: description,
                         isLookbook: isLookbook === 'true' ? true : false,
                         colors: colors.split(', '),
                         images: images.split(', '),
                         materials: materialArray,
-                        sizeArray: sizeArray,
+                        sizes: sizeArray,
                         createdAt: serverTimestamp() 
                     })
-                    
+
                     setLoading(false)
                     setMessage('Product added successfully!')
                 } catch (err) {

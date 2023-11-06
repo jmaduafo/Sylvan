@@ -34,7 +34,7 @@ module.exports = {
       'hero-pic2': "url('./assets/hero-pic2.jpg')",
       'hero-pic3': "url('./assets/hero-pic3.jpg')",
       'hero-pic4': "url('./assets/hero-pic4.jpg')",
-      'chocolateGradient': "linear-gradient(180deg, rgba(46, 22, 8, 0.10) 0%, rgba(46, 22, 8, 0.60) 100%)"
+      'chocolateGradient': "linear-gradient(180deg, rgba(46, 22, 8, 0.10) 0%, rgba(46, 22, 8, 0.40) 100%)",
     },
     extend: {
       colors: {
