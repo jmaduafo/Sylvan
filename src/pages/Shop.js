@@ -25,10 +25,11 @@ const Shop = ({ cartOpen, setCartOpen }) => {
 function DisplayShop() {
   let path = window.location.pathname.split('/')[2]
   const [selectedCategory, setSelectedCategory] = useState(path)
+  const [ message, setMessage ] = useState('')
 
   return (
     <section>
-      <Toast message={''}/>
+      <Toast setMessage={setMessage} message={message}/>
       <div className='px-6 py-3 border-b-siennaOpaque border-b-[1px]'>
         <h4 className='uppercase text-[22px] text-sienna'>{selectedCategory} (5)</h4>
       </div>

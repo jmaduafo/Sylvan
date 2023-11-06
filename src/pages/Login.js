@@ -1,18 +1,42 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Toast from '../components/Toast'
+import { useNavigate } from 'react-router-dom'
+import { auth } from '../firebase/config'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [ message, setMessage ] = useState('')
+
+  let navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
+
+    if (!email.length || !password.length) {
+      setMessage('All entries must not be left empty')
+    } else {
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user
+
+        localStorage.setItem('loggedIn', user.uid)
+                
+        navigate('/')
+    })
+    .catch((error) => {
+        console.log(error)
+        setMessage('You are not a registered user. Please sign up.')
+        
+    });
+    }
   }
 
   return (
     <section className='w-full h-[85vh] flex justify-center items-center'>
-      <Toast message=''/>
+      <Toast setMessage={setMessage} message={message}/>
       <div className='text-center w-[35%]'>
         <h3 className='text-[40px] font-semibold text-sienna font-serif'>LOG IN</h3>
         <form onSubmit={handleSubmit} className='mt-5 flex flex-col'>
