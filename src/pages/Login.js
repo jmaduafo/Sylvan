@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <section className='w-full h-[85vh] flex justify-center items-center'>
-      <Toast setMessage={setMessage} message={message}/>
+      <Toast messageType='Error Message' setMessage={setMessage} message={message}/>
       <div className='text-center w-[35%]'>
         <h3 className='text-[40px] font-semibold text-sienna font-serif'>LOG IN</h3>
         <form onSubmit={handleSubmit} className='mt-5 flex flex-col'>

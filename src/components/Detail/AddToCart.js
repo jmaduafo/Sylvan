@@ -1,34 +1,31 @@
 import React from "react";
 import QuantityCounter from "../QuantityCounter";
 
-function AddToCart({ setPolicyOpen, policyOpen}) {
+function AddToCart({ product, setPolicyOpen, policyOpen}) {
   return (
     <>
       <div className="border-t-siennaOpaque border-t-[1px] px-2 py-1 flex justify-between items-center">
-        <h6>CHALISSE LAMP</h6>
-        <p>$45.00</p>
+        <h6 className="uppercase">{product?.name}</h6>
+        <p>${new Intl.NumberFormat().format(product.price)}</p>
       </div>
       <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px]">
         <p className="text-[12px]">DESCRIPTION</p>
       </div>
       <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px]">
         <p className="text-[13px] font-light">
-          Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-          Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut
-          libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
-          eros faucibus tincidunt. Duis leo.{" "}
+          {product?.description}
         </p>
       </div>
       <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px] flex justify-between items-center">
         <p className="text-[12px]">COLORS</p>
         <div className="flex items-center gap-2">
-          {[1, 2, 3].map((color) => {
+          {product?.colors.map((color) => {
             return (
               <div
                 key={color}
                 className="flex justify-center items-center w-[12px] h-[12px] rounded-full border-chocolate border-[1px] cursor-pointer"
               >
-                <div className="w-[8px] h-[8px] rounded-full bg-sienna"></div>
+                <div className="w-[8px] h-[8px] rounded-full" style={{ backgroundColor: color}}></div>
               </div>
             );
           })}
@@ -37,7 +34,7 @@ function AddToCart({ setPolicyOpen, policyOpen}) {
       <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px] flex justify-between items-center">
         <p className="text-[12px]">SIZES</p>
         <div className="flex items-center gap-2">
-          {["S", "M"].map((size) => {
+          {product?.sizes.map((size) => {
             return (
               <p
                 key={size}

@@ -13,8 +13,8 @@ const CardDisplay = ({products, setSelectedSize, setSelectedColor}) => {
         <Toast/>
         {products?.map(product => {
             return (
-                <div key={product} style={{ backgroundImage: `url(${product.images[0]})`}} className='relative group p-4 xs:h-[50vh] md:h-[65vh] 2xl:h-[85vh] h-[60vh] text-cream cursor-pointer'>
-                    <Cover/>
+                <div key={product.id} style={{ backgroundImage: `url(${product.images[0]})`}} className='bg-cover bg-center bg-no-repeat relative group p-4 xs:h-[50vh] md:h-[65vh] 2xl:h-[85vh] h-[60vh] text-cream cursor-pointer'>
+                    {/* <Cover/> */}
                     <motion.div className={`z-[5] ease-in group-hover:visible invisible flex justify-between items-start flex-wrap h-[10%] gap-x-6 gap-y-2`}>
                         <QuickAdd itemSizes={product.sizes} itemColors={product.colors} setSelectedColor={setSelectedColor}
                          setSelectedSize={setSelectedSize}/>

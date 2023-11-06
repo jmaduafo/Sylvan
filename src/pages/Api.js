@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { categories } from '../utils/shopCategories'
 import Toast from '../components/Toast'
 import { db } from '../firebase/config'
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import { addDoc, collection, serverTimestamp, updateDoc, query, where, getDocs } from 'firebase/firestore'
 import LoadingSmall from '../components/LoadingSmall'
 
 const Api = () => {
-    const materials = ['Wood', 'Iron', 'Suede', 'Leather', 'Ceramics']
+    const materials = ['Wood', 'Iron', 'Suede', 'Leather', 'Ceramics', 'Plastic', 'Marble']
 
     const [ name, setName] = useState('')
     const [ price, setPrice] = useState(20)
@@ -19,6 +19,7 @@ const Api = () => {
     const [ colors, setColors] = useState('') 
     const [ images, setImages] = useState('')
     const [ message, setMessage] = useState('')
+    const [ messageType, setMessageType] = useState('')
 
     const [ loading, setLoading] = useState(false)
 
@@ -88,10 +89,32 @@ const Api = () => {
                         createdAt: serverTimestamp() 
                     })
 
+                    const newProductRef = query(collection(db, "products"), where("name", "==", name))
+
+                    const docSnap = await getDocs(newProductRef)
+
+                    docSnap.forEach(doc => {
+                        async function updateId() {
+                            try {
+                                await updateDoc(doc.ref, {
+                                    id: doc.id 
+                                })
+                                setMessageType('Id Added')
+                                setMessage('Product ID was updated successfully!')
+                            } catch (err) {
+                                setMessageType('Error')
+                                setMessage('Product ID did not update')
+                            }
+                        }
+                        updateId()   
+                    })
+
                     setLoading(false)
+                    setMessageType('Confirmation')
                     setMessage('Product added successfully!')
                 } catch (err) {
                     setLoading(false)
+                    setMessageType('Error Message')
                     setMessage('Something went wrong. Please try again')
                     console.log(err)
                 }
@@ -103,7 +126,7 @@ const Api = () => {
 
   return (
     <section className='py-[5rem] flex justify-center w-full'>
-        <Toast setMessage={setMessage} message={message}/>
+        <Toast messageType={messageType} setMessage={setMessage} message={message}/>
         <div className='border-sienna border-[2px] w-[45%]'>
             <h3 className='py-3 px-2 text-[40px] text-sienna font-serif'>Create Product</h3>
             <form onSubmit={handleProductSubmit} className='px-2 flex flex-wrap gap-[2rem]'>

@@ -9,8 +9,6 @@ const Filter = ({setSelectedCategory, selectedCategory }) => {
     const [isSortClick, setIsSortClick ] = useState(false)
     const [ searchParams, setSearchParams ] = useSearchParams()
 
-    console.log(searchParams)
-
     const sortCategories = [
         {
             'sortCategory': 'A-Z',
