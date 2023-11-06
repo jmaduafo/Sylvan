@@ -3,11 +3,10 @@ import { categories } from '../utils/shopCategories'
 import Toast from '../components/Toast'
 import { db } from '../firebase/config'
 import { addDoc, collection, serverTimestamp, updateDoc, query, where, getDocs } from 'firebase/firestore'
+import materials from '../utils/allMaterials'
 import LoadingSmall from '../components/LoadingSmall'
 
 const Api = () => {
-    const materials = ['Wood', 'Iron', 'Suede', 'Leather', 'Ceramics', 'Plastic', 'Marble']
-
     const [ name, setName] = useState('')
     const [ price, setPrice] = useState(20)
     const [ category, setCategory] = useState('')
@@ -65,9 +64,11 @@ const Api = () => {
         e.preventDefault()
 
         if (!name.length || !category.length || !description.length || !isLookbook || 
-            !materials.length || !sizeArray.length || !colors.length || !images.length) {
+            !materials?.length || !sizeArray.length || !colors.length || !images.length) {
+            setMessageType('Error message')
             setMessage('All entries must be entered')
         } else if (quantity < 1) {
+            setMessageType('Error message')
             setMessage('Quantity must be greater than 0')
         } else {
             setLoading(true)
@@ -172,7 +173,7 @@ const Api = () => {
                 {/* MATERIALS ARRAY*/}
                 <div className='my-2'>
                     <p className='text-chocolate font-light text-[14px]'>Materials</p>
-                    {materials.map(material => {
+                    {materials?.map(material => {
                         return (
                             <div key={material}>
                                 <input onChange={handleCheckedMaterials} type='checkbox' className='mr-2 text-sienna mt-1 outline-none bg-transparent rounded-md border-siennaOpaque border-[1.5px] px-2' id={material} name={material} value={material}/>

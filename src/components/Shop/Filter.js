@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import PlusCircle from '../icons/PlusCircle'
 import { motion } from 'framer-motion'
 import { categories } from '../../utils/shopCategories'
+import materials from '../../utils/allMaterials'
 import { Link, useSearchParams } from 'react-router-dom'
 
 
 const Filter = ({setSelectedCategory, selectedCategory }) => {
     const [isSortClick, setIsSortClick ] = useState(false)
     const [ searchParams, setSearchParams ] = useSearchParams()
-
+ 
     const sortCategories = [
         {
             'sortCategory': 'A-Z',
@@ -66,7 +67,7 @@ const Filter = ({setSelectedCategory, selectedCategory }) => {
         },
         {
             'sortCategory': 'Material:',
-            'types': ['Wood', 'Iron', 'Suede', 'Ceramics', 'Leather'],
+            'types': materials,
             'sortParams': null
         }
     ]

@@ -55,8 +55,10 @@ function DisplayShop() {
 
   useEffect(function() {
     getAllProducts()
+    setFilteredProducts(allProducts)
+  }, [])
 
-
+  useEffect(function() {
     if (selectedCategory.toLowerCase() === 'all') {
       setFilteredProducts(allProducts)
     } else {

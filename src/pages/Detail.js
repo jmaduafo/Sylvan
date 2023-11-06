@@ -4,7 +4,7 @@ import SimilarItems from "../components/Detail/SimilarItems";
 import ImageRow from "../components/ImageRow";
 import ReturnPolicy from "../components/ReturnPolicy";
 import { db } from "../firebase/config";
-import { doc, collection, query, where, getDocs } from 'firebase/firestore'
+import { collection, query, where, getDocs } from 'firebase/firestore'
 import { useParams } from "react-router-dom";
 
 

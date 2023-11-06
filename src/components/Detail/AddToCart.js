@@ -1,12 +1,12 @@
 import React from "react";
-import QuantityCounter from "../QuantityCounter";
+import { price } from "../../utils/parseFloat";
 
 function AddToCart({ product, setPolicyOpen, policyOpen}) {
   return (
     <>
       <div className="border-t-siennaOpaque border-t-[1px] px-2 py-1 flex justify-between items-center">
         <h6 className="uppercase">{product?.name}</h6>
-        <p>${new Intl.NumberFormat().format(product.price)}</p>
+        <p>${new Intl.NumberFormat().format(price(product.price))}</p>
       </div>
       <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px]">
         <p className="text-[12px]">DESCRIPTION</p>

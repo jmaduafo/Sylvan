@@ -12,6 +12,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage ] = useState("");
   const [ userNameDuplicate, setUserNameDuplicate] = useState()
+  const [ messageType, setMessageType] = useState('')
 
   const [ loading, setLoading ] = useState(false)
 
@@ -37,10 +38,13 @@ const Register = () => {
     passwordValidate()
                 
     if (!email.length || !password.length || !userName.length ) {
+      setMessageType('Error message')
       setMessage('All entries must not be left empty')
     } else if (password.length < 6) {
+      setMessageType('Error message')
       setMessage('Password has to be six characters or more')
     } else if (userNameDuplicate.length) {
+      setMessageType('Error message')
       setMessage('This username has been taken. Please enter another one.')
     } else {
       setMessage('')
@@ -70,6 +74,7 @@ const Register = () => {
             navigate('/')
       })
       .catch(err => {
+        setMessageType('Error message')
         setMessage('Something went wrong. Please try again.')
         setLoading(false)
       })
