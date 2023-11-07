@@ -13,14 +13,14 @@ const CardDisplay = ({products, setSelectedSize, setSelectedColor}) => {
         <Toast/>
         {products?.map(product => {
             return (
-                <div key={product.id} style={{ backgroundImage: `url(${product.images[0]})`}} className='bg-cover bg-center bg-no-repeat relative group p-4 xs:h-[50vh] md:h-[65vh] 2xl:h-[85vh] h-[60vh] text-cream cursor-pointer'>
-                    {/* <Cover/> */}
+                <div key={product.id} style={{ backgroundImage: `url(${product.images[0]})`}} className='relative bg-cover bg-center bg-no-repeat relative group p-4 xs:h-[50vh] md:h-[65vh] 2xl:h-[85vh] h-[60vh] text-cream cursor-pointer'>
+                    <Link to={`/${product.category}/${product.id}`}><Cover/></Link>
                     <motion.div className={`z-[5] ease-in group-hover:visible invisible flex justify-between items-start flex-wrap h-[10%] gap-x-6 gap-y-2`}>
                         <QuickAdd itemSizes={product.sizes} itemColors={product.colors} setSelectedColor={setSelectedColor}
                          setSelectedSize={setSelectedSize}/>
                     </motion.div>
                     <Link to={`/${product.category}/${product.id}`}>
-                        <div className='z-[5] flex items-end h-[90%]'>
+                        <div className='relative flex items-end h-[90%]'>
                             <Label title={product.name} price={new Intl.NumberFormat().format(product.price)}/>
                         </div>
                     </Link>

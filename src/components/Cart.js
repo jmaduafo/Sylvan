@@ -27,7 +27,7 @@ const Cart = ({setCartOpen, cartOpen }) => {
                     <Cancel/>
                 </div>
             </div>
-            <div className='py-3 px-5 max-h-[60vh] overflow-y-auto cartBag'>
+            <div className='py-3 px-5 max-h-[60vh] overflow-y-auto cartBag border-b-siennaOpaque border-b-[1px]'>
                 {[1, 2, 3, 4, 5].map(order => {
                     return (
                         <div key={order} className='p-3 flex border-b-siennaOpaque border-b-[1px] last:border-none gap-4'>
@@ -40,7 +40,7 @@ const Cart = ({setCartOpen, cartOpen }) => {
                                     <TrashCan/>
                                 </div>
                                 <div className='text-sienna'>
-                                    <h5 className='text-[18px]'>$124.56</h5>
+                                    <h5 className='text-[13px]'>$124.56</h5>
                                 </div>
                                 <div className='text-sienna flex justify-between items-end h-[55%]'>
                                     <div className='flex gap-1 items-center'>
@@ -60,9 +60,9 @@ const Cart = ({setCartOpen, cartOpen }) => {
                 })}
             </div>
             <div className='py-3 px-4'>
-                <div className='my-2 text-sienna flex justify-between items-center'>
-                    <p className='uppercase text-[13px]'>clear all</p>
-                    <h3 className='text-[28px]'>$2,645.76</h3>
+                <div className='my-2 px-2 text-sienna flex justify-between items-center'>
+                    <p className='uppercase text-[12px]'>clear all</p>
+                    <h3 className='text-[20px]'>$2,645.76</h3> 
                 </div>
                 <Link to='/checkout'>
                     <button className='py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light'>

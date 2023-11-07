@@ -60,7 +60,7 @@ function DisplayShop() {
     setOnLoad(true)
     setFilteredProducts(allProducts)
     setOnLoad(false)
-  }, [allProducts, onLoad])
+  }, [onLoad])
 
   useEffect(function() {
     if (selectedCategory.toLowerCase() === 'all') {

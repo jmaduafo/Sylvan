@@ -79,7 +79,7 @@ const Api = () => {
                     await addDoc(productRef, {
                         name: name,
                         category: category,
-                        price: +price.toFixed(2),
+                        price: +price,
                         quantity: +quantity,
                         description: description,
                         isLookbook: isLookbook === 'true' ? true : false,
