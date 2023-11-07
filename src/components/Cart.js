@@ -1,77 +1,148 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import image from '../assets/landon4.png'
-import TrashCan from './icons/TrashCan'
-import Cancel from './icons/Cancel'
-import QuantityCounter from './QuantityCounter'
-import { Link } from 'react-router-dom';
-import { easeInOut, motion } from 'framer-motion';
+import cartSlice, {
+  CLEAR_CART,
+  GET_TOTALS,
+  REMOVE_FROM_CART,
+} from "../redux/cartSlice";
+import TrashCan from "./icons/TrashCan";
+import Cancel from "./icons/Cancel";
+import QuantityCounter from "./QuantityCounter";
+import { Link } from "react-router-dom";
+import { easeInOut, motion } from "framer-motion";
 
-const Cart = ({setCartOpen, cartOpen }) => {
+const Cart = ({ setCartOpen, cartOpen }) => {
+  const { cartItems, totalQuantity, totalPrice } = useSelector(
+    (state) => state.cart
+  );
 
-    // Setting cart state from redux cartSlice.js to open and close the cart
-    const handleCancel = () => {
-        setCartOpen(false)
-        console.log('click')
-    }
+  const dispatch = useDispatch();
+
+  const handleCancel = () => {
+    setCartOpen(false);
+  };
+
+  const getTotals = () => {
+    dispatch(GET_TOTALS());
+  };
+
+  useEffect(
+    function () {
+      getTotals();
+      console.log(cartItems);
+    },
+    [cartItems]
+  );
 
   return (
-    <motion.section className={`${cartOpen === true ? 'visible' : 'invisible'} duration-[.4s] z-[88] fixed right-0`}>
-        <motion.div initial={{ opacity: cartOpen === true ? 0 : 1, x: cartOpen === true ? '100%' : 0 }} animate={{ opacity: cartOpen === true ? 1 : 0, x: cartOpen === true ? 0 : '100%'}} transition={{ duration: .8, ease: easeInOut }} 
-        className={`${cartOpen === true ? 'w-[100%]' : 'w-[0%]'} bg-cream border-l-siennaOpaque border-l-[1px] h-screen xs:w-[80vw] md:w-[55vw] lg:w-[45vw] w-[100vw]`}>
-            <div className='py-3 px-5 text-sienna flex justify-between items-center border-b-siennaOpaque border-b-[1px]'>
-                <h4 className='uppercase font-medium text-[25px]'>Your Bag (5)</h4>
-                <div onClick={handleCancel}>
-                    <Cancel/>
-                </div>
-            </div>
-            <div className='py-3 px-5 max-h-[60vh] overflow-y-auto cartBag border-b-siennaOpaque border-b-[1px]'>
-                {[1, 2, 3, 4, 5].map(order => {
-                    return (
-                        <div key={order} className='p-3 flex border-b-siennaOpaque border-b-[1px] last:border-none gap-4'>
-                            <div className='basis-[20%] h-[110px] object-cover object-bottom'>
-                                <img className='w-full h-full' src={image}/>
-                            </div>
-                            <div className='basis-[80%]'>
-                                <div className='text-sienna flex items-center justify-between'>
-                                    <h6 className='uppercase text-[14px]'>Archibald Armchair</h6>
-                                    <TrashCan/>
-                                </div>
-                                <div className='text-sienna'>
-                                    <h5 className='text-[13px]'>$124.56</h5>
-                                </div>
-                                <div className='text-sienna flex justify-between items-end h-[55%]'>
-                                    <div className='flex gap-1 items-center'>
-                                        <p className='text-[12px]'>M</p>
-                                        <div className='w-[12px] h-[12px] border-sienna border-[1px] rounded-full flex justify-center items-center'>
-                                            <div className='w-[8px] h-[8px] bg-olive rounded-full'></div>
-                                        </div>
-                                    </div>
-                                    <div className='flex gap-1 items-center'>
-                                        <QuantityCounter/>
-                                    </div>
-                                </div>
-
-                            </div>
+    <motion.section
+      className={`${
+        cartOpen === true ? "visible" : "invisible"
+      } duration-[.4s] z-[88] fixed right-0`}
+    >
+      <motion.div
+        initial={{
+          opacity: cartOpen === true ? 0 : 1,
+          x: cartOpen === true ? "100%" : 0,
+        }}
+        animate={{
+          opacity: cartOpen === true ? 1 : 0,
+          x: cartOpen === true ? 0 : "100%",
+        }}
+        transition={{ duration: 0.8, ease: easeInOut }}
+        className={`${
+          cartOpen === true ? "w-[100%]" : "w-[0%]"
+        } bg-cream border-l-siennaOpaque border-l-[1px] h-screen xs:w-[80vw] md:w-[55vw] lg:w-[45vw] w-[100vw]`}
+      >
+        <div className="py-3 px-5 text-sienna flex justify-between items-center border-b-siennaOpaque border-b-[1px]">
+          <h4 className="uppercase font-medium text-[25px]">
+            Your Bag ({totalQuantity})
+          </h4>
+          <div onClick={handleCancel}>
+            <Cancel />
+          </div>
+        </div>
+        <div className="py-3 px-5 max-h-[55vh] overflow-y-auto cartBag border-b-siennaOpaque border-b-[1px]">
+          {cartItems?.length ?
+            cartItems?.map((cart) => {
+              return (
+                <div
+                  key={cart.id}
+                  className="p-3 flex border-b-siennaOpaque border-b-[1px] last:border-none gap-4"
+                >
+                  <div className="basis-[20%] h-[150px] object-cover object-bottom">
+                    <img className="w-full h-full" src={cart.images && cart.images[0]} />
+                  </div>
+                  <div className="basis-[80%]">
+                    <div className="text-sienna flex items-center justify-between">
+                      <h6 className="uppercase text-[14px]">{cart.name}</h6>
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => dispatch(REMOVE_FROM_CART(cart))}
+                      >
+                        <TrashCan />
+                      </div>
+                    </div>
+                    <div className="text-sienna">
+                      <h5 className="text-[13px]">
+                        ${Intl.NumberFormat().format(cart.price)}
+                      </h5>
+                    </div>
+                    <div className="text-sienna flex justify-between items-end h-[65%]">
+                      <div className="flex gap-1 items-center">
+                        <p className="text-[12px]">{cart.selectedSize}</p>
+                        <div className="w-[12px] h-[12px] border-sienna border-[1px] rounded-full flex justify-center items-center">
+                          <div
+                            className="w-[8px] h-[8px] rounded-full"
+                            style={{ backgroundColor: cart.selectedColor }}
+                          ></div>
                         </div>
-                    )
-                })}
-            </div>
-            <div className='py-3 px-4'>
-                <div className='my-2 px-2 text-sienna flex justify-between items-center'>
-                    <p className='uppercase text-[12px]'>clear all</p>
-                    <h3 className='text-[20px]'>$2,645.76</h3> 
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        <QuantityCounter
+                          cart={cart}
+                          count={cart.cartQuantity}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <Link to='/checkout'>
-                    <button className='py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light'>
-                        Proceed to Checkout
-                    </button>
-                </Link>
-            </div>
+              );
+            })
+            :
+            <div className="text-center py-[3rem] flex justify-center items-center">
+                <p className="text-sienna font-light">No items added to cart yet</p>
+            </div>}
             
-        </motion.div>
+        </div>
+        <div className="py-3 px-4">
+          <div className="my-2 px-2 text-sienna flex justify-between items-center">
+            <p
+              onClick={() => cartItems?.length && dispatch(CLEAR_CART())}
+              className={`${cartItems.length && 'cursor-pointer'} uppercase text-[12px]`}
+            >
+              {cartItems?.length ? 'clear all' : ''}
+            </p>
+            <h3 className="text-[20px]">
+              ${Intl.NumberFormat().format(totalPrice)}
+            </h3>
+          </div>
+          {cartItems.length ? 
+          <Link to="/checkout">
+            <button className="py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light">
+              Proceed to Checkout
+            </button>
+          </Link> : ''
+          }
+          <Link to="/shop/all">
+            <button className="py-2 mt-2 hover:bg-[#9b4e17b2] hover:text-cream duration-[.4s] border-siennaOpaque border-[1px] text-sienna sm:text-[15px] text-[13px] w-full uppercase text-center font-light">
+              Continue Shopping
+            </button>
+          </Link>
+        </div>
+      </motion.div>
     </motion.section>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

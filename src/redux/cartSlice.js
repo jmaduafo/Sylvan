@@ -17,7 +17,7 @@ const cartSlice = createSlice({
             if (cartIndex >= 0) {
                 state.cartItems[cartIndex].cartQuantity++
             } else {
-                const newItem = { ...action.payload, cartQuantity: 1 }
+                const newItem = { ...action.payload}
                 state.cartItems.push(newItem)
             }
 
@@ -47,7 +47,7 @@ const cartSlice = createSlice({
 
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
         },
-        GET_TOTALS(state, action) {
+        GET_TOTALS(state) {
             // reduce(initial_value, current_value)
             let {total, quantity} = state.cartItems.reduce((cartTotal, cartItem) => {
                 const itemTotal = cartItem.price * cartItem.cartQuantity
@@ -77,6 +77,6 @@ const cartSlice = createSlice({
     }
 })
 
-export const { ADD_TO_CART, REMOVE_FROM_CART, DECREASE_QUANTITY, GET_TOTALS, CLOSE_CART, OPEN_CART } = cartSlice.actions
+export const { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART, DECREASE_QUANTITY, GET_TOTALS, CLOSE_CART, OPEN_CART } = cartSlice.actions
 
 export default cartSlice.reducer

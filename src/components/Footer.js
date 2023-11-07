@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Cover from './Cover'
 import { Link } from 'react-router-dom'
 import { categories } from '../utils/shopCategories'
+import { auth } from '../firebase/config'
+import { onAuthStateChanged } from 'firebase/auth'
 
 const Footer = () => {
+    const [ link, setLink ] = useState('/login')
+    function renderAccount() {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+              // User is signed in, see docs for a list of available properties
+              // https://firebase.google.com/docs/reference/js/firebase.User
+              const uid = user.uid;
+              setLink('/profile/user')
+            } else {
+              // User is signed out
+              // ...
+              setLink('/login')
+            }
+          });
+    }  
+    
+    useEffect(function() {
+        renderAccount()
+    }, [auth])
+
     const footerNav = [
         {
             'name': 'home',
@@ -22,8 +44,8 @@ const Footer = () => {
             'link': '/lookbook'
         }, 
         {
-            'name': 'register',
-            'link': '/register'
+            'name': 'account',
+            'link': link
         }, 
     ]
 
@@ -65,6 +87,7 @@ const Footer = () => {
                     <ul>
                         <li>TERMS & CONDITIONS</li>
                         <li>PRIVACY POLICY</li>
+                        <li>SHIPPING AND RETURN POLICY</li>
                     </ul>
                 </div>
             </div>

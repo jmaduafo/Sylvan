@@ -30,8 +30,11 @@ function DisplayShop() {
   const [selectedCategory, setSelectedCategory] = useState(path.split('%20').join(' '))
   const [ message, setMessage ] = useState('')
 
+  // Takes all products from backend
   const [allProducts, setAllProducts] = useState()
+  // Handles product filtering
   const [filteredProducts, setFilteredProducts] = useState()
+  
   const [selectedSize, setSelectedSize ] = useState()
   const [selectedColor, setSelectedColor ] = useState()
 
@@ -54,6 +57,10 @@ function DisplayShop() {
 
       products()
   }
+
+  useEffect(function() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth'})
+  }, [])
 
   useEffect(function() {
     getAllProducts()
