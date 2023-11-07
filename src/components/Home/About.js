@@ -7,7 +7,7 @@ const About = () => {
     <section className='py-[5rem] text-sienna'>
         <div className='w-4/5 mx-auto flex flex-col sm:justify-center sm:items-center sm:flex-row gap-[5rem] '>
             <div className='relative flex-1 flex justify-end'>
-                <div className='2xl:left-[50%] xs:w-[250px] xs:h-[300px] w-[180px] h-[200px] absolute left-[30%] top-1/2 transform translate-x-[-50%] translate-y-[-50%]'>
+                <div className='2xl:left-[50%] xs:w-[150px] xs:h-[200px] absolute left-[30%] top-1/2 transform translate-x-[-50%] translate-y-[-50%]'>
                     <img className='w-full h-full' src={about1} alt=''/>
                 </div>
                 <div className='w-[350px] h-[450px] object-cover object-bottom'>

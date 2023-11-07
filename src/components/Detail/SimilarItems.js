@@ -5,7 +5,6 @@ import Cover from "../Cover";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../../firebase/config";
 import { collection, getDocs, query, where, limit } from "firebase/firestore";
-import { shuffleArray } from "../../utils/shuffleArray";
 import CardPlaceholder from "../CardPlaceholder";
 
 const SimilarItems = ({ product }) => {
@@ -56,7 +55,6 @@ const SimilarItems = ({ product }) => {
   useEffect(
     function () {
       getSimilar();
-
       // Load on first load to show placeholder loading animation
       setLoading(true)
       setTimeout(function () {

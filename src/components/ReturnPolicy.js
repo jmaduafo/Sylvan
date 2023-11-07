@@ -54,7 +54,7 @@ const ReturnPolicy = ({ setPolicyOpen, policyOpen }) => {
     ]
     
   return (
-    <div className={`${policyOpen ? 'visible' : 'invisible'} fixed bg-chocolateOpaque w-full z-[80] py-6 text-sienna`}>
+    <div className={`${policyOpen ? 'visible' : 'invisible'} fixed bg-chocolateOpaque w-full h-full z-[80] py-6 text-sienna`}>
         <div className='policy border-sienna border-[1px] bg-cream w-[45%] mx-auto p-4 overflow-auto max-h-[80vh]'>
             <div className='flex justify-between items-center'>
                 <h3 className='text-[22px] uppercase'>Shipping & Return Policy</h3>

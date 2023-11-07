@@ -33,6 +33,19 @@ function Checkout() {
                       quantity: item.cartQuantity
                 }
             }), 
+            payment_intent_data: {
+              "shipping": {
+                "name": "John Smith",
+                "address": {
+                  "country": "USA",
+                  "state": "California",
+                  "city": "San Francisco",
+                  "line1": "58 Middle Point Rd",
+                  "line2": "",
+                  "postal_code": "94124"
+                }
+              }
+            },
             // Redirect to success if successful; redirect to full cart page if canceled
             successUrl: `${window.location.origin}/success`,
             cancelUrl:  `${window.location.origin}/cart`,

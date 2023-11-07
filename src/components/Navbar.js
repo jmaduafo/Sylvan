@@ -5,6 +5,8 @@ import UserIcon from './icons/UserIcon'
 import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import Cart from './Cart'
 import { easeInOut, motion } from 'framer-motion'
+import { auth } from '../firebase/config';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const Navbar = ({ cartOpen, setCartOpen }) => {
     const headerHeight = useRef()
@@ -12,6 +14,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
     const [ searchParams, setSearchParams ] = useSearchParams()    
     const [ searchName, setSearchName ] = useState('')    
     const [ shrink, setShrink] = useState(true)
+    const [ link, setLink ] = useState('/login')
 
     let navigate = useNavigate()
 
@@ -24,7 +27,24 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
             })
         }
     }
-    
+
+    function checkLoggedIn() {
+        onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            const uid = user.uid;
+            setLink('/profile/user')
+        } else {
+            // User is signed out
+            setLink('/login')
+        }
+        });
+    }
+
+    useEffect(function() {
+        checkLoggedIn()
+    }, [auth])
 
     return (
     <>
@@ -54,7 +74,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
             {/* BOTTOM NAV WITH USER AND SEARCH */}
             <div className='border-b-siennaOpaque border-b-[1px] flex justify-between px-6 py-2'>
                 <div className=''>
-                    <Link to='/login'>
+                    <Link to={link}>
                         <UserIcon/>
                     </Link>
                 </div>

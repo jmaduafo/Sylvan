@@ -30,18 +30,26 @@ const Search = () => {
   }
 
   useEffect(function() {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+  }, [])
+  
+  useEffect(function() {
     getSearch()
     setOnLoad(true)
     setOnLoad(false)
   }, [setOnLoad, allProducts, searchParams])
 
   useEffect(function() {
-
+    // Get the search param in url
     const search = searchParams.get('product')
-
+    setOnLoad(true)
+    // Filter products by category and name that are similar to search term
     setFilterSearch(allProducts?.filter(product => product.category.toLowerCase().includes(search) ||
     product.name.toLowerCase().includes(search)))
-  }, [searchParams.get('product')])
+
+    setOnLoad(false)
+
+  }, [onLoad, searchParams.get('product')])
 
   return (
     <section>
@@ -64,10 +72,6 @@ const Search = () => {
       </div>
       :
       <div className="text-center mt-8 mb-6"><p className="text-sienna text-[15px] font-light">No products displayed</p></div>}
-        
-        {/* <div className="text-center mt-6 mb-5">
-            <p className="font-light text-sienna">No products found. Please try another search.</p>
-        </div> */}
       </div>
     </section>
   );

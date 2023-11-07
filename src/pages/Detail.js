@@ -50,7 +50,7 @@ const Detail = ({ cartOpen, setCartOpen }) => {
       <ReturnPolicy setPolicyOpen={setPolicyOpen} policyOpen={policyOpen}/>
       {allDetails?.length && 
       <>
-      <div>
+        <div>
           <div className="flex sm:flex-row sm:items-end flex-col-reverse">
             <div className="my-1 sm:basis-[55%] 2xl:basis-[55%] sm:h-[115vh] 2xl:h-[125vh] h-[50vh] object-cover object-bottom">
               <img className='w-full h-full' src={hovered ? hoveredImage : allDetails[0]?.images[0]} alt={allDetails[0]?.name}/>

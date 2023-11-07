@@ -13,6 +13,7 @@ import Login from './pages/Login'
 import Success from './pages/Success'
 import WrongPage from './pages/WrongPage'
 import Search from './pages/Search';
+import Profile from './pages/Profile';
 import Api from './pages/Api';
 import { Routes, Route } from 'react-router-dom';
 
@@ -39,6 +40,7 @@ function App() {
         <Route path='/success' element={<Success/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
         <Route path='/search' element={<Search/>}/>
+        <Route path='/profile/user' element={<Profile/>}/>
         <Route path='/:categoryName/:productId' element={<Detail cartOpen={cartOpen} setCartOpen={setCartOpen}/>}/>
         <Route path='/api/create' element={<Api/>}/>
         <Route path='*' element={<WrongPage/>}/>

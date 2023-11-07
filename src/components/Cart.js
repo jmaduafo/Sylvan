@@ -9,9 +9,7 @@ import { easeInOut, motion } from 'framer-motion';
 
 const Cart = ({setCartOpen, cartOpen }) => {
 
-    // Setting cart state from redux cartSlice.js to open and close the care
-    
-
+    // Setting cart state from redux cartSlice.js to open and close the cart
     const handleCancel = () => {
         setCartOpen(false)
         console.log('click')
