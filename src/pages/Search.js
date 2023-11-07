@@ -10,6 +10,7 @@ const Search = () => {
   const [searchParams] = useSearchParams();
   const [ allProducts, setAllProducts ] = useState()
   const [ filterSearch, setFilterSearch ] = useState()
+  const [onLoad, setOnLoad] = useState(false)
 
   function getSearch() {
     const searchRef = collection(db, 'products')
@@ -30,7 +31,9 @@ const Search = () => {
 
   useEffect(function() {
     getSearch()
-  }, [])
+    setOnLoad(true)
+    setOnLoad(false)
+  }, [setOnLoad, allProducts, searchParams])
 
   useEffect(function() {
 
@@ -44,9 +47,9 @@ const Search = () => {
     <section>
       <div className="">
         <div className="py-2 px-6 border-b-siennaOpaque border-b-[1px]">
-            <h4 className='uppercase text-[22px] text-sienna'>{searchParams.get('product')} ({filterSearch?.length})</h4>
+            <h4 className='uppercase text-[22px] text-sienna'>{searchParams.get('product')} ({searchParams.get('product').length || filterSearch?.length ? filterSearch?.length : '0'})</h4>
         </div>
-        {filterSearch?.length ? 
+        {filterSearch?.length && searchParams.get('product').length ? 
         <div className="my-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-1">
         {filterSearch?.map((card) => {
           return (

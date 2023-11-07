@@ -35,6 +35,8 @@ function DisplayShop() {
   const [selectedSize, setSelectedSize ] = useState()
   const [selectedColor, setSelectedColor ] = useState()
 
+  const [onLoad, setOnLoad] = useState(false)
+
 
   function getAllProducts() {
       const productRef = collection(db, 'products')
@@ -55,8 +57,10 @@ function DisplayShop() {
 
   useEffect(function() {
     getAllProducts()
+    setOnLoad(true)
     setFilteredProducts(allProducts)
-  }, [])
+    setOnLoad(false)
+  }, [allProducts, onLoad])
 
   useEffect(function() {
     if (selectedCategory.toLowerCase() === 'all') {
@@ -66,7 +70,7 @@ function DisplayShop() {
     }
     console.log(selectedCategory)
     
-  }, [selectedCategory])
+  }, [allProducts, selectedCategory])
 
   return (
     <section>
