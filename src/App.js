@@ -7,7 +7,6 @@ import About from './pages/About'
 import Shop from './pages/Shop'
 import Lookbook from './pages/Lookbook'
 import Detail from './pages/Detail'
-import Checkout from './pages/Checkout'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Success from './pages/Success'
@@ -38,7 +37,6 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/success' element={<Success/>}/>
-        <Route path='/checkout' element={<Checkout/>}/>
         <Route path='/search' element={<Search/>}/>
         <Route path='/profile/user' element={<Profile/>}/>
         <Route path='/:categoryName/:productId' element={<Detail cartOpen={cartOpen} setCartOpen={setCartOpen}/>}/>

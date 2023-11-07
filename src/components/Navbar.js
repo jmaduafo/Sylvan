@@ -7,16 +7,21 @@ import Cart from './Cart'
 import { easeInOut, motion } from 'framer-motion'
 import { auth } from '../firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
+import { useSelector, useDispatch } from 'react-redux'
+import { GET_TOTALS } from '../redux/cartSlice'
 
 const Navbar = ({ cartOpen, setCartOpen }) => {
     const headerHeight = useRef()
 
-    const [ searchParams, setSearchParams ] = useSearchParams()    
+    const [ setSearchParams ] = useSearchParams()    
     const [ searchName, setSearchName ] = useState('')    
     const [ shrink, setShrink] = useState(true)
     const [ link, setLink ] = useState('/login')
 
     let navigate = useNavigate()
+
+    const { cartItems, totalQuantity } = useSelector(state => state.cart)
+    const dispatch = useDispatch()
 
     function handleEnter(e) {
         if (e.key === 'Enter') {
@@ -42,9 +47,17 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
         });
     }
 
+    function handleBagCount() {
+        dispatch(GET_TOTALS())
+    }
+
     useEffect(function() {
         checkLoggedIn()
     }, [auth])
+
+    useEffect(function() {
+        handleBagCount()
+    }, [cartItems])
 
     return (
     <>
@@ -67,7 +80,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
                     </div>
                     {/* BAG COUNT */}
                     <div className='absolute top-0 left-2/3 border border-sienna bg-cream w-4 h-4 rounded-full flex justify-center items-center'>
-                        <p className='text-chocolate text-[10px]'>3</p>
+                        <p className='text-chocolate text-[10px]'>{totalQuantity}</p>
                     </div>
                 </div>
             </div>

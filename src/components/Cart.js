@@ -10,6 +10,7 @@ import Cancel from "./icons/Cancel";
 import QuantityCounter from "./QuantityCounter";
 import { Link } from "react-router-dom";
 import { easeInOut, motion } from "framer-motion";
+import { handleCheckout } from "../utils/handleCheckout";
 
 const Cart = ({ setCartOpen, cartOpen }) => {
   const { cartItems, totalQuantity, totalPrice } = useSelector(
@@ -111,7 +112,7 @@ const Cart = ({ setCartOpen, cartOpen }) => {
             })
             :
             <div className="text-center py-[3rem] flex justify-center items-center">
-                <p className="text-sienna font-light">No items added to cart yet</p>
+                <p className="text-sienna font-light">No items added to your bag yet</p>
             </div>}
             
         </div>
@@ -128,11 +129,10 @@ const Cart = ({ setCartOpen, cartOpen }) => {
             </h3>
           </div>
           {cartItems.length ? 
-          <Link to="/checkout">
-            <button className="py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light">
+            <button onClick={() => handleCheckout(cartItems)} className="py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light">
               Proceed to Checkout
             </button>
-          </Link> : ''
+         : ''
           }
           <Link to="/shop/all">
             <button className="py-2 mt-2 hover:bg-[#9b4e17b2] hover:text-cream duration-[.4s] border-siennaOpaque border-[1px] text-sienna sm:text-[15px] text-[13px] w-full uppercase text-center font-light">

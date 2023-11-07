@@ -6,12 +6,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import cartReducer from './redux/cartSlice';
+import { GET_TOTALS } from './redux/cartSlice';
 
 const store = configureStore({
 	reducer: {
     cart: cartReducer
   }
 })
+
+store.dispatch(GET_TOTALS)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

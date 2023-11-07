@@ -30,7 +30,7 @@ const cartSlice = createSlice({
             // Filter and check for any item that doesn't match the id of item 
             const cartFilter = state.cartItems.filter(item => item.id !== action.payload.id);
 
-            state.cartItems.push(cartFilter)
+            state.cartItems = cartFilter
 
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
         },
