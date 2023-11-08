@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { db } from "../../firebase/config";
 import { collection, getDocs, query, where, limit } from "firebase/firestore";
 import CardPlaceholder from "../CardPlaceholder";
+import { easeInOut, motion } from "framer-motion";
 
 const SimilarItems = ({ product }) => {
   const [allSimilar, setAllSimilar] = useState();
@@ -88,7 +89,10 @@ const SimilarItems = ({ product }) => {
                     key={similar.id}
                     to={`/${similar.category}/${similar.id}`}
                   >
-                    <div
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: .5, ease: easeInOut }}
                       onClick={() => {
                         setLoading(true);
                       }}
@@ -98,9 +102,9 @@ const SimilarItems = ({ product }) => {
                       <Cover />
                       <Label
                         title={similar.name}
-                        price={Intl.NumberFormat().format(similar.price)}
+                        price={similar.price}
                       />
-                    </div>
+                    </motion.div>
                   </Link>
                 );
               })

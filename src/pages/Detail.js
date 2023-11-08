@@ -7,6 +7,7 @@ import Toast from '../components/Toast'
 import { db } from "../firebase/config";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useParams } from "react-router-dom";
+import { motion, easeInOut } from "framer-motion";
 
 const Detail = ({ cartOpen, setCartOpen }) => {
   // Handles display of shipping and return policy
@@ -62,7 +63,10 @@ const Detail = ({ cartOpen, setCartOpen }) => {
           <div>
             <div className="flex sm:flex-row sm:items-end flex-col-reverse">
               <div className="my-1 sm:basis-[55%] 2xl:basis-[55%] sm:h-[115vh] 2xl:h-[125vh] h-[50vh] object-cover object-bottom">
-                <img
+                <motion.img
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: .5, ease: easeInOut }}
                   className="w-full h-full"
                   src={hovered ? hoveredImage : allDetails[0]?.images[0]}
                   alt={allDetails[0]?.name}

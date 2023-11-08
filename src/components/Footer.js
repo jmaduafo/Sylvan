@@ -5,8 +5,10 @@ import { categories } from '../utils/shopCategories'
 import { auth } from '../firebase/config'
 import { onAuthStateChanged } from 'firebase/auth'
 
-const Footer = () => {
+
+const Footer = ({setPolicyOpen, setPrivacyOpen}) => {
     const [ link, setLink ] = useState('/login')
+
     function renderAccount() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -85,9 +87,9 @@ const Footer = () => {
                 </div>
                 <div className='sm:py-0 py-3'>
                     <ul>
-                        <li>TERMS & CONDITIONS</li>
-                        <li>PRIVACY POLICY</li>
-                        <li>SHIPPING AND RETURN POLICY</li>
+                        <li className='cursor-pointer'>TERMS & CONDITIONS</li>
+                        <li className='cursor-pointer' onClick={() => setPrivacyOpen(true)}>PRIVACY POLICY</li>
+                        <li className='cursor-pointer' onClick={() => setPolicyOpen(true)}>SHIPPING AND RETURN POLICY</li>
                     </ul>
                 </div>
             </div>

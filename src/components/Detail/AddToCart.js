@@ -64,7 +64,7 @@ function AddToCart({
     <>
       <div className="border-t-siennaOpaque border-t-[1px] px-2 py-1 flex justify-between items-center">
         <h6 className="uppercase">{product?.name}</h6>
-        <p>${new Intl.NumberFormat().format(price(product.price))}</p>
+        <p>${product?.price?.toString().length > 5 ? Intl.NumberFormat().format(parseFloat(product?.price).toFixed(2)) : parseFloat(product?.price).toFixed(2)}</p>
       </div>
       <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px]">
         <p className="text-[12px]">DESCRIPTION</p>

@@ -86,7 +86,7 @@ const Cart = ({ setCartOpen, cartOpen }) => {
                     </div>
                     <div className="text-sienna">
                       <h5 className="text-[13px]">
-                        ${Intl.NumberFormat().format(cart.price)}
+                        ${cart.price.toString().length > 6 ? Intl.NumberFormat().format(parseFloat(cart.price).toFixed(2)) : parseFloat(cart.price).toFixed(2)}
                       </h5>
                     </div>
                     <div className="text-sienna flex justify-between items-end h-[65%]">
@@ -122,10 +122,10 @@ const Cart = ({ setCartOpen, cartOpen }) => {
               onClick={() => cartItems?.length && dispatch(CLEAR_CART())}
               className={`${cartItems.length && 'cursor-pointer'} uppercase text-[12px]`}
             >
-              {cartItems?.length ? 'clear all' : ''}
+              {cartItems?.length ? 'clear all' : 'subtotal'}
             </p>
             <h3 className="text-[20px]">
-              ${Intl.NumberFormat().format(totalPrice)}
+              ${totalPrice.toString().length > 6 ? Intl.NumberFormat().format(parseFloat(totalPrice).toFixed(2)) : parseFloat(totalPrice).toFixed(2)}
             </h3>
           </div>
           {cartItems.length ? 

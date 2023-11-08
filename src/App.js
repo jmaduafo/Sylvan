@@ -15,11 +15,16 @@ import Search from './pages/Search';
 import Profile from './pages/Profile';
 import Api from './pages/Api';
 import { Routes, Route } from 'react-router-dom';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import ReturnPolicy from './components/ReturnPolicy';
 
 function App() {
   let path = window.location.pathname
 
   const [ cartOpen, setCartOpen ] = useState(false)
+  const [ privacyOpen, setPrivacyOpen ] = useState(false)
+  const [ policyOpen, setPolicyOpen ] = useState(false)
+  const [ termsOpen, setTermsOpen ] = useState(false)
 
   useEffect(function() {
     window.scrollTo({top: 0, behavior: 'smooth'})
@@ -28,7 +33,9 @@ function App() {
   return (   
     <div className='container bg-cream max-w-full mx-auto font-sans'>
       <Navbar cartOpen={cartOpen} setCartOpen={setCartOpen}/>
-      <main>
+      <main className='relative'>
+        <PrivacyPolicy setPrivacyOpen={setPrivacyOpen} privacyOpen={privacyOpen}/>
+        <ReturnPolicy setPolicyOpen={setPolicyOpen} policyOpen={policyOpen}/>
       <Routes>
         <Route exact path='/' element={<Home/>}/>
         <Route path='/shop/:category' element={<Shop cartOpen={cartOpen} setCartOpen={setCartOpen}/>}/>
@@ -44,7 +51,7 @@ function App() {
         <Route path='*' element={<WrongPage/>}/>
       </Routes>
       </main>
-      <Footer/>
+      <Footer setPrivacyOpen={setPrivacyOpen} setPolicyOpen={setPolicyOpen}/>
     </div>
     
   );

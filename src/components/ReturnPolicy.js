@@ -1,5 +1,6 @@
 import React from 'react'
 import Cancel from './icons/Cancel'
+import { easeInOut, motion } from 'framer-motion'
 
 const ReturnPolicy = ({ setPolicyOpen, policyOpen }) => {
     const policy = [
@@ -54,8 +55,8 @@ const ReturnPolicy = ({ setPolicyOpen, policyOpen }) => {
     ]
     
   return (
-    <div className={`${policyOpen ? 'visible' : 'invisible'} fixed bg-chocolateOpaque w-full h-full z-[80] py-6 text-sienna`}>
-        <div className='policy border-sienna border-[1px] bg-cream w-[45%] mx-auto p-4 overflow-auto max-h-[80vh]'>
+    <div className={`${policyOpen ? 'visible' : 'invisible'} duration-[.4s] fixed bg-chocolateOpaque w-full h-full z-[80] py-6 text-sienna`}>
+        <motion.div initial={{ opacity: policyOpen ? 0 : 1 }} animate={{ opacity: policyOpen ? 1 : 0 }} transition={{ duration: .6, ease: easeInOut}}  className='policy border-sienna border-[1px] bg-cream w-[45%] mx-auto p-4 overflow-auto max-h-[80vh]'>
             <div className='flex justify-between items-center'>
                 <h3 className='text-[22px] uppercase'>Shipping & Return Policy</h3>
                 <div onClick={() => setPolicyOpen(false)}>
@@ -79,7 +80,7 @@ const ReturnPolicy = ({ setPolicyOpen, policyOpen }) => {
             })}
         
         <p className='mt-5 text-[13px]'>At Sylvan, we are committed to providing you with the highest quality furniture and exceptional service. If you have any questions or need further assistance, please don't hesitate to contact our customer support team.</p>
-        </div>
+        </motion.div>
         
     </div>
   )

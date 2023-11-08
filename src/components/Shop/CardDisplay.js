@@ -21,7 +21,7 @@ const CardDisplay = ({products, setSelectedSize, setSelectedColor}) => {
                     </motion.div>
                     <Link to={`/${product.category}/${product.id}`}>
                         <div className='relative flex items-end h-[90%]'>
-                            <Label title={product.name} price={new Intl.NumberFormat().format(product.price)}/>
+                            <Label title={product.name} price={product.price}/>
                         </div>
                     </Link>
                 </div>  
