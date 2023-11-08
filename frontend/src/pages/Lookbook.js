@@ -3,7 +3,6 @@ import { db } from "../firebase/config";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { easeIn, motion } from "framer-motion";
-import CardPlaceholder from "../components/CardPlaceholder";
 
 const Lookbook = () => {
   const [hoveredItem, setHoveredItem] = useState();
@@ -116,6 +115,7 @@ const Lookbook = () => {
                       setHovered(true);
                     }}
                     src={book.images[0]}
+                    alt={book.images[0]}
                   />
                 </div>
               );

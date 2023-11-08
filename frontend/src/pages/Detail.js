@@ -9,7 +9,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { motion, easeInOut } from "framer-motion";
 
-const Detail = ({ cartOpen, setCartOpen }) => {
+const Detail = ({ setCartOpen }) => {
   // Handles display of shipping and return policy
   const [policyOpen, setPolicyOpen] = useState(false);
 
@@ -23,9 +23,10 @@ const Detail = ({ cartOpen, setCartOpen }) => {
   const [messageType, setMessageType] = useState("");
   const [message, setMessage] = useState("");
 
-  const { categoryName, productId } = useParams();
+  const { productId } = useParams();
 
   function getDetail() {
+    setLoading(true)
     const detailRef = query(
       collection(db, "products"),
       where("id", "==", productId)
@@ -42,7 +43,7 @@ const Detail = ({ cartOpen, setCartOpen }) => {
 
       setAllDetails(details);
     }
-
+    setLoading(false)
     detail();
   }
 

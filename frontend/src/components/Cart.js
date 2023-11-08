@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import cartSlice, {
+import {
   CLEAR_CART,
   GET_TOTALS,
   REMOVE_FROM_CART,
@@ -10,11 +10,10 @@ import Cancel from "./icons/Cancel";
 import QuantityCounter from "./QuantityCounter";
 import { Link } from "react-router-dom";
 import { easeInOut, motion } from "framer-motion";
-import { handleCheckout } from "../utils/handleCheckout";
-import { getStripe } from "../stripe/getStripe";
+import LoadingSmall from './LoadingSmall'
 
 const Cart = ({ setCartOpen, cartOpen }) => {
-//   const [ dataItems, setDataItems ] = useState()
+  const [ loading, setLoading ] = useState(false)
   const { cartItems, totalQuantity, totalPrice } = useSelector(
     (state) => state.cart
   );
@@ -38,6 +37,7 @@ const Cart = ({ setCartOpen, cartOpen }) => {
   );
 
   const handleCheckout = async (items) => {
+    setLoading(true)
     await fetch('http://localhost:4000/checkout', {
         method: "POST",
         headers: {
@@ -50,7 +50,8 @@ const Cart = ({ setCartOpen, cartOpen }) => {
         if(response.url) {
             window.location.assign(response.url); // Forwarding user to Stripe
         }
-    }).catch(err => console.log(err))
+        setLoading(false)
+    }).catch(err => {console.log(err); setLoading(false)})
   }
 
   return (
@@ -90,7 +91,7 @@ const Cart = ({ setCartOpen, cartOpen }) => {
                   className="p-3 flex border-b-siennaOpaque border-b-[1px] last:border-none gap-4"
                 >
                   <div className="basis-[20%] h-[150px] object-cover object-bottom">
-                    <img className="w-full h-full" src={cart.images && cart.images[0]} />
+                    <img className="w-full h-full" src={cart.images[0]} alt={cart.name}/>
                   </div>
                   <div className="basis-[80%]">
                     <div className="text-sienna flex items-center justify-between">
@@ -148,7 +149,7 @@ const Cart = ({ setCartOpen, cartOpen }) => {
           </div>
           {cartItems.length ?
             <button onClick={() => handleCheckout(cartItems)} className="py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light">
-                Proceed to Checkout
+                {loading ? <LoadingSmall/> : 'Proceed to Checkout'}
             </button>
          : ''
           }

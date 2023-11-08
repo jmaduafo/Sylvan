@@ -21,6 +21,7 @@ const ImageRow = ({ images, hoveredImage, setHoveredImage, setHovered }) => {
                   setHovered(true);
                 }}
                 src={image}
+                alt={image}
               />
             </motion.div>
           );

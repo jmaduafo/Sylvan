@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { price } from "../../utils/parseFloat";
-import { useSelector, useDispatch } from "react-redux";
-import { ADD_TO_CART, DECREASE_QUANTITY } from "../../redux/cartSlice";
+import { useDispatch } from "react-redux";
+import { ADD_TO_CART } from "../../redux/cartSlice";
 
 function AddToCart({
   setMessageType,

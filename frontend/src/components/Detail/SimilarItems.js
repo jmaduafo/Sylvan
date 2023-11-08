@@ -4,7 +4,7 @@ import Heading from "../Heading";
 import Cover from "../Cover";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../../firebase/config";
-import { collection, getDocs, query, where, limit } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import CardPlaceholder from "../CardPlaceholder";
 import { easeInOut, motion } from "framer-motion";
 
@@ -43,7 +43,9 @@ const SimilarItems = ({ product }) => {
       const findAll = [];
       similar.map((obj) => {
         // Loop through the first array and check for matching ids
-        findAll.push(array.find((sim) => sim.id === obj));
+        return (
+        findAll.push(array.find((sim) => sim.id === obj))
+        );
       });
 
       // Leave out the object containing the same id as the displayed item in detail page

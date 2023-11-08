@@ -5,8 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
-import cartReducer from './redux/cartSlice';
-import { GET_TOTALS } from './redux/cartSlice';
+import cartReducer, { GET_TOTALS } from './redux/cartSlice';
 
 const store = configureStore({
 	reducer: {

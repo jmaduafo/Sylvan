@@ -4,11 +4,10 @@ import Cover from "../components/Cover";
 import { Link, useSearchParams } from "react-router-dom";
 import { db } from "../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
-import { price } from "../utils/parseFloat";
 import CardPlaceholder from "../components/CardPlaceholder";
 
 const Search = () => {
-  const [searchParams, setSearchParams ] = useSearchParams();
+  const [searchParams ] = useSearchParams();
   const [ allProducts, setAllProducts ] = useState()
   const [ filterSearch, setFilterSearch ] = useState()
   const [loading, setLoading] = useState(false)

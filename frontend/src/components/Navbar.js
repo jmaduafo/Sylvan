@@ -38,8 +38,6 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
   function checkLoggedIn() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        
-        const uid = user.uid;
         setLink("/profile/user");
       } else {
         // User is signed out

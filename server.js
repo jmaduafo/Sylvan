@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
-const stripe = require('stripe')('sk_test_51O7lbVKZxnM73RBY87Mq5Hsj4sMjJWXpTo1nT5ApDnjJvl6EsqVzWqwChzvsKXmgxXcEhqnMkt3cuTKG1WaWwTqp00pFFAs8xg');
+
+require('dotenv').config();
+
+const stripe = require('stripe')(process.env.SECRET_KEY);
 
 const app = express();
 app.use(cors());
-app.use(express.static("public"));
+app.use(express.static('public'));
 app.use(express.json());
 
 app.post("/checkout", async (req, res) => {
@@ -32,8 +35,8 @@ app.post("/checkout", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: 'payment',
-        success_url: "http://localhost:3000/success",
-        cancel_url: "http://localhost:3000/cancel"
+        success_url: "/success",
+        cancel_url: "/cancel"
     });
 
     res.send(JSON.stringify({
