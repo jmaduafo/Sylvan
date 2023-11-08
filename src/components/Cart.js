@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cartSlice, {
   CLEAR_CART,
@@ -11,8 +11,10 @@ import QuantityCounter from "./QuantityCounter";
 import { Link } from "react-router-dom";
 import { easeInOut, motion } from "framer-motion";
 import { handleCheckout } from "../utils/handleCheckout";
+import { getStripe } from "../stripe/getStripe";
 
 const Cart = ({ setCartOpen, cartOpen }) => {
+//   const [ dataItems, setDataItems ] = useState()
   const { cartItems, totalQuantity, totalPrice } = useSelector(
     (state) => state.cart
   );
@@ -34,6 +36,22 @@ const Cart = ({ setCartOpen, cartOpen }) => {
     },
     [cartItems]
   );
+
+  const handleCheckout = async (items) => {
+    await fetch('http://localhost:4000/checkout', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({items: items})
+    }).then((response) => {
+        return response.json();
+    }).then((response) => {
+        if(response.url) {
+            window.location.assign(response.url); // Forwarding user to Stripe
+        }
+    }).catch(err => console.log(err))
+  }
 
   return (
     <motion.section
@@ -128,9 +146,9 @@ const Cart = ({ setCartOpen, cartOpen }) => {
               ${totalPrice.toString().length > 6 ? Intl.NumberFormat().format(parseFloat(totalPrice).toFixed(2)) : parseFloat(totalPrice).toFixed(2)}
             </h3>
           </div>
-          {cartItems.length ? 
+          {cartItems.length ?
             <button onClick={() => handleCheckout(cartItems)} className="py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light">
-              Proceed to Checkout
+                Proceed to Checkout
             </button>
          : ''
           }
