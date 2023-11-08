@@ -1,5 +1,5 @@
 const express = require('express');
-var cors = require('cors');
+const cors = require('cors');
 const stripe = require('stripe')('sk_test_51O7lbVKZxnM73RBY87Mq5Hsj4sMjJWXpTo1nT5ApDnjJvl6EsqVzWqwChzvsKXmgxXcEhqnMkt3cuTKG1WaWwTqp00pFFAs8xg');
 
 const app = express();
@@ -8,19 +8,19 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.post("/checkout", async (req, res) => {
-    const items = req.body.items;
+  try {
     let lineItems = [];
-    items.forEach((item)=> {
+    req.body.items.forEach((item)=> {
         lineItems.push(
             {
               price_data: {
                 currency: "usd",
                 product_data: {
                   name: item.name,
-                  // images: [item.images[0]],
-                  // metadata: {
-                  //   id: item.id,
-                  // },
+                  images: [item.images[0]],
+                  metadata: {
+                    id: item.id,
+                  },
                 },
                 unit_amount: item.price * 100,
               },
@@ -39,6 +39,10 @@ app.post("/checkout", async (req, res) => {
     res.send(JSON.stringify({
         url: session.url
     }));
+  } catch (err) {
+    console.log(err)
+  }
+    
 });
 
 app.listen(4000, () => console.log("Listening on port 4000!"));
