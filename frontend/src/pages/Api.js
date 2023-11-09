@@ -76,6 +76,7 @@ const Api = () => {
                 const productRef = collection(db, 'products') 
 
                 try {
+                    // Creating new product and adding to database
                     await addDoc(productRef, {
                         name: name,
                         category: category,
@@ -90,11 +91,13 @@ const Api = () => {
                         createdAt: serverTimestamp() 
                     })
 
+                    // Querying for the product document where the name matches the name in the state
                     const newProductRef = query(collection(db, "products"), where("name", "==", name))
 
                     const docSnap = await getDocs(newProductRef)
 
                     docSnap.forEach(doc => {
+                        // Adding product id of the product that was just created to the document using updatedoc
                         async function updateId() {
                             try {
                                 await updateDoc(doc.ref, {
@@ -205,19 +208,6 @@ const Api = () => {
                     <label className='text-[14px] font-light text-chocolate' htmlFor='productImages'>Images (separate urls by ', ')</label>
                     <textarea onChange={(e) => setImages(e.target.value)} value={images} className='text-[13px] text-sienna block mt-1 outline-none bg-transparent rounded-md border-siennaOpaque border-[1.5px] px-2' cols='50' rows={4} id='productImages'></textarea>
                 </div>
-                {/* <div className='my-2'>
-                    <p className='text-chocolate font-light text-[14px]'>Colors</p>
-                    <div className='flex gap-3'>
-                    {colorArray.map(color => {
-                            return (
-                            <input key={color} onChange={handleColorArray} id={`color${color}`} type='color' className='text-sienna mt-1 outline-none bg-transparent rounded-md border-siennaOpaque border-[1.5px] w-[30px] h-[25px]'/>
-                            )
-                    })}
-                    </div>
-                        <p className='cursor-pointer' onClick={handleColorArray}>+</p>                   
-                        <p className='cursor-pointer' onClick={handleColorArray}>-</p>
-                   
-                </div> */}
                {/* SUBMIT BUTTON */}
                 <button type='submit' className='block w-full bg-olive text-cream font-light uppercase mb-2 py-2 rounded-md'>{loading ? LoadingSmall : 'Submit'}</button>
             </form>
@@ -225,30 +215,5 @@ const Api = () => {
     </section>
   )
 }
-
-// function handleColorArray(e) {
-    //     var newColorArray = [...colorArray]
-
-    //     if (e.target.innerText === '+') {
-    //         // If increase is pushed, then add a new value in array that is an increment of the
-    //         // previous value
-    //         newColorArray.push(colorArray[colorArray.length - 1] + 1)
-
-    //         setColorArray(newColorArray)
-    //     } else if (e.target.innerText === '-') {
-    //         // If the length of the array is 2 or more, remove the last element from the array
-    //         if (colorArray.length >= 2) {
-    //             newColorArray.pop()
-    //             setColorArray(newColorArray)
-    //         }
-    //     } else if (e.target.id.includes('color')) {
-    //         var newArray = []
-    //         for (let i = 0; i < colorArray.length; i++) {
-    //             newArray.push(e.target.value)
-    //         }
-    //         completeColorArray(newArray)
-    //     }
-
-    // }
 
 export default Api

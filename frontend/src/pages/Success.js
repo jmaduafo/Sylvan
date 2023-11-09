@@ -12,6 +12,7 @@ const Success = () => {
 
   let navigate = useNavigate()
 
+  // Only save order history if user is logged in
   function saveOrderHistory() {
     onAuthStateChanged(auth, (user) => {
       if (user) {

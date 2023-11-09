@@ -83,7 +83,7 @@ const UserInfo = () => {
         }
         </div>
         <p className="text-sienna text-[14px] mb-2">Edit</p>
-        <Heading headerText="You may also like" />
+        <Heading headerText="You may also like" linkText='shop all' link='/shop/all'/>
         <div className="overflow-x-auto mt-2 userScroll">
           <div className="w-[fit-content] flex gap-2">
               {!loading && allProducts?.length ? 
@@ -105,9 +105,6 @@ const UserInfo = () => {
                 )
               })}
           </div>
-        </div>
-        <div className="flex justify-center items-center mt-6">
-          {loading || !userInfo?.length ? <div className="h-[30px] w-[150px] bg-siennaOpaque rounded-sm animate-pulse"></div> : <HomeButton bgColor='olive' textColor='cream'/>}
         </div>
       </div>
     </div>
