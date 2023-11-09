@@ -13,7 +13,7 @@ const CardDisplay = ({products, setSelectedSize, setSelectedColor}) => {
         <Toast/>
         {products?.map(product => {
             return (
-                <div key={product.id} style={{ backgroundImage: `url(${product.images[0]})`}} className='relative bg-cover bg-center bg-no-repeat group p-4 xs:h-[50vh] md:h-[65vh] 2xl:h-[85vh] h-[60vh] text-cream cursor-pointer'>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .6 }}  layout key={product.id} style={{ backgroundImage: `url(${product.images[0]})`}} className='relative bg-cover bg-center bg-no-repeat group p-4 xs:h-[50vh] md:h-[65vh] 2xl:h-[85vh] h-[60vh] text-cream cursor-pointer'>
                     <Link to={`/${product.category}/${product.id}`}><Cover/></Link>
                     <motion.div className={`z-[5] ease-in group-hover:visible invisible flex justify-between items-start flex-wrap h-[10%] gap-x-6 gap-y-2`}>
                         <QuickAdd itemSizes={product.sizes} itemColors={product.colors} setSelectedColor={setSelectedColor}
@@ -24,7 +24,7 @@ const CardDisplay = ({products, setSelectedSize, setSelectedColor}) => {
                             <Label title={product.name} price={product.price}/>
                         </div>
                     </Link>
-                </div>  
+                </motion.div>  
             )
         })}
         

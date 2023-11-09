@@ -14,6 +14,7 @@ import WrongPage from './pages/WrongPage'
 import Search from './pages/Search';
 import Profile from './pages/Profile';
 import Api from './pages/Api';
+import Cancel from './pages/Cancel';
 import { Routes, Route } from 'react-router-dom';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ReturnPolicy from './components/ReturnPolicy';
@@ -44,6 +45,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/success' element={<Success/>}/>
+        <Route path='/cancel' element={<Cancel/>}/>
         <Route path='/search' element={<Search/>}/>
         <Route path='/profile/user' element={<Profile/>}/>
         <Route path='/:categoryName/:productId' element={<Detail cartOpen={cartOpen} setCartOpen={setCartOpen}/>}/>
