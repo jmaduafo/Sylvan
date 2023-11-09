@@ -65,11 +65,11 @@ const Profile = () => {
     <section className='relative'>
       <DeleteModal modalOpen={modalOpen} setModalOpen={setModalOpen} setConfirmDelete={setConfirmDelete}/>
       <Toast messageType={messageType} message={message} setMessage={setMessage}/>
-      <div className='max-w-[90%] mx-auto flex sm:flex-row flex-col min-h-[85vh] py-6'>
+      <div className='max-w-[90%] mx-auto flex sm:flex-row flex-col max-h-[85vh] py-6'>
         <div className='sm:basis-[25%] basis-full'>
           <SideBar setSelected={setSelected} selected={selected}/>
         </div>
-        <div className='sm:basis-[75%] basis-full overflow-x-hidden'>
+        <div className='sm:basis-[75%] basis-full overflow-x-hidden orderHistory'>
           {selected === 'My account' ? <UserInfo/> : <OrderHistory/>}
         </div>
       </div>

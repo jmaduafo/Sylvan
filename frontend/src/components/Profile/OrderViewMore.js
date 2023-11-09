@@ -33,7 +33,7 @@ const OrderViewMore = ({order, setViewMore, viewMore}) => {
               <div className='w-[90px] h-[120px] object-cover object-bottom'>
                 <img className='w-full h-full' src={pic} alt={order}/>
               </div>
-              <div className=''>
+              <div className='py-2'>
                 <p className='uppercase text-[12px]'>Lovelace Chaise</p>
                 <div className='flex gap-1 items-center'>
                   <p className='text-[13px]'>M</p>

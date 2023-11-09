@@ -9,7 +9,7 @@ const SideBar = ({ setSelected, selected}) => {
       {sections.map(section => {
         return (
           <div>
-            <p onClick={() => setSelected(section)} className={`${selected === section ? 'text-sienna' : 'text-siennaOpaque'} hover:text-sienna duration-[.4s] w-[fit-content] cursor-pointer capitalize text-[13px] font-light pt-2 pb-1`}>{section}</p>
+            <p onClick={() => setSelected(section)} className={`${selected === section ? 'text-sienna' : 'text-[#9b4e1781]'} hover:text-sienna duration-[.4s] w-[fit-content] cursor-pointer capitalize text-[13px] font-light pt-2 pb-1`}>{section}</p>
           </div>
         )
       })}

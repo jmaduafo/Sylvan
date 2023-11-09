@@ -9,7 +9,7 @@ body {
   overflow-x: hidden;
 }
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar, .orderHistory::-webkit-scrollbar {
   width: 3px;
 }
 
@@ -18,7 +18,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #9b4e17b2;
 }
 
-body::-webkit-scrollbar-track{
+body::-webkit-scrollbar-track, .orderHistory::-webkit-scrollbar-track {
   background-color: #F9F1E6;
 }
 
