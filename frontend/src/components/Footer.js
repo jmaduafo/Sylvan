@@ -12,9 +12,8 @@ const Footer = ({setPolicyOpen, setPrivacyOpen}) => {
     function renderAccount() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-              // User is signed in, see docs for a list of available properties
-              // https://firebase.google.com/docs/reference/js/firebase.User
-              const uid = user.uid;
+              // User is signed in
+            //   const uid = user.uid;
               setLink('/profile/user')
             } else {
               // User is signed out

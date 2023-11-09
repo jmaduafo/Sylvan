@@ -26,7 +26,7 @@ body::-webkit-scrollbar-track{
   width: 0px;
 }
 
-.imageRow::-webkit-scrollbar {
+.imageRow::-webkit-scrollbar, .userScroll::-webkit-scrollbar {
   height: 3px;
 }
 

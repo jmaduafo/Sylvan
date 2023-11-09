@@ -51,7 +51,7 @@ const Login = () => {
           className='font-light font-sans px-3 py-[3px] outline-none text-[#9b4e17b2] border-b-sienna bg-transparent border-b-[1.5px]'/>
           <input onChange={(e) => setPassword(e.target.value)} value={password} id='loginPassword' type='password' placeholder='Password' 
           className='font-light font-sans mt-4 px-3 py-[3px] outline-none text-[#9b4e17b2] border-b-sienna bg-transparent border-b-[1.5px]'/>
-          <button type='submit' className='mt-5 py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light'>{loading ? <LoadingSmall/> : 'Log in'}</button>
+          <button type='submit' className='mt-5 py-2 rounded-lg bg-olive text-cream sm:text-[18px] text-[15px] w-full uppercase text-center font-light'>{loading ? <LoadingSmall/> : 'Sign in'}</button>
         </form>
         <Link to='/register'>
           <div className='group hover:bg-[#9b4e17b2] duration-[.4s] mt-2 py-2 flex justify-center gap-2 border-sienna border-[1px] text-[#9b4e17c4]'>
