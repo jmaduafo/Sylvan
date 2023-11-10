@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import './App.css';
 import Navbar from '../src/components/Navbar'
 import Footer from './components/Footer';
@@ -18,6 +18,8 @@ import Cancel from './pages/Cancel';
 import { Routes, Route } from 'react-router-dom';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ReturnPolicy from './components/ReturnPolicy';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 function App() {
   let path = window.location.pathname
@@ -38,6 +40,15 @@ function App() {
     })()
     
   }, [path])
+
+  useLayoutEffect(function() {
+    gsap.registerPlugin(ScrollTrigger)
+    
+    ScrollTrigger.config({
+      limitCallbacks: true,
+      ignoreMobileResize: true,
+    });
+  }, [])
 
   return (   
     <div className='container bg-cream max-w-full mx-auto font-sans'>

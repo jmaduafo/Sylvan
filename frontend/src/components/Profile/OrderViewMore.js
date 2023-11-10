@@ -28,7 +28,7 @@ const OrderViewMore = ({order, setViewMore, viewMore}) => {
       </div>
       {[1, 2, 3, 4, 5, 6, 7].map(order => {
         return (
-          <div key={order} className='py-3 px-4 flex text-sienna items-center py-3 border-b-siennaOpaque border-b-[1px]'>
+          <div key={order} className='py-3 px-4 flex text-sienna items-center border-b-siennaOpaque border-b-[1px]'>
             <div className='basis-[45%] flex gap-2'>
               <div className='w-[90px] h-[120px] object-cover object-bottom'>
                 <img className='w-full h-full' src={pic} alt={order}/>

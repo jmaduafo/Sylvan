@@ -2,23 +2,17 @@ import React, { useLayoutEffect, useRef } from 'react'
 import about1 from '../../assets/landon10.jpg'
 import about2 from '../../assets/footer-pic.jpg'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const About = () => {
 
     const aboutSection = useRef(null)
     const introImage = useRef(null)
     const smallImage = useRef(null)
-    const text = useRef(null)
 
     useLayoutEffect(function() {
         gsap.registerPlugin(ScrollTrigger)
-
-        ScrollTrigger.config({
-            limitCallbacks: true,
-            ignoreMobileResize: true,
-          });
 
         const timeline = gsap.timeline({
             scrollTrigger: {
@@ -32,7 +26,7 @@ const About = () => {
 
         timeline
             .to(introImage.current, {
-                y: '-20%'
+                y: '-15%'
             })
             .to(smallImage.current, {
                 y: '30%'
@@ -53,7 +47,7 @@ const About = () => {
             </div>
             <motion.div className='flex-1'>
                 {/* <h5 className='mb-4 font-semibold'>INTRO TITLE</h5> */}
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .8, delay: 3.7 }} viewport={{ once: true }} className='md:w-[70%] font-light'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.yo</motion.p>
+                <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8, delay: 3.7 }} viewport={{ once: true }} className='md:w-[70%] font-light'> At Sylvan, we hold a steadfast commitment to customer satisfaction, understanding that every home is unique. With an unwavering focus on personalized service, we take pride in offering an array of products that seamlessly blend functionality with exquisite style, ensuring that each customer discovers furnishings that not only suit their home but also reflect their individual taste.</motion.p>
             </motion.div>
         </div>
     </section>

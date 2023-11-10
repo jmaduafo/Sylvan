@@ -54,7 +54,7 @@ body::-webkit-scrollbar-track, .orderHistory::-webkit-scrollbar-track {
 }
 
 .lookbookCarousel {
-  animation: carousel 40s linear infinite forwards;
+  animation: carousel 50s linear infinite forwards;
 }
 
 @keyframes carousel {

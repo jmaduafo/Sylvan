@@ -19,7 +19,7 @@ const CardDisplay = ({ products, setSelectedSize, setSelectedColor }) => {
             layout
             key={product.id}
             style={{ backgroundImage: `url(${product.images[0]})` }}
-            className="relative bg-cover bg-center bg-no-repeat group p-4 xs:h-[50vh] md:h-[65vh] 2xl:h-[85vh] h-[60vh] text-cream cursor-pointer"
+            className="relative duration-[.4s] bg-cover bg-center bg-no-repeat group p-4 xs:h-[50vh] md:h-[65vh] 2xl:h-[85vh] h-[60vh] text-cream cursor-pointer"
           >
             <Link to={`/${product.category}/${product.id}`}>
               <Cover />
