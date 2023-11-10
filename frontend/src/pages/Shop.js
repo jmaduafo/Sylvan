@@ -106,7 +106,7 @@ function DisplayShop() {
         </div>
         {/* If there are products, then display them; if not, show that there are no products available */}
         {filteredProducts?.length ? (
-          <div className="cardDisplay md:basis-[70%] md:h-screen gap-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 2xl:grid-cols-3 overflow-y-auto webkit-scrollbar:w-[1px] grid grid-col-1">
+          <div className="cardDisplay md:basis-[70%] gap-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 2xl:grid-cols-3 grid grid-col-1">
             <CardDisplay
               products={filteredProducts}
               selectedSize={selectedSize}

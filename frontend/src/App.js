@@ -31,6 +31,14 @@ function App() {
     window.scrollTo({top: 0, behavior: 'smooth'})
   }, [path])
 
+  useEffect(function() {
+    (async () => {
+      const LocomotiveScroll = (await import('locomotive-scroll')).default
+      const locomotiveScroll = new LocomotiveScroll()
+    })()
+    
+  }, [path])
+
   return (   
     <div className='container bg-cream max-w-full mx-auto font-sans'>
       <Navbar cartOpen={cartOpen} setCartOpen={setCartOpen}/>

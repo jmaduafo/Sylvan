@@ -52,3 +52,16 @@ body::-webkit-scrollbar-track, .orderHistory::-webkit-scrollbar-track {
 #registerEmail::placeholder, #registerPassword::placeholder, #policy::placeholder {
   color: #74340675;
 }
+
+.lookbookCarousel {
+  animation: carousel 40s linear infinite forwards;
+}
+
+@keyframes carousel {
+  from {
+    transform: translateX(0) ;
+  }
+  to {
+    transform: translateX(-50%) ;
+  }
+}

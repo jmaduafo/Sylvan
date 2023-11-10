@@ -61,7 +61,7 @@ const Lookbook = () => {
     <div className="mb-1 ">
       {/* HOVERED IMAGE SHOW */}
       <div className="flex sm:flex-row sm:items-end flex-col-reverse sm:my-1">
-        <motion.div initial={{opacity: 0}} animate={{ opacity: 1}} transition={{ duration: .6, ease: easeIn}} className="sm:basis-[55%] 2xl:basis-[55%] sm:h-[75vh] md:h-[85vh] xl:h-[115vh] 2xl:h-[125vh] h-[50vh] object-cover object-bottom">
+        <motion.div initial={{opacity: 0}} animate={{ opacity: 1}} transition={{ duration: .6, ease: easeIn}} className="sm:basis-[55%] 2xl:basis-[55%] sm:h-[75vh] md:h-[85vh] xl:h-[115vh] 2xl:h-[125vh] h-[85vh] object-cover object-bottom">
           {loading && !hoveredItem ? (
             <div className="h-full flex justify-center items-center bg-siennaOpaque animate-pulse">
               <h3 className="text-[60px] font-serif text-sienna">S</h3>
@@ -94,7 +94,7 @@ const Lookbook = () => {
                 </span>
               </p>
             </Link>
-            <p className="text-[13px] uppercase">{hoveredItem?.category}</p>
+            <Link to={`/shop/${hoveredItem?.category.toLowerCase()}`}><p className="text-[13px] uppercase">{hoveredItem?.category}</p></Link>
           </div>
         </div>
       </div>
