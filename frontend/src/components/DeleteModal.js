@@ -8,7 +8,7 @@ const DeleteModal = ({modalOpen, setModalOpen, setConfirmDelete}) => {
             <h3 className='text-sienna text-[22px] uppercase'>Delete Account?</h3>
             <div className='mt-3'>
               <p className='font-light'>We'd hate to see you go. Are you sure that you want to proceed?</p>
-              <div className='flex items-center justify-center gap-[3rem] mt-3'>
+              <div className='flex items-center justify-center gap-[3rem] mt-6'>
                   <button className='bg-olive text-cream uppercase font-light text-[14px] rounded-full py-[2px] px-6' onClick={() => {setConfirmDelete(true); setModalOpen(false)}}>Confirm</button>
                   <button className='border-siennaOpaque border-[1px] text-sienna uppercase font-light text-[14px] rounded-full py-[2px] px-6' onClick={() => {setConfirmDelete(false); setModalOpen(false)}}>Cancel</button>
               </div>

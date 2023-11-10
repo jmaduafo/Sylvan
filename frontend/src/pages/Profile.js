@@ -70,7 +70,7 @@ const Profile = () => {
           <SideBar setSelected={setSelected} selected={selected}/>
         </div>
         <div className='sm:basis-[75%] basis-full overflow-x-hidden orderHistory'>
-          {selected === 'My account' ? <UserInfo/> : <OrderHistory/>}
+          {selected === 'My account' || selected === 'Delete Account' ? <UserInfo/> : <OrderHistory/>}
         </div>
       </div>
     </section>

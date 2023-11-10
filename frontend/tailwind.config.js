@@ -25,7 +25,7 @@ module.exports = {
       // => @media (min-width: 1920px) { ... } 
     },
     fontFamily: {
-      'sans': 'Lato, sans-serif',
+      'sans': 'DM Sans, sans-serif',
       'serif': 'Rigata, serif',
     },
     backgroundImage: {

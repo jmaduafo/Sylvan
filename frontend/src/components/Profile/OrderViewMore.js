@@ -34,9 +34,9 @@ const OrderViewMore = ({order, setViewMore, viewMore}) => {
                 <img className='w-full h-full' src={pic} alt={order}/>
               </div>
               <div className='py-2'>
-                <p className='uppercase text-[12px]'>Lovelace Chaise</p>
+                <p className='uppercase font-light text-[13px]'>Lovelace Chaise</p>
                 <div className='flex gap-1 items-center'>
-                  <p className='text-[13px]'>M</p>
+                  <p className='text-[13px] font-light'>M</p>
                   <div className='w-[12px] h-[12px] rounded-full border-sienna border-[1px] flex justify-center items-center'>
                     <div className='w-[8px] h-[8px] rounded-full bg-olive'></div>
                   </div>
@@ -44,13 +44,13 @@ const OrderViewMore = ({order, setViewMore, viewMore}) => {
               </div>
             </div>
             <div className='basis-[20%]'>
-              <p className='font-light text-[14px]'>2</p>
+              <p className='font-light text-[13px]'>2</p>
             </div>
             <div className='basis-[15%]'>
-              <p className='font-light text-[14px]'>$5,892.45</p>
+              <p className='font-light text-[13px]'>$5,892.45</p>
             </div>
             <div className='basis-[20%]'>
-              <p className='text-[14px] font-light w-fit'>Oct. 13</p>
+              <p className='text-[13px] font-light w-fit'>Oct. 13</p>
             </div>
         </div>
         )
