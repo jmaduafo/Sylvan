@@ -47,7 +47,7 @@ const About = () => {
             </div>
             <motion.div className='flex-1'>
                 {/* <h5 className='mb-4 font-semibold'>INTRO TITLE</h5> */}
-                <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8, delay: 3.7 }} viewport={{ once: true }} className='md:w-[70%] font-light'> At Sylvan, we hold a steadfast commitment to customer satisfaction, understanding that every home is unique. With an unwavering focus on personalized service, we take pride in offering an array of products that seamlessly blend functionality with exquisite style, ensuring that each customer discovers furnishings that not only suit their home but also reflect their individual taste.</motion.p>
+                <motion.p initial={{ opacity: 0, y: 20 }} transition={{ duration: .8, delay: .8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className='md:w-[70%] font-light'> At Sylvan, we hold a steadfast commitment to customer satisfaction, understanding that every home is unique. With an unwavering focus on personalized service, we take pride in offering an array of products that seamlessly blend functionality with exquisite style, ensuring that each customer discovers furnishings that not only suit their home but also reflect their individual taste.</motion.p>
             </motion.div>
         </div>
     </section>

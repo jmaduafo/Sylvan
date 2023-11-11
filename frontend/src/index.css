@@ -22,6 +22,10 @@ body::-webkit-scrollbar-track, .orderHistory::-webkit-scrollbar-track {
   background-color: #F9F1E6;
 }
 
+.bgCover {
+  animation: bg 1.2s ease-in-out forwards .8;
+}
+
 .cardDisplay::-webkit-scrollbar {
   width: 0px;
 }
