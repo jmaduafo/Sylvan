@@ -6,34 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { easeInOut, motion } from "framer-motion";
 
 const Hero = () => {
-  const letterStagger = useRef(null)
-  const introImage = useRef(null)
-  const smallImage = useRef(null)
-
-  // useLayoutEffect(function() {
-  //     gsap.registerPlugin(ScrollTrigger)
-
-  //     const timeline = gsap.timeline({
-  //         scrollTrigger: {
-  //             trigger: document.documentElement,
-  //             start: "top",
-  //             toggleActions: "play complete reverse reset",
-  //         }
-  //     })
-
-  //     timeline
-  //         .to(letterStagger.current, {
-  //             ease: "power1.inOut",
-  //             y: 0,
-  //             stagger: {
-  //               // wrap advanced options in an object
-  //               each: 0.4,
-  //               ease: "power2.inOut",
-  //               repeat: -1
-  //             }
-  //         })
-
-  // }, [])
 
   const easing = [0.39, 0.41, 0.37, 0.87]
 
