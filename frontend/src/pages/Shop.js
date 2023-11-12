@@ -8,30 +8,33 @@ import { db } from "../firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 
 const Shop = ({ cartOpen, setCartOpen }) => {
+  // SPLIT WINDOW PATHNAME BY '/' AND '%20' TO GET THE ACCURATE FILTER
   let path = window.location.pathname.split("/")[2].split('%20').join(' ');
 
   function show() {
-    
+    // FIND WHERE SPLIT PATH NAME MATCHES CATEGORIES IN ARRAY LOCATED IN UTILS FOLDER
     const categoryIndex = categories.findIndex(
       (category) => category.toLowerCase() === path
     );
 
+    // IF PATHNAME DOESN'T MATCH ANY OF THE CATEGORIES, SHOW ERROR PAGE
     if (categoryIndex === -1) {
       return <WrongPage />;
     } else {
-      return <DisplayShop />;
+      return <DisplayShop setCartOpen={setCartOpen} cartOpen={cartOpen}/>;
     }
   }
   return <div>{show()}</div>;
 };
 
-function DisplayShop() {
+function DisplayShop({ cartOpen, setCartOpen }) {
   let path = window.location.pathname.split("/")[2];
 
   const [selectedCategory, setSelectedCategory] = useState(
     path.split("%20").join(" ")
   );
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const [allProducts, setAllProducts] = useState();
   // Handles product filtering of all products
@@ -40,6 +43,7 @@ function DisplayShop() {
   // User's choosing of size and color
   const [selectedSize, setSelectedSize] = useState();
   const [selectedColor, setSelectedColor] = useState();
+  const [quickAdd, setQuickAdd] = useState(false)
 
   const [onLoad, setOnLoad] = useState(false);
 
@@ -77,6 +81,8 @@ function DisplayShop() {
 
   useEffect(
     function () {
+      // IF THE SELECTED CATEGORY IS 'ALL', THEN RETURN ALL PRODUCTS
+      // ELSE, FILTER WHERE SELECTED CATEGORY MATCHES THE CATEGORY IN DATABASE
       if (selectedCategory.toLowerCase() === "all") {
         setFilteredProducts(allProducts);
       } else {
@@ -86,14 +92,22 @@ function DisplayShop() {
           )
         );
       }
-      console.log(selectedCategory);
+    },
+    [allProducts, selectedCategory]
+  );
+
+  useEffect(
+    function () {
+      // IF THE SELECTED CATEGORY IS 'ALL', THEN RETURN ALL PRODUCTS
+      // ELSE, FILTER WHERE SELECTED CATEGORY MATCHES THE CATEGORY IN DATABASE
+      
     },
     [allProducts, selectedCategory]
   );
 
   return (
     <section>
-      <Toast setMessage={setMessage} message={message} />
+      <Toast messageType={messageType} setMessage={setMessage} message={message}/>
       <div className="px-6 py-3 border-b-siennaOpaque border-b-[1px]">
         <h4 className="uppercase text-[22px] text-sienna">
           {selectedCategory} ({filteredProducts?.length})
@@ -114,6 +128,11 @@ function DisplayShop() {
               selectedSize={selectedSize}
               setSelectedSize={setSelectedSize}
               setSelectedColor={setSelectedColor}
+              cartOpen={cartOpen}
+              setCartOpen={setCartOpen}
+              setMessage={setMessage}
+              setQuickAdd={setQuickAdd}
+              setMessageType={setMessageType}
               selectedColor={selectedColor}
             />
           </div>

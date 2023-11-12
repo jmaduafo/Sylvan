@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Cover from "../Cover";
 import Label from "../Label";
 
-const CardDisplay = ({ products, setSelectedSize, setSelectedColor }) => {
+const CardDisplay = ({ products, setMessageType, setMessage, setQuickAdd, cartOpen, setCartOpen, setSelectedSize, setSelectedColor }) => {
   return (
     <>
       <Toast />
@@ -31,6 +31,12 @@ const CardDisplay = ({ products, setSelectedSize, setSelectedColor }) => {
                 itemColors={product.colors}
                 setSelectedColor={setSelectedColor}
                 setSelectedSize={setSelectedSize}
+                product={product}
+                setCartOpen={setCartOpen}
+                setMessage={setMessage}
+                setMessageType={setMessageType}
+                cartOpen={cartOpen}
+                setQuickAdd={setQuickAdd}
               />
             </motion.div>
             <Link to={`/${product.category}/${product.id}`}>

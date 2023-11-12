@@ -59,6 +59,7 @@ const Search = () => {
         <div className="py-2 px-6 border-b-siennaOpaque border-b-[1px]">
             <h4 className='uppercase text-[22px] text-sienna'>{searchParams.get('product')} ({searchParams.get('product').length || filterSearch?.length ? filterSearch?.length : '0'})</h4>
         </div>
+        {/* LOGIC TO DISPLAY CARDS IN SEARCH ROUTE WHEN NOT LOADING */}
         {filterSearch?.length || !loading ? 
         <div className="my-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-1">
         {filterSearch?.map((card) => {
@@ -81,7 +82,6 @@ const Search = () => {
               <CardPlaceholder/>
             </div>
           )
-          
         })}
       </div>
       }

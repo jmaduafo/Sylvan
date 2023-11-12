@@ -41,7 +41,6 @@ function AddToCart({
           isLookbook: item.isLookbook,
           selectedColor: selectedColor,
           selectedSize: selectedSize,
-          selectedQuantity: selectedQuantity,
           cartQuantity: selectedQuantity,
         })
       );
