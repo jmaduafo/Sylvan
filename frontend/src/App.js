@@ -30,13 +30,16 @@ function App() {
   const [policyOpen, setPolicyOpen] = useState(false);
   const [termsOpen, setTermsOpen] = useState(false);
   const [category, setCategory] = useState("");
+  const [ x, setX ] = useState()
+  const [ y, setY ] = useState()
 
-  useEffect(
-    function () {
+  useEffect(function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    },
-    [path]
-  );
+
+      if (path !== '/') {
+        setCategory('')
+      }
+    }, [path]);
 
   useEffect(
     function () {
@@ -57,18 +60,28 @@ function App() {
     });
   }, []);
 
+  function windowMouse(e) {
+    setX(e.clientX)
+    setY(e.clientY)
+  }
+
+  const easing =  [0.39, 0.41, 0.37, 0.87]
+
   return (
-    <div className="container bg-cream max-w-full mx-auto font-sans">
-      {/* <div className='cursor top-0 w-[20px] h-[20px] bg-[#9b4e17b2] z-[999]'></div> */}
+    <div className="container bg-cream max-w-full mx-auto font-sans" onMouseMove={windowMouse}>
+      {/* CURSOR HOVER ANIMATION */}
       <motion.div
         initial={{ opacity: category.length ? 0 : 1 }}
-        animate={{ opacity: category.length ? 1 : 0 }}
-        className="categoryName top-1/2 w-[150px] h-[150px] border-sienna border-[1.5px] bg-cream flex justify-center items-center z-[990] text-sienna"
+        animate={{ opacity: category.length ? 1 : 0, x: x, y: y}}
+        transition={{ duration: .3, ease: easing }}
+        // Makes sure that cursor is invisible when page first loads
+        className={`${path === '/' && category.length ? 'visible' : 'invisible'} categoryName top-0 w-[150px] h-[150px] border-sienna border-[1.5px] bg-cream flex justify-center items-center z-[990] text-sienna`}
       >
-        <p className="uppercase font-serif text-[18px] text-center">
-          View {category}
+        <p className="uppercase font-serif text-[18px] text-center leading-tight">
+          {category}
         </p>
       </motion.div>
+      {/* /CURSOR HOVER ANIMATION */}
       <Navbar cartOpen={cartOpen} setCartOpen={setCartOpen} />
       <main className="relative">
         <PrivacyPolicy

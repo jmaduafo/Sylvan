@@ -8,9 +8,10 @@ import { db } from "../firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 
 const Shop = ({ cartOpen, setCartOpen }) => {
-  let path = window.location.pathname.split("/")[2];
+  let path = window.location.pathname.split("/")[2].split('%20').join(' ');
 
   function show() {
+    
     const categoryIndex = categories.findIndex(
       (category) => category.toLowerCase() === path
     );
@@ -32,16 +33,17 @@ function DisplayShop() {
   );
   const [message, setMessage] = useState("");
 
-  // Takes all products from backend
   const [allProducts, setAllProducts] = useState();
-  // Handles product filtering
+  // Handles product filtering of all products
   const [filteredProducts, setFilteredProducts] = useState();
 
+  // User's choosing of size and color
   const [selectedSize, setSelectedSize] = useState();
   const [selectedColor, setSelectedColor] = useState();
 
   const [onLoad, setOnLoad] = useState(false);
 
+  // Gets all the products from the backend
   function getAllProducts() {
     const productRef = collection(db, "products");
 

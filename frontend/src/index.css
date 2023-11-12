@@ -22,11 +22,11 @@ body::-webkit-scrollbar-track, .orderHistory::-webkit-scrollbar-track {
   background-color: #F9F1E6;
 }
 
-.bgCover {
+/* .bgCover {
   animation: bg 1.2s ease-in-out forwards .8;
-}
+} */
 
-.cursor, .categoryName {
+.categoryName {
   position: fixed;
   left: 0;
   border-radius: 50%;
@@ -34,9 +34,35 @@ body::-webkit-scrollbar-track, .orderHistory::-webkit-scrollbar-track {
   transition: transform .1s;
 }
 
-.tablesStyle:hover {
-  cursor: pointer;
+.menuSlide {
+  background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1699343695/Sylvan/creative-fengshui-practice-kitchen-arrangement_selmyg.jpg');
+  animation: bg 10s linear infinite;
 }
+
+@keyframes bg {
+  0% {
+    background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1699343695/Sylvan/creative-fengshui-practice-kitchen-arrangement_selmyg.jpg');
+  }
+  33% {
+    background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1699343695/Sylvan/creative-fengshui-practice-kitchen-arrangement_selmyg.jpg');
+  }
+  33.333% {
+    background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1699340524/Sylvan/522_xu5uqj.jpg');
+  }
+  66% {
+    background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1699340524/Sylvan/522_xu5uqj.jpg');
+  }
+  66.666% {
+    background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1699805644/Sylvan/2150794095_o3dxkp.jpg');
+  }
+  99% {
+    background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1699805644/Sylvan/2150794095_o3dxkp.jpg');
+  }
+  100% {
+    background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1699343695/Sylvan/creative-fengshui-practice-kitchen-arrangement_selmyg.jpg');
+  }
+}
+
 
 .cardDisplay::-webkit-scrollbar {
   width: 0px;

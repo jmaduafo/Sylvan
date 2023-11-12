@@ -34,28 +34,28 @@ const Lookbook = () => {
             <div className='lookbookCarousel flex gap-2 w-fit my-2'>
                 {allLookbook?.map(lookbook => {
                     return(
-                        <div key={lookbook} className='w-[360px] h-[60vh] bg-slate-300'>
+                        <div key={lookbook.id} className='w-[360px] h-[60vh] bg-slate-300'>
                             <img className='w-full h-full' src={lookbook.images[0]} alt={lookbook.name}/>
                         </div>
                     )
                 })}
                 {allLookbook?.map(lookbook => {
                     return(
-                        <div key={lookbook} className='w-[360px] h-[60vh] bg-slate-300'>
+                        <div key={lookbook.id} className='w-[360px] h-[60vh] bg-slate-300'>
                             <img className='w-full h-full' src={lookbook.images[0]} alt={lookbook.name}/>
                         </div>
                     )
                 })}
                 {allLookbook?.map(lookbook => {
                     return(
-                        <div key={lookbook} className='w-[360px] h-[60vh] bg-slate-300'>
+                        <div key={lookbook.id} className='w-[360px] h-[60vh] bg-slate-300'>
                             <img className='w-full h-full' src={lookbook.images[0]} alt={lookbook.name}/>
                         </div>
                     )
                 })}
                 {allLookbook?.map(lookbook => {
                     return(
-                        <div key={lookbook} className='w-[360px] h-[60vh] bg-slate-300'>
+                        <div key={lookbook.id} className='w-[360px] h-[60vh] bg-slate-300'>
                             <img className='w-full h-full' src={lookbook.images[0]} alt={lookbook.name}/>
                         </div>
                     )

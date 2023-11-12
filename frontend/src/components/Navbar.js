@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import ShoppingBagIcon from "./icons/ShoppingBag";
 import SearchIcon from "./icons/Search";
 import UserIcon from "./icons/UserIcon";
+import Menu from "./Menu";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import Cart from "./Cart";
 import { easeInOut, motion } from "framer-motion";
@@ -17,6 +18,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
   const [searchName, setSearchName] = useState("");
   const [shrink, setShrink] = useState(true);
   const [link, setLink] = useState("/login");
+  const [ menuOpen, setMenuOpen ] = useState(false)
 
   let navigate = useNavigate();
 
@@ -74,7 +76,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
           {/* TOP NAV WITH MENU, LOGO, AND CART */}
           <div className="relative border-b-siennaOpaque border-b-[1px] flex justify-between px-6 py-5">
             <div className="flex items-center gap-4">
-              <div className="cursor-pointer">
+              <div onClick={() => setMenuOpen(prev => !prev)} className="cursor-pointer">
                 <MenuIcon />
               </div>
               <Link to="/shop/all">
@@ -134,6 +136,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
         </nav>
       </header>
       <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
+      <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
     </>
   );
 };
