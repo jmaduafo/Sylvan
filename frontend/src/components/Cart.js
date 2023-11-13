@@ -20,10 +20,6 @@ const Cart = ({ setCartOpen, cartOpen }) => {
 
   const dispatch = useDispatch();
 
-  const handleCancel = () => {
-    setCartOpen(false);
-  };
-
   const getTotals = () => {
     dispatch(GET_TOTALS());
   };
@@ -31,7 +27,6 @@ const Cart = ({ setCartOpen, cartOpen }) => {
   useEffect(
     function () {
       getTotals();
-      console.log(cartItems);
     },
     [cartItems]
   );
@@ -78,7 +73,7 @@ const Cart = ({ setCartOpen, cartOpen }) => {
           <h4 className="uppercase font-medium text-[25px]">
             Your Bag ({totalQuantity})
           </h4>
-          <div onClick={handleCancel}>
+          <div onClick={() => setCartOpen(false)}>
             <Cancel />
           </div>
         </div>

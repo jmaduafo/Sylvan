@@ -1,9 +1,23 @@
 import React from "react";
-import { easeInOut, motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { auth } from "../firebase/config";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Menu = ({ setMenuOpen, menuOpen }) => {
+    
   const menu = ["Shop", "Home", "About", "lookbook", "Account", "Contact"];
   const easing = [0.39, 0.41, 0.37, 0.87];
+
+  function checkLoggedIn() {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            return '/profile/user'
+        } else {
+            return '/login'
+        }
+    })
+  }
 
   const variant = {
     hidden: {
@@ -60,6 +74,19 @@ const Menu = ({ setMenuOpen, menuOpen }) => {
         }
     }
   }
+
+  function menuLinks(nav) {
+    if (nav === 'Home') {
+        return '/'
+    } else if (nav === 'Shop') {
+        return '/shop/all'
+    } else if (nav === 'Account') {
+        checkLoggedIn()
+    } else {
+        return `/${nav.toLowerCase()}`
+    }
+  }
+
   return (
     <motion.div
       className={`${menuOpen ? 'visible' : 'invisible'} ${menuOpen ? 'h-[40vh]' : 'h-0'} ${menuOpen ? 'delay-0' : 'delay-[.6s]'} duration-[.4s] overflow-hidden px-6 py-4 fixed w-full bg-cream border-b-siennaOpaque border-b-[1px] z-[89] flex flex-col-reverse sm:flex-row sm:justify-between sm:items-start gap-[6rem]`}
@@ -72,9 +99,11 @@ const Menu = ({ setMenuOpen, menuOpen }) => {
         {menu.map((list) => {
           return (
             <motion.div variants={menuOpen ? child : childReverse} key={list} onClick={() => {setMenuOpen(false)}}>
+                <Link to={menuLinks(list)}>
                 <h3 className="hover:italic cursor-pointer text-sienna text-[36px] uppercase">
                     {list}
                 </h3>
+                </Link>
             </motion.div>
           );
         })}

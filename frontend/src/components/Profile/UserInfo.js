@@ -89,8 +89,8 @@ const UserInfo = () => {
               {!loading && allProducts?.length ? 
               allProducts?.slice(0, 8).map(card => {
                 return (
-                  <Link to={`/${card.category}/${card.id}`}>
-                    <div key={card.id} className="w-[300px] h-[50vh] bg-[gray] object-cover object-bottom">
+                  <Link key={card.id} to={`/${card.category}/${card.id}`}>
+                    <div className="w-[300px] h-[50vh] bg-[gray] object-cover object-bottom">
                       <img className='w-full h-full' src={card.images[0]} alt={card.name}/>
                     </div> 
                   </Link> 

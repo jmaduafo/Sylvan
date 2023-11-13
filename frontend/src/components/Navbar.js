@@ -77,7 +77,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
           <div className="relative border-b-siennaOpaque border-b-[1px] flex justify-between px-6 py-5">
             <div className="flex items-center gap-4">
               <div onClick={() => setMenuOpen(prev => !prev)} className="cursor-pointer">
-                <MenuIcon />
+                <MenuIcon menuOpen={menuOpen} />
               </div>
               <Link to="/shop/all">
                 <p className="sm:block hidden cursor-pointer font-light">
@@ -141,12 +141,12 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
   );
 };
 
-function MenuIcon() {
+function MenuIcon({ menuOpen }) {
   return (
     <>
-      <div className="xs:w-10 h-[1px] w-8 bg-sienna mb-1 "></div>
-      <div className="xs:w-10 h-[1px] w-8 bg-sienna mb-1"></div>
-      <div className="xs:w-10 h-[1px] w-8 bg-sienna"></div>
+      <div className={`${menuOpen ? 'xs:w-10 transform rotate-[35deg] translate-y-[5px]' : ''} duration-[.5s] xs:w-10 h-[1px] w-8 bg-sienna mb-1 `}></div>
+      <div className={`${menuOpen ? 'opacity-0' : ''} duration-[.5s] xs:w-10 h-[1px] w-8 bg-sienna mb-1 `}></div>
+      <div className={`${menuOpen ? 'xs:w-10 transform rotate-[-35deg] translate-y-[-5px]' : ''} duration-[.5s] xs:w-10 h-[1px] w-8 bg-sienna`}></div>
     </>
   );
 }
