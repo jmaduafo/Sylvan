@@ -6,6 +6,8 @@ import { categories } from "../utils/shopCategories";
 import Toast from "../components/Toast";
 import { db } from "../firebase/config";
 import { getDocs, collection } from "firebase/firestore";
+import { useSearchParams } from "react-router-dom";
+import { titleAscending, titleDescending, dateAscending, dateDescending, priceAscending, priceDescending } from "../utils/sortBy";
 
 const Shop = ({ cartOpen, setCartOpen }) => {
   // SPLIT WINDOW PATHNAME BY '/' AND '%20' TO GET THE ACCURATE FILTER
@@ -27,6 +29,7 @@ const Shop = ({ cartOpen, setCartOpen }) => {
   return <div>{show()}</div>;
 };
 
+// Renders the complete shop page
 function DisplayShop({ cartOpen, setCartOpen }) {
   let path = window.location.pathname.split("/")[2];
 
@@ -46,6 +49,8 @@ function DisplayShop({ cartOpen, setCartOpen }) {
   const [quickAdd, setQuickAdd] = useState(false)
 
   const [onLoad, setOnLoad] = useState(false);
+
+  const [ searchParams, setSearchParams ] = useSearchParams()
 
   // Gets all the products from the backend
   function getAllProducts() {
@@ -94,6 +99,51 @@ function DisplayShop({ cartOpen, setCartOpen }) {
       }
     },
     [allProducts, selectedCategory]
+  );
+
+  useEffect(
+    function () {
+      let sort = searchParams.get('sort')
+      let order = searchParams.get('order')
+      console.log(filteredProducts)
+
+      // SORT FURNITURE TITLE IN ASSCENDING ORDER
+      if (sort === 'name' && order === 'asc') {
+        setFilteredProducts(filteredProducts?.sort((a, b) => {
+          if(a.name < b.name) { return -1; }
+          if(a.name > b.name) { return 1; }
+          return 0;
+      }))
+      // SORT FURNITURE TITLE IN DESCENDING ORDER
+      } else if (sort === 'name' && order === 'desc') {
+        setFilteredProducts(filteredProducts?.sort((a, b) => {
+          if(a.name > b.name) { return -1; }
+          if(a.name < b.name) { return 1; }
+          return 0;
+      }))
+      // SORT DATE CREATED IN ASCENDING ORDER
+      } else if (sort === 'date' && order === 'asc') {
+        setFilteredProducts(filteredProducts?.sort(function(a,b){
+          return parseInt(a.createdAt?.seconds) - parseInt(b.createdAt?.seconds);
+      }))
+      // SORT DATE CREATED IN DESCENDING ORDER
+      } else if (sort === 'date' && order === 'desc') {
+        setFilteredProducts(filteredProducts?.sort(function(a,b){
+          return parseInt(b.createdAt?.seconds) - parseInt(a.createdAt?.seconds);
+      }))
+      // SORT PRICE IN ASCENDING ORDER
+      } else if (sort === 'price' && order === 'asc') {
+        setFilteredProducts(filteredProducts?.sort(function(a, b) {
+          return parseFloat(a.price) - parseFloat(b.price)
+      }))
+      // SORT PRICE IN DESCENDING ORDER
+      } else if (sort === 'price' && order === 'desc') {
+        setFilteredProducts(filteredProducts?.sort(function(a, b) {
+          return parseFloat(b.price) - parseFloat(a.price);
+      }))
+      }
+    },
+    [searchParams.get('sort'), searchParams.get('order')]
   );
 
   return (
