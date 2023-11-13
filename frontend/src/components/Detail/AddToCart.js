@@ -10,9 +10,9 @@ function AddToCart({
   setCartOpen,
 }) {
   // Takes in the selected color for the furniture
-  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedColor, setSelectedColor] = useState(null);
   // Takes in the selected size
-  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedSize, setSelectedSize] = useState(null);
   // Handles quantity increase
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   // Handles quantity decrease
@@ -20,7 +20,7 @@ function AddToCart({
   const dispatch = useDispatch();
 
   function handleAddToCart(item) {
-    if (!selectedColor.length || !selectedSize.length) {
+    if (!selectedColor || !selectedSize) {
       setMessageType("Error message");
       setMessage("You must select both a size and color before adding to cart");
     } else {
@@ -44,6 +44,9 @@ function AddToCart({
           cartQuantity: selectedQuantity,
         })
       );
+      setSelectedColor(null)
+      setSelectedSize(null)
+      setSelectedQuantity(1)
       setCartOpen(true);
     }
   }

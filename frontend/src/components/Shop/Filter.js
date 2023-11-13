@@ -87,6 +87,7 @@ const Filter = ({setSelectedCategory, selectedCategory }) => {
         <div className='px-6 py-3'>
             <div className='flex items-center gap-2'>
                 <h6 className='text-sienna'>SORT BY:</h6>
+                {/* ON SORT BUTTON CLICK */}
                 <div onClick={() => {setIsSortClick(prev => !prev)}} className={`cursor-pointer text-sienna duration-[.4s] ${isSortClick ? 'rotate-[45deg]' : 'rotate-0'}`}>
                     <PlusCircle/>
                 </div>

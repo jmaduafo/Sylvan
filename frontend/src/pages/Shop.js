@@ -96,15 +96,6 @@ function DisplayShop({ cartOpen, setCartOpen }) {
     [allProducts, selectedCategory]
   );
 
-  useEffect(
-    function () {
-      // IF THE SELECTED CATEGORY IS 'ALL', THEN RETURN ALL PRODUCTS
-      // ELSE, FILTER WHERE SELECTED CATEGORY MATCHES THE CATEGORY IN DATABASE
-      
-    },
-    [allProducts, selectedCategory]
-  );
-
   return (
     <section>
       <Toast messageType={messageType} setMessage={setMessage} message={message}/>
