@@ -53,14 +53,14 @@ const Footer = ({setPolicyOpen, setPrivacyOpen}) => {
   return (
     <footer>
         {/* BACKGROUND IMAGE WITH LOGO   */}
-        <div className='relative z-[5]'>
+        {/* <div className='relative z-[5]'>
             <Cover/>
             <div className='flex justify-center items-center bg-cover bg-center bg-no-repeat bg-hero-pic4'>
                 <h2 className='sm:text-[200px] 2xl:text-[300px] font-serif text-[80px] text-cream z-[5]'>SYLVAN</h2>
             </div>
-        </div>
+        </div> */}
         {/* FOOTER NAVIGATIONS */}
-        <div className='bg-cream text-sienna font-light'>
+        <div className='bg-cream text-sienna font-light border-t-siennaOpaque border-t-[1px]'>
             <div className='sm:flex-row sm:px-5 sm:pt-4 sm:pb-[5rem] sm:gap-10 p-4 flex-col flex border-b-siennaOpaque border-b-[1px]'>
                 <div className='sm:py-0 sm:border-none py-3 border-b-siennaOpaque border-b-[1px]'>
                     <ul>

@@ -7,7 +7,6 @@ import Toast from "../components/Toast";
 import { db } from "../firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 import { useSearchParams } from "react-router-dom";
-import { titleAscending, titleDescending, dateAscending, dateDescending, priceAscending, priceDescending } from "../utils/sortBy";
 
 const Shop = ({ cartOpen, setCartOpen }) => {
   // SPLIT WINDOW PATHNAME BY '/' AND '%20' TO GET THE ACCURATE FILTER
@@ -49,6 +48,7 @@ function DisplayShop({ cartOpen, setCartOpen }) {
   const [quickAdd, setQuickAdd] = useState(false)
 
   const [onLoad, setOnLoad] = useState(false);
+  const [ loading, setLoading ] = useState(false)
 
   const [ searchParams, setSearchParams ] = useSearchParams()
 
@@ -74,6 +74,7 @@ function DisplayShop({ cartOpen, setCartOpen }) {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
+  // HAVE ALL PRODUCTS ACCESSIBLE BEFORE SORTING AND FILTERING CAN START
   useEffect(
     function () {
       getAllProducts();
@@ -84,10 +85,11 @@ function DisplayShop({ cartOpen, setCartOpen }) {
     [onLoad]
   );
 
+  // FOR CATEGORY FILTER FUNCTIONALITY
   useEffect(
     function () {
       // IF THE SELECTED CATEGORY IS 'ALL', THEN RETURN ALL PRODUCTS
-      // ELSE, FILTER WHERE SELECTED CATEGORY MATCHES THE CATEGORY IN DATABASE
+      // ELSE, FILTER WHERE SELECTED CATEGORY MATCHES THE CATEGORY IN API
       if (selectedCategory.toLowerCase() === "all") {
         setFilteredProducts(allProducts);
       } else {
@@ -101,11 +103,15 @@ function DisplayShop({ cartOpen, setCartOpen }) {
     [allProducts, selectedCategory]
   );
 
+  // FOR SORTING FUNCTIONALITY
   useEffect(
     function () {
       let sort = searchParams.get('sort')
       let order = searchParams.get('order')
+      let material = searchParams.get('material')
       console.log(filteredProducts)
+
+      setLoading(true)
 
       // SORT FURNITURE TITLE IN ASSCENDING ORDER
       if (sort === 'name' && order === 'asc') {
@@ -141,9 +147,13 @@ function DisplayShop({ cartOpen, setCartOpen }) {
         setFilteredProducts(filteredProducts?.sort(function(a, b) {
           return parseFloat(b.price) - parseFloat(a.price);
       }))
+      } else if (material) {
+        console.log(material)
+        setFilteredProducts(filteredProducts?.filter(product => product.materials?.includes(material)))
       }
+      setLoading(false)
     },
-    [searchParams.get('sort'), searchParams.get('order')]
+    [loading, searchParams.get('sort'), searchParams.get('order'), searchParams.get('material')]
   );
 
   return (
@@ -155,7 +165,7 @@ function DisplayShop({ cartOpen, setCartOpen }) {
         </h4>
       </div>
       <div className="flex flex-col md:flex-row mb-1">
-        <div className="md:basis-[30%] md:h-screen md:border-r-siennaOpaque md:border-r-[1px] border-b-siennaOpaque border-b-[1px]">
+        <div className="md:basis-[30%] md:h-screen md:border-r-siennaOpaque md:border-r-[1px]">
           <Filter
             setSelectedCategory={setSelectedCategory}
             selectedCategory={selectedCategory}

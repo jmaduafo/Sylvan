@@ -4,6 +4,7 @@ import About from '../components/Home/About'
 import Featured from '../components/Home/Featured'
 import Categories from '../components/Home/Categories'
 import Lookbook from '../components/Home/Lookbook'
+import AdditionalInfo from '../components/Home/AdditionalInfo'
 
 const Home = ({ setCategory }) => {
     useEffect(function() {
@@ -16,6 +17,7 @@ const Home = ({ setCategory }) => {
       <Featured/>
       <Categories setCategory={setCategory}/>
       <Lookbook/>
+      <AdditionalInfo/>
     </div>
   )
 }

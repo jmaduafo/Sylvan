@@ -96,7 +96,7 @@ const Filter = ({setSelectedCategory, selectedCategory }) => {
             <motion.div initial={{ opacity: isSortClick ? 0 : 1 }} animate={{ opacity: isSortClick ? 1 : 0 }} className={`mt-6 border-t-siennaOpaque border-t-[1px] ${isSortClick ? 'visible' : 'invisible'} ${isSortClick ? 'h-full' : 'h-0'}`}>
                 {sortCategories.map(sort => {
                     return (
-                        <div key={sort.sortCategory} onClick={() => sort.sortParams && setSearchParams(sort.sortParams)} className='border-b-siennaOpaque border-b-[1px] p-1 cursor-pointer group duration-[.4s] ease-in'>
+                        <div key={sort.sortCategory} onClick={() => sort.sortParams && setSearchParams(sort.sortParams)} className='border-b-siennaOpaque border-b-[1px] last:border-none p-1 cursor-pointer group duration-[.4s] ease-in'>
                            <p className='text-[13px] text-[#743406d8] group-hover:text-sienna'>{sort.sortCategory}</p>
                            {sort.types ? 
                             <div className='mt-4 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 grid grid-cols-1 gap-1'>
