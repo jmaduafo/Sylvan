@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db } from '../firebase/config'
-import { updateDoc, getDocs, query, collection, where } from 'firebase/firestore'
+import { updateDoc, getDocs, query, collection, where, serverTimestamp } from 'firebase/firestore'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -30,7 +30,7 @@ const Success = () => {
             try {
               async function order() {
                 await updateDoc(doc.ref, {
-                  orderHistory: [...orderAll, {items: cartItems}]
+                  orderHistory: [...orderAll, {items: cartItems, purchasedAt: serverTimestamp()}]
                 })
               }
               order()

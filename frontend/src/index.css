@@ -77,22 +77,22 @@ body::-webkit-scrollbar-track, .orderHistory::-webkit-scrollbar-track {
 }
 
 #navSearch::placeholder, #loginEmail::placeholder, #loginPassword::placeholder, #registerUsername::placeholder, 
-#registerEmail::placeholder, #registerPassword::placeholder {
+#registerEmail::placeholder, #registerPassword::placeholder, #policy::placeholder, #subscribe::placeholder {
   color: #74340675;
 }
 
 #navSearch::-webkit-placeholder, #loginEmail::placeholder, #loginPassword::placeholder, #registerUsername::placeholder,
-#registerEmail::placeholder, #registerPassword::placeholder, #policy::placeholder {
+#registerEmail::placeholder, #registerPassword::placeholder, #policy::placeholder, #subscribe::placeholder {
   color: #74340675;
 }
 
 #navSearch::-moz-placeholder, #loginEmail::placeholder, #loginPassword::placeholder, #registerUsername::placeholder,
-#registerEmail::placeholder, #registerPassword::placeholder, #policy::placeholder {
+#registerEmail::placeholder, #registerPassword::placeholder, #policy::placeholder, #subscribe::placeholder {
   color: #74340675;
 }
 
 .lookbookCarousel {
-  animation: carousel 50s linear infinite forwards;
+  animation: carousel 70s linear infinite forwards;
 }
 
 @keyframes carousel {

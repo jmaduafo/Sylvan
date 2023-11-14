@@ -9,7 +9,7 @@ const AdditionalInfo = () => {
                 <img className='w-full h-full' src='https://res.cloudinary.com/dyxxn831a/image/upload/v1699976963/Sylvan/room-decor-with-potted-plants-sofa_e4clcy.jpg' alt='white couch with plant on wooden chair'/>
             </div>
             <div data-scroll data-scroll-speed='.1' className='z-[3] absolute w-[50%] top-1/2 right-0'>
-                <p className='text-cream font-extralight'>Our furniture store is more than a showroom; it's a curated collection where every piece is a masterpiece. Sylvan holds a steadfast commitment to attention to detail, meticulously selecting and showcasing pieces that embody sophistication and timeless design. With a sense of responsibility to our clientele, we pride ourselves on presenting not just furniture, but an elevated lifestyle.</p>
+                <p className='text-cream font-light'>Our furniture store is more than a showroom; it's a curated collection where every piece is a masterpiece. Sylvan holds a steadfast commitment to attention to detail, meticulously selecting and showcasing pieces that embody sophistication and timeless design. With a sense of responsibility to our clientele, we pride ourselves on presenting not just furniture, but an elevated lifestyle.</p>
             </div>
         </div>
     </section>
