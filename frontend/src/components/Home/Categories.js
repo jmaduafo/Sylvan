@@ -63,8 +63,6 @@ const Categories = ({ setCategory }) => {
     <section ref={categoriesSection} className="bg-olive py-[5rem] my-6">
       <div className="w-[70%] mx-auto">
         <div
-          data-scroll
-          data-scroll-speed=".1"
           onMouseEnter={() => setCategory("View Tables")}
           onMouseLeave={() => setCategory("")}
           className="overflow-hidden sm:w-[60%] mx-auto h-auto object-cover object-bottom"
@@ -80,8 +78,6 @@ const Categories = ({ setCategory }) => {
         </div>
         <div className="mt-6 sm:mt-[6rem] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-[5rem]">
           <div
-            data-scroll
-            data-scroll-speed=".16"
             onMouseEnter={() => setCategory("View Home Decors")}
             onMouseLeave={() => setCategory("")}
             className="overflow-hidden basis-full sm:basis-[50%] object-cover object-bottom"
@@ -96,8 +92,6 @@ const Categories = ({ setCategory }) => {
             </Link>
           </div>
           <div
-            data-scroll
-            data-scroll-speed=".2"
             className="mb-3 sm:mb-0 basis-full sm:basis-[50%] text-center sm:text-left"
           >
             <h4 className="sm:w-[75%] mb-5 sm:text-[22px] 2xl:text-[28px] text-[20px] w-full font-extralight leading-[20px] text-cream">
@@ -109,8 +103,6 @@ const Categories = ({ setCategory }) => {
         </div>
         <div className="mt-6 sm:mt-[6rem]">
           <div
-            data-scroll
-            data-scroll-speed=".08"
             onMouseEnter={() => setCategory("View Beds")}
             onMouseLeave={() => setCategory("")}
             className="overflow-hidden sm:w-[55%] mx-auto sm:pl-[50px] object-cover object-bottom"
@@ -141,8 +133,6 @@ const Categories = ({ setCategory }) => {
             </Link>
           </div>
           <div
-            data-scroll
-            data-scroll-speed=".1"
             onMouseEnter={() => setCategory("View Lamps")}
             onMouseLeave={() => setCategory("")}
             className="overflow-hidden sm:basis-[50%] object-cover object-bottom"

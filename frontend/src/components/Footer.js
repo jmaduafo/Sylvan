@@ -64,10 +64,11 @@ const Footer = ({ setPolicyOpen, setPrivacyOpen }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6, delay: 1 }}
       viewport={{ once: true }}
+      className="mt-[3rem]"
     >
       {/* FOOTER NAVIGATIONS */}
       <div className="bg-cream text-sienna font-light border-t-siennaOpaque border-t-[1px]">
-        <div className="sm:px-5 sm:pt-4 sm:pb-[5rem] p-4 border-b-siennaOpaque border-b-[1px] flex justify-between">
+        <div className="sm:px-5 sm:pt-4 sm:pb-[5rem] p-4 border-b-siennaOpaque border-b-[1px] flex flex-col-reverse gap-8 sm:flex-row sm:justify-between">
           <div className="sm:flex-row sm:gap-10 flex-col flex">
             <div className="sm:py-0 sm:border-none py-3 border-b-siennaOpaque border-b-[1px]">
               <ul>
@@ -110,10 +111,10 @@ const Footer = ({ setPolicyOpen, setPrivacyOpen }) => {
             </div>
           </div>
           {/* SUBSCRIBE EMAIL INPUT */}
-          <div className="px-[3rem] w-[35%]">
-            <h2 className="font-serif text-[36px]">Stay in the know</h2>
+          <div className="sm:px-[3rem] sm:w-[35%] w-full">
+            <h2 className="font-serif text-[32px] xs:text-[40px]">Stay in the know</h2>
             <div className="">
-              <p className="text-[13px]">
+              <p className="text-[14px] sm:text-[13px]">
                 Doing business like this takes much more effort than doing your
                 own business at home, and on top of that there's the curse of
                 travelling.
@@ -158,10 +159,10 @@ const Footer = ({ setPolicyOpen, setPrivacyOpen }) => {
         {/* COPYRIGHT SECTION */}
         <div className="font-normal px-5 py-1 border-b-siennaOpaque border-b-[1px] flex justify-between items-center ">
           <div>
-            <p className="text-[11px]">Sylvan &copy; 2023</p>
+            <p className="text-[11px] sm:text-[13px]">Sylvan &copy; 2023</p>
           </div>
           <div>
-            <p className="text-[11px]">DESIGN & DEV: Jasmine M.</p>
+            <p className="text-[11px] sm:text-[13px]">DESIGN & DEV: Jasmine M.</p>
           </div>
         </div>
       </div>

@@ -109,7 +109,6 @@ function DisplayShop({ cartOpen, setCartOpen }) {
       let sort = searchParams.get('sort')
       let order = searchParams.get('order')
       let material = searchParams.get('material')
-      console.log(filteredProducts)
 
       setLoading(true)
 
@@ -148,7 +147,6 @@ function DisplayShop({ cartOpen, setCartOpen }) {
           return parseFloat(b.price) - parseFloat(a.price);
       }))
       } else if (material) {
-        console.log(material)
         setFilteredProducts(filteredProducts?.filter(product => product.materials?.includes(material)))
       }
       setLoading(false)
