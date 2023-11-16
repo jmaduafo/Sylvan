@@ -11,6 +11,7 @@ import QuantityCounter from "./QuantityCounter";
 import { Link } from "react-router-dom";
 import { easeInOut, motion } from "framer-motion";
 import LoadingSmall from './LoadingSmall'
+import { backendUrl } from "../constants";
 
 const Cart = ({ setCartOpen, cartOpen }) => {
   const [ loading, setLoading ] = useState(false)
@@ -33,9 +34,10 @@ const Cart = ({ setCartOpen, cartOpen }) => {
 
   const handleCheckout = async (items) => {
     setLoading(true)
-    await fetch('http://localhost:4000/checkout', {
+    await fetch(`${backendUrl}/checkout`, {
         method: "POST",
         headers: {
+            'Authorization': `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({items: items})
