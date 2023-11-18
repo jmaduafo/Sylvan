@@ -1,10 +1,12 @@
 import React from "react";
 import furnish from "../assets/furniture-ill.jpg";
 import { Link } from "react-router-dom";
+import MainPreloader from "../components/MainPreloader";
 
 const Cancel = () => {
   return (
     <section className="py-8">
+      <MainPreloader/>
       <div className="mx-auto w-[35%] mb-8">
         <div className="w-full h-auto rounded-full border-sienna border-[2px] object-cover object-bottom">
           <img

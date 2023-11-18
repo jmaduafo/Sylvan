@@ -14,7 +14,7 @@ const MainPreloader = () => {
     }, [])
 
   return (
-    <section className={`${loading ? 'visible' : 'invisible'} ${loading ? 'opacity-1' : 'opacity-0'} duration-[.4s] bg-sienna text-cream fixed w-full h-full top-0 left-0 z-[2000]`}>
+    <section className={`${loading ? 'visible' : 'invisible'} ${loading ? 'opacity-1' : 'opacity-0 duration-[.4s]'} bg-sienna text-cream fixed w-full h-full top-0 left-0 z-[2000]`}>
     <motion.div initial={{ height: 0 }} animate={{ height: '100%'}} transition={{ duration: 1, ease: easing, delay: .5 }} className="fixed top-0 left-0 w-full h-0 bg-cream z-[999]"></motion.div>
       <div className="h-full flex justify-center items-center">
         <h2 className="font-serif font-thin text-[3.5em] mb-[-.2em] z-[999]">S</h2>

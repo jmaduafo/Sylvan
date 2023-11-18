@@ -4,9 +4,9 @@ import Cover from "../Cover";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { easeInOut, motion } from "framer-motion";
+import { easing } from "../../utils/easing";
 
 const Hero = () => {
-  const easing = [0.39, 0.41, 0.37, 0.87];
 
   // Large Sylvan letter animation stagger
   const container = {
@@ -62,7 +62,7 @@ const Hero = () => {
     <section
       style={{
         backgroundImage:
-          "url(https://res.cloudinary.com/dyxxn831a/image/upload/v1699805644/Sylvan/2150794095_o3dxkp.jpg)",
+          "url(https://res.cloudinary.com/dyxxn831a/image/upload/v1700326898/Sylvan/2150794095_ttypcx.jpg)",
       }}
       className="relative sm:h-[88vh] h-[70vh] flex items-end bg-fixed bg-cover bg-no-repeat bg-center"
     >
