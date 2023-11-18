@@ -15,11 +15,11 @@ import Search from "./pages/Search";
 import Profile from "./pages/Profile";
 import Api from "./pages/Api";
 import Cancel from "./pages/Cancel";
+import HomePreloader from "./components/HomePreloader";
+import MainPreloader from "./components/MainPreloader";
 import { Routes, Route } from "react-router-dom";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import ReturnPolicy from "./components/ReturnPolicy";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 
 function App() {
@@ -32,10 +32,20 @@ function App() {
   const [category, setCategory] = useState("");
   const [ x, setX ] = useState()
   const [ y, setY ] = useState()
+  const [ homeLoading, setHomeLoading ] = useState(false)
+  const [ loading, setLoading ] = useState(false)
 
   useEffect(function () {
+    // SCROLL TO TOP
       window.scrollTo({ top: 0, behavior: "smooth" });
 
+      // INITIATE LOCOMOTIVE SCROLL
+      (async () => {
+        const LocomotiveScroll = (await import("locomotive-scroll")).default;
+        const locomotiveScroll = new LocomotiveScroll();
+      })();
+
+      // ONLY HAVE CURSOR ON HOME PAGE
       if (path !== '/') {
         setCategory('')
       }
@@ -43,23 +53,21 @@ function App() {
 
   useEffect(
     function () {
-      (async () => {
-        const LocomotiveScroll = (await import("locomotive-scroll")).default;
-        const locomotiveScroll = new LocomotiveScroll();
-      })();
+      setHomeLoading(true)
+      setLoading(true)
+
+      setTimeout(function() {
+        setHomeLoading(false)
+      }, 6000)
+
+      setTimeout(function() {
+        setLoading(false)
+      }, 3000)
     },
-    [path]
+    []
   );
 
-  useLayoutEffect(function () {
-    gsap.registerPlugin(ScrollTrigger);
-
-    ScrollTrigger.config({
-      limitCallbacks: true,
-      ignoreMobileResize: true,
-    });
-  }, []);
-
+  // ADD MOUSE MOVE
   function windowMouse(e) {
     setX(e.clientX)
     setY(e.clientY)
@@ -75,9 +83,9 @@ function App() {
         animate={{ opacity: category.length ? 1 : 0, x: x, y: y}}
         transition={{ duration: .3, ease: easing }}
         // Makes sure that cursor is invisible when page first loads
-        className={`${path === '/' && category.length ? 'visible' : 'invisible'} categoryName top-0 w-[150px] h-[150px] border-sienna border-[1.5px] bg-cream flex justify-center items-center z-[990] text-sienna`}
+        className={`${path === '/' && category.length ? 'visible' : 'invisible'} categoryName top-0 w-[120px] h-[120px] border-sienna border-[1.5px] bg-cream flex justify-center items-center z-[990] text-sienna`}
       >
-        <p className="uppercase font-serif text-[18px] text-center leading-tight">
+        <p className="lowercase text-[15px] text-center leading-tight">
           {category}
         </p>
       </motion.div>
@@ -90,7 +98,7 @@ function App() {
         />
         <ReturnPolicy setPolicyOpen={setPolicyOpen} policyOpen={policyOpen} />
         <Routes>
-          <Route exact path="/" element={<Home setCategory={setCategory} />} />
+          <Route exact path="/" element={homeLoading ? <HomePreloader/> : <Home setCategory={setCategory} />} />
           <Route
             path="/shop/:category"
             element={<Shop cartOpen={cartOpen} setCartOpen={setCartOpen} />}

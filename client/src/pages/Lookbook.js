@@ -3,6 +3,7 @@ import { db } from "../firebase/config";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { easeIn, motion } from "framer-motion";
+import MainPreloader from "../components/MainPreloader";
 
 const Lookbook = () => {
   const [hoveredItem, setHoveredItem] = useState();
@@ -58,7 +59,8 @@ const Lookbook = () => {
   );
 
   return (
-    <div className="mb-1 ">
+    <section className="mb-1 ">
+      <MainPreloader/>
       {/* HOVERED IMAGE SHOW */}
       <div className="flex sm:flex-row sm:items-end flex-col-reverse sm:my-1">
         <motion.div initial={{opacity: 0}} animate={{ opacity: 1}} transition={{ duration: .6, ease: easeIn}} className="sm:basis-[55%] 2xl:basis-[55%] sm:h-[75vh] md:h-[85vh] xl:h-[115vh] 2xl:h-[125vh] h-[85vh] object-cover object-bottom">
@@ -122,7 +124,7 @@ const Lookbook = () => {
             })}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

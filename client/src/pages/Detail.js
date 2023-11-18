@@ -8,6 +8,7 @@ import { db } from "../firebase/config";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { motion, easeInOut } from "framer-motion";
+import MainPreloader from "../components/MainPreloader";
 
 const Detail = ({ setCartOpen }) => {
   // Handles display of shipping and return policy
@@ -57,6 +58,7 @@ const Detail = ({ setCartOpen }) => {
 
   return (
     <section className="relative">
+      <MainPreloader/>
       <Toast messageType={messageType} message={message} setMessage={setMessage}/>
       <ReturnPolicy setPolicyOpen={setPolicyOpen} policyOpen={policyOpen} />
       {allDetails?.length && (

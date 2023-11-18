@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ArrowRight from "../components/icons/ArrowRight";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import MainPreloader from "../components/MainPreloader";
 
 const About = () => {
   const images = [
@@ -56,6 +57,7 @@ const About = () => {
         <p className="text-[14px] text-center">{categoryHover}</p>
       </motion.div>
       <section>
+        <MainPreloader/>
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end sm:gap-8">
           <div className="overflow-hidden basis-full sm:basis-[65%] object-cover object-bottom">
             <img

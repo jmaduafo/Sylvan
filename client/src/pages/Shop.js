@@ -7,6 +7,7 @@ import Toast from "../components/Toast";
 import { db } from "../firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 import { useSearchParams } from "react-router-dom";
+import MainPreloader from "../components/MainPreloader";
 
 const Shop = ({ cartOpen, setCartOpen }) => {
   // SPLIT WINDOW PATHNAME BY '/' AND '%20' TO GET THE ACCURATE FILTER
@@ -156,6 +157,7 @@ function DisplayShop({ cartOpen, setCartOpen }) {
 
   return (
     <section>
+      <MainPreloader/>
       <Toast messageType={messageType} setMessage={setMessage} message={message}/>
       <div className="px-6 py-3 border-b-siennaOpaque border-b-[1px]">
         <h4 className="uppercase text-[22px] text-sienna">

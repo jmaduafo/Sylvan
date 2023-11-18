@@ -5,6 +5,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { db } from "../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 import CardPlaceholder from "../components/CardPlaceholder";
+import MainPreloader from "../components/MainPreloader";
 
 const Search = () => {
   const [searchParams ] = useSearchParams();
@@ -55,6 +56,7 @@ const Search = () => {
 
   return (
     <section>
+      <MainPreloader/>
       <div className="">
         <div className="py-2 px-6 border-b-siennaOpaque border-b-[1px]">
             <h4 className='uppercase text-[22px] text-sienna'>{searchParams.get('product')} ({searchParams.get('product').length || filterSearch?.length ? filterSearch?.length : '0'})</h4>

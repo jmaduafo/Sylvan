@@ -7,6 +7,7 @@ import { signOut, deleteUser } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import Toast from '../components/Toast'
 import DeleteModal from '../components/DeleteModal'
+import MainPreloader from '../components/MainPreloader'
 
 const Profile = () => {
   const [ selected, setSelected ] = useState('My account')
@@ -63,6 +64,7 @@ const Profile = () => {
 
   return (
     <section className='relative'>
+      <MainPreloader/>
       <DeleteModal modalOpen={modalOpen} setModalOpen={setModalOpen} setConfirmDelete={setConfirmDelete}/>
       <Toast messageType={messageType} message={message} setMessage={setMessage}/>
       <div className='max-w-[90%] mx-auto flex sm:flex-row flex-col max-h-[85vh] py-6'>

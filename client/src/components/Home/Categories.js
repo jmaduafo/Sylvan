@@ -63,7 +63,7 @@ const Categories = ({ setCategory }) => {
     <section ref={categoriesSection} className="bg-olive py-[5rem] my-6">
       <div className="w-[70%] mx-auto">
         <div
-          onMouseEnter={() => setCategory("View Tables")}
+          onMouseEnter={() => setCategory("Tables")}
           onMouseLeave={() => setCategory("")}
           className="overflow-hidden sm:w-[60%] mx-auto h-auto object-cover object-bottom"
         >
@@ -78,11 +78,11 @@ const Categories = ({ setCategory }) => {
         </div>
         <div className="mt-6 sm:mt-[6rem] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-[5rem]">
           <div
-            onMouseEnter={() => setCategory("View Home Decors")}
+            onMouseEnter={() => setCategory("accents")}
             onMouseLeave={() => setCategory("")}
             className="overflow-hidden basis-full sm:basis-[50%] object-cover object-bottom"
           >
-            <Link to="/shop/home%20decor">
+            <Link to="/shop/accents">
               <img
                 ref={homeDec}
                 className="w-full h-full cursor-none"
@@ -103,7 +103,7 @@ const Categories = ({ setCategory }) => {
         </div>
         <div className="mt-6 sm:mt-[6rem]">
           <div
-            onMouseEnter={() => setCategory("View Beds")}
+            onMouseEnter={() => setCategory("Beds")}
             onMouseLeave={() => setCategory("")}
             className="overflow-hidden sm:w-[55%] mx-auto sm:pl-[50px] object-cover object-bottom"
           >
@@ -119,7 +119,7 @@ const Categories = ({ setCategory }) => {
         </div>
         <div className="mt-6 sm:mt-[6rem] flex flex-col sm:flex-row sm:items-center sm:justify-between sm:gap-[5rem] gap-6 sm:w-[70%] mx-auto">
           <div
-            onMouseEnter={() => setCategory("View Chairs")}
+            onMouseEnter={() => setCategory("Chairs")}
             onMouseLeave={() => setCategory("")}
             className="overflow-hidden sm:basis-[50%] object-cover object-bottom"
           >
@@ -133,7 +133,7 @@ const Categories = ({ setCategory }) => {
             </Link>
           </div>
           <div
-            onMouseEnter={() => setCategory("View Lamps")}
+            onMouseEnter={() => setCategory("Lamps")}
             onMouseLeave={() => setCategory("")}
             className="overflow-hidden sm:basis-[50%] object-cover object-bottom"
           >
