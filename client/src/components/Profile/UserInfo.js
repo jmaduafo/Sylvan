@@ -85,12 +85,12 @@ const UserInfo = () => {
         <p className="text-sienna text-[14px] mb-2">Edit</p>
         <Heading headerText="You may also like" linkText='shop all' link='/shop/all'/>
         <div className="overflow-x-auto mt-2 userScroll">
-          <div className="w-[fit-content] flex gap-2">
+          <div className="w-[fit-content] flex gap-1">
               {!loading && allProducts?.length ? 
               allProducts?.slice(0, 8).map(card => {
                 return (
                   <Link key={card.id} to={`/${card.category}/${card.id}`}>
-                    <div className="w-[300px] h-[50vh] bg-[gray] object-cover object-bottom">
+                    <div className="w-[300px] h-[45vh] bg-[gray] object-cover object-bottom">
                       <img className='w-full h-full' src={card.images[0]} alt={card.name}/>
                     </div> 
                   </Link> 

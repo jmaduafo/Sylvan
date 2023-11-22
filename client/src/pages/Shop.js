@@ -8,6 +8,7 @@ import { db } from "../firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 import { useSearchParams } from "react-router-dom";
 import MainPreloader from "../components/MainPreloader";
+import NotFound from "../components/NotFound";
 
 const Shop = ({ cartOpen, setCartOpen }) => {
   // SPLIT WINDOW PATHNAME BY '/' AND '%20' TO GET THE ACCURATE FILTER
@@ -188,10 +189,8 @@ function DisplayShop({ cartOpen, setCartOpen }) {
             />
           </div>
         ) : (
-          <div className="flex justify-center w-full pt-5">
-            <p className="text-[15px] text-sienna font-light">
-              No products displayed yet
-            </p>
+          <div className="flex justify-center pt-[5rem] w-full">
+            <NotFound/>
           </div>
         )}
       </div>

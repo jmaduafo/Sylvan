@@ -6,6 +6,7 @@ import { db } from "../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 import CardPlaceholder from "../components/CardPlaceholder";
 import MainPreloader from "../components/MainPreloader";
+import NotFound from "../components/NotFound";
 
 const Search = () => {
   const [searchParams ] = useSearchParams();
@@ -87,7 +88,7 @@ const Search = () => {
         })}
       </div>
       }
-      {!filterSearch?.length && <div className="text-center mt-8 mb-6"><p className="text-sienna text-[15px] font-light">No products displayed</p></div>}
+      {!filterSearch?.length && <div className="flex justify-center items-center h-[45vh]"><NotFound page='search'/></div>}
       </div>
 
     </section>
