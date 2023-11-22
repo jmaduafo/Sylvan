@@ -83,7 +83,7 @@ const OrderHistory = () => {
             <p className='text-[13px] font-light'>{order.items?.length} item{order.items?.length === 1 ? '' : 's'}</p>
           </div>
           <div className='basis-[15%]'>
-            <p className='text-[13px] font-light'>$5,892.45</p>
+            <p className='text-[13px] font-light'>${order.totalPrice?.toString().length > 6 && order.totalPrice ? Intl.NumberFormat().format(parseFloat(order.price).toFixed(2)) : '5,678'}</p>
           </div>
           <div className='basis-[20%]'>
             <p className='text-[13px] font-light'>{order.purchasedAt && epoch(order.purchasedAt)}</p>
