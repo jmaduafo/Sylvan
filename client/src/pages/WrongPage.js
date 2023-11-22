@@ -39,7 +39,7 @@ const WrongPage = () => {
           </h1>
           <div className="text-left flex justify-end">
             <p className="text-sienna w-[30%]">
-              This page does not exist. Please navigate to home or shop with
+              This page does not exist. Please navigate to <Link to='/'><span className="relative after:content-[''] after:absolute after:bg-sienna after:w-full after:h-[2px] after:top-[90%] after:left-0">home</span></Link> or shop with
               Sylvan
             </p>
           </div>
