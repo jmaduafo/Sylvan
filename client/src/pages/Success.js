@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db } from '../firebase/config'
-import { updateDoc, getDocs, query, collection, where, serverTimestamp } from 'firebase/firestore'
-import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { updateDoc, getDocs, query, collection, where } from 'firebase/firestore'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import MainPreloader from '../components/MainPreloader'
 import CheckMark from '../components/icons/CheckMark'
+import { CLEAR_CART } from '../redux/cartSlice'
 
 const Success = () => {
   const [ loading, setLoading ] = useState(false)
+  const [ orderHist, setOrderHist ] = useState()
 
-  const { cartItems } = useSelector(state => state.cart)
+  const { cartItems, totalPrice, totalQuantity } = useSelector(state => state.cart)
 
-  let navigate = useNavigate()
+  const dispatch = useDispatch()
 
   // Only save order history if user is logged in
   function saveOrderHistory() {
@@ -32,7 +34,7 @@ const Success = () => {
             try {
               async function order() {
                 await updateDoc(doc.ref, {
-                  orderHistory: [...orderAll, {items: cartItems, purchasedAt: serverTimestamp()}]
+                  orderHistory: [...orderAll, {items: cartItems, totalPrice: totalPrice, totalQuantity: totalQuantity, purchasedAt: Date.now(), orderId: Math.floor(Math.random() * Date.now())}]
                 })
               }
               order()
@@ -40,9 +42,11 @@ const Success = () => {
               console.log(err)
             }
           })
+          setOrderHist(orderAll)
         }
 
         userCheck()
+
       }
     });
     
@@ -50,13 +54,12 @@ const Success = () => {
   }
 
   useEffect(function() {
-    saveOrderHistory()
-    // setLoading(true)
+    if (cartItems?.length) {
+      saveOrderHistory()
+      dispatch(CLEAR_CART())
+    }
 
-    // setTimeout(function() {
-    //   setLoading(false)
-    //   navigate('/')
-    // }, 5000)
+    console.log(orderHist)
 
   }, [])
 
@@ -67,8 +70,8 @@ const Success = () => {
         <div className='flex justify-center items-center'>
           <CheckMark/>
         </div>
-        <h4 className='mt-8 font-semibold text-[32px] font-serif'>Thank you for your purchase!</h4>
-        <p className='mt-3'>Your order has been confirmed and is being processed and prepared for shipping. Your order number is <span className='font-semibold'>#73281243574338</span></p>
+        <h4 className='mt-8 text-[32px] font-serif'>Thank you for your purchase!</h4>
+        <p className='mt-3'>Your order has been confirmed and is being processed and prepared for shipping. Your order number is <span className='font-semibold'>#{orderHist?.length && orderHist[orderHist?.length - 1]?.orderId  && orderHist[orderHist?.length - 1]?.orderId}</span></p>
         <div className='mt-2'>
           <Link to='/'>
           <button className='py-2 mt-2 hover:bg-[#9b4e17b2] hover:text-cream duration-[.4s] border-siennaOpaque border-[1px] text-sienna sm:text-[15px] text-[13px] w-full uppercase text-center font-light'>
