@@ -3,6 +3,7 @@ import pic from '../../assets/hero-image.jpg'
 import LeftArrow from '../icons/LeftArrow'
 import { easeInOut, motion } from 'framer-motion'
 import { epoch } from '../../utils/epochConverter'
+import { totals } from '../../utils/getTotals'
 
 const OrderViewMore = ({order, setViewMore, viewMore}) => {
   console.log(order)
@@ -49,7 +50,7 @@ const OrderViewMore = ({order, setViewMore, viewMore}) => {
               <p className='font-light text-[13px]'>{ordered.cartQuantity}</p>
             </div>
             <div className='basis-[15%]'>
-              <p className='font-light text-[13px]'>${ordered.price?.toString().length > 6 ? Intl.NumberFormat().format(parseFloat(ordered.price).toFixed(2)) : parseFloat(ordered.price).toFixed(2)}</p>
+              <p className='font-light text-[13px]'>${(ordered.cartQuantity * ordered.price).toString().length > 6 && (ordered.cartQuantity * ordered.price) ? Intl.NumberFormat().format(parseFloat(ordered.cartQuantity * ordered.price).toFixed(2)) : parseFloat((ordered.cartQuantity * ordered.price)).toFixed(2)}</p>
             </div>
             <div className='basis-[20%]'>
               <p className='text-[13px] font-light w-fit'>#{order?.orderId && order?.orderId}</p>

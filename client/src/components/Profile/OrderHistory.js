@@ -7,6 +7,7 @@ import { query, collection, where, getDocs } from 'firebase/firestore'
 import { auth, db } from '../../firebase/config'
 import { useNavigate } from 'react-router-dom'
 import { epoch } from '../../utils/epochConverter'
+import { totals } from '../../utils/getTotals'
 
 const OrderHistory = () => {
     const [ viewMore, setViewMore ] = useState(false)
@@ -80,10 +81,10 @@ const OrderHistory = () => {
             <div className='w-[90px] h-[120px] object-cover object-bottom'>
               <img className='w-full h-full' src={order.items[0]?.images[0]} alt={order.items[0]?.images[0]}/>
             </div>
-            <p className='text-[13px] font-light'>{order.items?.length} item{order.items?.length === 1 ? '' : 's'}</p>
+            <p className='text-[13px] font-light'>{totals(order.items)?.itemQuantity && totals(order.items)?.itemQuantity} item{totals(order.items).itemQuantity === 1 ? '' : 's'}</p>
           </div>
           <div className='basis-[15%]'>
-            <p className='text-[13px] font-light'>${order.totalPrice?.toString().length > 6 && order.totalPrice ? Intl.NumberFormat().format(parseFloat(order.price).toFixed(2)) : '5,678'}</p>
+            <p className='text-[13px] font-light'>${totals(order.items).itemTotal.toString().length > 6 && totals(order.items).itemTotal ? Intl.NumberFormat().format(parseFloat(totals(order.items).itemTotal).toFixed(2)) : parseFloat(totals(order.items).itemTotal).toFixed(2)}</p>
           </div>
           <div className='basis-[20%]'>
             <p className='text-[13px] font-light'>{order.purchasedAt && epoch(order.purchasedAt)}</p>
