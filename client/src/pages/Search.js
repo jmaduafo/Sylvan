@@ -59,7 +59,7 @@ const Search = () => {
     <section>
       <MainPreloader/>
       <div className="">
-        <div className="py-2 px-6 border-b-siennaOpaque border-b-[1px]">
+        <div className="py-2 sm:px-6 px-4 border-b-siennaOpaque border-b-[1px]">
             <h4 className='uppercase text-[22px] text-sienna'>{searchParams.get('product')} ({searchParams.get('product').length || filterSearch?.length ? filterSearch?.length : '0'})</h4>
         </div>
         {/* LOGIC TO DISPLAY CARDS IN SEARCH ROUTE WHEN NOT LOADING */}

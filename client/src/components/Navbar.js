@@ -74,7 +74,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
       >
         <nav>
           {/* TOP NAV WITH MENU, LOGO, AND CART */}
-          <div className="relative border-b-siennaOpaque border-b-[1px] flex justify-between px-6 py-5">
+          <div className="relative border-b-siennaOpaque border-b-[1px] flex justify-between sm:px-6 px-4 py-5">
             <div className="flex items-center gap-4">
               <div onClick={() => setMenuOpen(prev => !prev)} className="cursor-pointer">
                 <MenuIcon menuOpen={menuOpen} />
@@ -103,7 +103,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
             </div>
           </div>
           {/* BOTTOM NAV WITH USER AND SEARCH */}
-          <div className="border-b-siennaOpaque border-b-[1px] flex justify-between px-6 py-2">
+          <div className="border-b-siennaOpaque border-b-[1px] flex justify-between sm:px-6 px-4 py-2">
             <div className="">
                 {/* IF LOGGED IN, NAVIGATE TO PROFILE; IF NOT, NAVIAGTE TO LOG IN PAGE */}
               <Link to={link}>

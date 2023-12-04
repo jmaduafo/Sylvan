@@ -40,7 +40,7 @@ const Lookbook = () => {
             return (
               <div
                 key={lookbook.id}
-                className="w-[360px] h-[60vh] bg-slate-300"
+                className="sm:w-[360px] w-[260px] sm:h-[60vh] h-[50vh] bg-slate-300"
               >
                 <Link to={`/${lookbook.category}/${lookbook.id}`}>
                   <img
@@ -56,7 +56,7 @@ const Lookbook = () => {
             return (
               <div
                 key={lookbook.id}
-                className="w-[360px] h-[60vh] bg-slate-300"
+                className="sm:w-[360px] w-[260px] sm:h-[60vh] h-[50vh] bg-slate-300"
               >
                 <Link to={`/${lookbook.category}/${lookbook.id}`}>
                   <img
@@ -72,7 +72,7 @@ const Lookbook = () => {
             return (
               <div
                 key={lookbook.id}
-                className="w-[360px] h-[60vh] bg-slate-300"
+                className="sm:w-[360px] w-[260px] sm:h-[60vh] h-[50vh] bg-slate-300"
               >
                 <Link to={`/${lookbook.category}/${lookbook.id}`}>
                   <img
@@ -88,7 +88,7 @@ const Lookbook = () => {
             return (
               <div
                 key={lookbook.id}
-                className="w-[360px] h-[60vh] bg-slate-300"
+                className="sm:w-[360px] w-[260px] sm:h-[60vh] h-[45vh] bg-slate-300"
               >
                 <Link to={`/${lookbook.category}/${lookbook.id}`}>
                   <img

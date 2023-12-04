@@ -16,7 +16,7 @@ const AdditionalInfo = () => {
         <div
           data-scroll
           data-scroll-speed=".3"
-          className="z-[1] w-[70%] object-cover object-bottom"
+          className="z-[1] sm:w-[70%] w-[90%] object-cover object-bottom"
         >
           <img
             className="w-full h-full"

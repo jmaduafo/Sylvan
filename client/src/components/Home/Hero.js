@@ -68,12 +68,12 @@ const Hero = () => {
     >
       <Cover />
       <div className="text-cream w-full z-[5] pb-4">
-        <div data-scroll data-scroll-speed="0.2" className="w-[80%] mx-auto">
+        <div data-scroll data-scroll-speed="0.2" className="sm:w-[80%] w-[90%] mb-2 mx-auto">
           <motion.div
             variants={letters}
             initial="hidden"
             animate="show"
-            className="overflow-hidden w-[25%] mb-5 flex flex-wrap gap-1"
+            className="overflow-hidden w-[80%] sm:w-[40%] lg:w-[35%] xl:w-[25%] mb-5 flex flex-wrap gap-1"
           >
             {[
               "where every piece exudes",
@@ -82,7 +82,7 @@ const Hero = () => {
             ].map((line) => {
               return (
                 <motion.div key={line} variants={shop}>
-                  <h4 className="sm:text-[22px] 2xl:text-[28px] text-[20px] w-full font-extralight leading-[20px]">
+                  <h4 className="sm:text-[20px] 2xl:text-[28px] text-[17px] w-full font-extralight leading-[20px]">
                     {line}
                   </h4>
                 </motion.div>
@@ -113,7 +113,7 @@ const Hero = () => {
                 className="transform translate-y-[100%] list-none"
                 key={letter}
               >
-                <h1 className="sm:text-[210px] md:[280px] lg:text-[330px] 2xl:text-[410px] text-[90px] mb-[-.45em] font-serif">
+                <h1 className="sm:text-[210px] md:[280px] lg:text-[330px] 2xl:text-[410px] text-[86px] mb-[-.45em] font-serif">
                   {letter}
                 </h1>
               </motion.div>

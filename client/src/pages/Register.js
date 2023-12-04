@@ -84,7 +84,7 @@ const Register = () => {
   return (
     <section className="w-full h-[85vh] flex justify-center items-center">
       <Toast messageType={messageType} setMessage={setMessage} message={message} />
-      <div className="text-center w-[35%]">
+      <div className="text-center w-[90%] sm:w-[65%] md:w-[50%] lg:w-[35%]">
         <h3 className="text-[40px] font-semibold text-sienna font-serif">
           SIGN UP
         </h3>
