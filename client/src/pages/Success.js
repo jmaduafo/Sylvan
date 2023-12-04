@@ -45,17 +45,6 @@ const Success = () => {
         }
         userCheck()
 
-      }
-    });
-  }
-
-  function getOrders() {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const userRef = query(collection(db, 'users'), where('id', '==', user.uid))
-
         async function userInfo() {
           const userSnap = await getDocs(userRef)
 
@@ -76,7 +65,6 @@ const Success = () => {
   useEffect(function() {
     if (cartItems?.length) {
       saveOrderHistory()
-      getOrders()
       dispatch(CLEAR_CART())
     }
 
@@ -92,7 +80,6 @@ const Success = () => {
           <CheckMark/>
         </div>
         <h4 className='mt-8 text-[32px] font-serif'>Thank you for your purchase!</h4>
-        {/* {orderHist?.length && orderHist[orderHist?.length - 1]?.orderId  && orderHist[orderHist?.length - 1]?.orderId} */}
         <p className='mt-3'>Your order has been confirmed and is being processed and prepared for shipping. Your order number is <span className='font-semibold'>#{orderHist?.length && orderHist[0]?.orderHistory?.length && orderHist[0]?.orderHistory[orderHist[0]?.orderHistory?.length - 1]?.orderId}</span></p>
         <div className='mt-2'>
           <Link to='/'>

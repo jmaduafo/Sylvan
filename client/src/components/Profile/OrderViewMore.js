@@ -17,16 +17,16 @@ const OrderViewMore = ({order, setViewMore, viewMore}) => {
       </div>
       <div className='flex text-sienna border-b-siennaOpaque border-b-[1px] pb-2 px-4'>
         <div className='basis-[45%]'>
-          <p className='font-light text-[14px]'>Products</p>
+          <p className='font-light text-[11px]'>Products</p>
         </div>
         <div className='basis-[20%]'>
-          <p className='font-light text-[14px]'>Quantity</p>
+          <p className='font-light text-[11px]'>Quantity</p>
         </div>
         <div className='basis-[15%]'>
-          <p className='font-light text-[14px]'>Price</p>
+          <p className='font-light text-[11px]'>Price</p>
         </div>
         <div className='basis-[20%]'>
-          <p className='font-light text-[14px]'>Order ID</p>
+          <p className='font-light text-[11px]'>Order ID</p>
         </div>
       </div>
       {order?.items?.length && order?.items?.map(ordered => {

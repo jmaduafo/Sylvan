@@ -29,19 +29,18 @@ const Lookbook = () => {
       });
 
       setAllLookbook(lookbook);
-      
+
       if (!hovered) {
         setHoveredItem(lookbook[0]);
       }
-      
     }
 
     lookbook();
   }
 
-  useEffect(function() {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-  }, [])
+  useEffect(function () {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(
     function () {
@@ -60,10 +59,15 @@ const Lookbook = () => {
 
   return (
     <section className="mb-1 ">
-      <MainPreloader/>
+      <MainPreloader />
       {/* HOVERED IMAGE SHOW */}
-      <div className="flex sm:flex-row sm:items-end flex-col-reverse sm:my-1">
-        <motion.div initial={{opacity: 0}} animate={{ opacity: 1}} transition={{ duration: .6, ease: easeIn}} className="sm:basis-[55%] 2xl:basis-[55%] sm:h-[75vh] md:h-[85vh] xl:h-[115vh] 2xl:h-[125vh] h-[85vh] object-cover object-bottom">
+      <div className="flex sm:flex-row sm:items-end flex-col sm:my-1">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: easeIn }}
+          className="sm:basis-[55%] 2xl:basis-[55%] sm:h-[75vh] md:h-[85vh] xl:h-[115vh] 2xl:h-[125vh] h-[75vh] object-cover object-bottom"
+        >
           {loading && !hoveredItem ? (
             <div className="h-full flex justify-center items-center bg-siennaOpaque animate-pulse">
               <h3 className="text-[60px] font-serif text-sienna">S</h3>
@@ -80,7 +84,14 @@ const Lookbook = () => {
         <div className="sm:basis-[45%] 2xl:basis-[45%] basis-full text-chocolate border-b-siennaOpaque border-b-[1px]">
           <div className="border-t-siennaOpaque border-t-[1px] px-2 py-1 flex justify-between items-center">
             <h6 className="uppercase">{hoveredItem?.name}</h6>
-            <p>${Intl.NumberFormat().format(hoveredItem?.price)}</p>
+            <p>
+              $
+              {hoveredItem?.price.toString().length > 5
+                ? Intl.NumberFormat().format(
+                    parseFloat(hoveredItem?.price).toFixed(2)
+                  )
+                : parseFloat(hoveredItem?.price).toFixed(2)}
+            </p>
           </div>
           <div className="px-2 py-1 border-t-siennaOpaque border-t-[1px]">
             <p className="text-[12px]">DESCRIPTION</p>
@@ -96,7 +107,9 @@ const Lookbook = () => {
                 </span>
               </p>
             </Link>
-            <Link to={`/shop/${hoveredItem?.category.toLowerCase()}`}><p className="text-[13px] uppercase">{hoveredItem?.category}</p></Link>
+            <Link to={`/shop/${hoveredItem?.category.toLowerCase()}`}>
+              <p className="text-[13px] uppercase">{hoveredItem?.category}</p>
+            </Link>
           </div>
         </div>
       </div>

@@ -89,7 +89,7 @@ const Menu = ({ setMenuOpen, menuOpen }) => {
 
   return (
     <motion.div
-      className={`${menuOpen ? 'visible' : 'invisible'} ${menuOpen ? 'h-[40vh]' : 'h-0'} ${menuOpen ? 'delay-0' : 'delay-[.6s]'} duration-[.4s] overflow-hidden px-6 py-4 fixed w-full bg-cream border-b-siennaOpaque border-b-[1px] z-[89] flex flex-col-reverse sm:flex-row sm:justify-between sm:items-start gap-[6rem]`}
+      className={`${menuOpen ? 'visible' : 'invisible'} ${menuOpen ? 'sm:h-[40vh] h-[55vh]' : 'h-0'} ${menuOpen ? 'delay-0' : 'delay-[.6s]'} duration-[.4s] overflow-hidden sm:px-6 px-3 py-4 fixed w-full bg-cream border-b-siennaOpaque border-b-[1px] z-[89] flex flex-col-reverse sm:flex-row sm:justify-between sm:items-start sm:gap-[6rem] gap-[3rem]`}
     >
       <motion.div 
       variants={menuOpen ? variant : variantReverse} 
@@ -100,7 +100,7 @@ const Menu = ({ setMenuOpen, menuOpen }) => {
           return (
             <motion.div variants={menuOpen ? child : childReverse} key={list} onClick={() => {setMenuOpen(false)}}>
                 <Link to={menuLinks(list)}>
-                <h3 className="hover:italic cursor-pointer text-sienna text-[36px] uppercase">
+                <h3 className="hover:italic cursor-pointer text-sienna sm:text-[36px] text-[20px] uppercase">
                     {list}
                 </h3>
                 </Link>
