@@ -71,7 +71,7 @@ const About = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8, ease: easing }}
-              className="w-full text-[14px] md:w-[70%] mb-8"
+              className="w-full text-[14px] md:w-[70%] md:mb-8 mb-6"
             >
               Sylvan, a haven for those who appreciate the intersection of
               elegance and aesthetics in home decor. Our furniture store is more
@@ -84,7 +84,7 @@ const About = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8, ease: easing }}
-              className="w-full text-[14px] md:w-[70%]"
+              className="w-full md:text-[14px] text-[13px] md:w-[70%]"
             >
               With a sense of responsibility to our clientele, we pride
               ourselves on presenting not just furniture, but an elevated
