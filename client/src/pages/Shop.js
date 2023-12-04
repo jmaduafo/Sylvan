@@ -72,6 +72,50 @@ function DisplayShop({ cartOpen, setCartOpen }) {
     products();
   }
 
+  function getSort() {
+    let sort = searchParams.get('sort')
+    let order = searchParams.get('order')
+    let material = searchParams.get('material')
+
+     // SORT FURNITURE TITLE IN ASSCENDING ORDER
+     if (sort === 'name' && order === 'asc') {
+      setFilteredProducts(filteredProducts?.sort((a, b) => {
+        if(a.name < b.name) { return -1; }
+        if(a.name > b.name) { return 1; }
+        return 0;
+    }))
+    // SORT FURNITURE TITLE IN DESCENDING ORDER
+    } else if (sort === 'name' && order === 'desc') {
+      setFilteredProducts(filteredProducts?.sort((a, b) => {
+        if(a.name > b.name) { return -1; }
+        if(a.name < b.name) { return 1; }
+        return 0;
+    }))
+    // SORT DATE CREATED IN ASCENDING ORDER
+    } else if (sort === 'date' && order === 'asc') {
+      setFilteredProducts(filteredProducts?.sort(function(a,b){
+        return parseInt(a.createdAt?.seconds) - parseInt(b.createdAt?.seconds);
+    }))
+    // SORT DATE CREATED IN DESCENDING ORDER
+    } else if (sort === 'date' && order === 'desc') {
+      setFilteredProducts(filteredProducts?.sort(function(a,b){
+        return parseInt(b.createdAt?.seconds) - parseInt(a.createdAt?.seconds);
+    }))
+    // SORT PRICE IN ASCENDING ORDER
+    } else if (sort === 'price' && order === 'asc') {
+      setFilteredProducts(filteredProducts?.sort(function(a, b) {
+        return parseFloat(a.price) - parseFloat(b.price)
+    }))
+    // SORT PRICE IN DESCENDING ORDER
+    } else if (sort === 'price' && order === 'desc') {
+      setFilteredProducts(filteredProducts?.sort(function(a, b) {
+        return parseFloat(b.price) - parseFloat(a.price);
+    }))
+    } else if (material) {
+      setFilteredProducts(filteredProducts?.filter(product => product.materials?.includes(material)))
+    }
+  }
+
   useEffect(function () {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
@@ -108,49 +152,8 @@ function DisplayShop({ cartOpen, setCartOpen }) {
   // FOR SORTING FUNCTIONALITY
   useEffect(
     function () {
-      let sort = searchParams.get('sort')
-      let order = searchParams.get('order')
-      let material = searchParams.get('material')
-
       setLoading(true)
-
-      // SORT FURNITURE TITLE IN ASSCENDING ORDER
-      if (sort === 'name' && order === 'asc') {
-        setFilteredProducts(filteredProducts?.sort((a, b) => {
-          if(a.name < b.name) { return -1; }
-          if(a.name > b.name) { return 1; }
-          return 0;
-      }))
-      // SORT FURNITURE TITLE IN DESCENDING ORDER
-      } else if (sort === 'name' && order === 'desc') {
-        setFilteredProducts(filteredProducts?.sort((a, b) => {
-          if(a.name > b.name) { return -1; }
-          if(a.name < b.name) { return 1; }
-          return 0;
-      }))
-      // SORT DATE CREATED IN ASCENDING ORDER
-      } else if (sort === 'date' && order === 'asc') {
-        setFilteredProducts(filteredProducts?.sort(function(a,b){
-          return parseInt(a.createdAt?.seconds) - parseInt(b.createdAt?.seconds);
-      }))
-      // SORT DATE CREATED IN DESCENDING ORDER
-      } else if (sort === 'date' && order === 'desc') {
-        setFilteredProducts(filteredProducts?.sort(function(a,b){
-          return parseInt(b.createdAt?.seconds) - parseInt(a.createdAt?.seconds);
-      }))
-      // SORT PRICE IN ASCENDING ORDER
-      } else if (sort === 'price' && order === 'asc') {
-        setFilteredProducts(filteredProducts?.sort(function(a, b) {
-          return parseFloat(a.price) - parseFloat(b.price)
-      }))
-      // SORT PRICE IN DESCENDING ORDER
-      } else if (sort === 'price' && order === 'desc') {
-        setFilteredProducts(filteredProducts?.sort(function(a, b) {
-          return parseFloat(b.price) - parseFloat(a.price);
-      }))
-      } else if (material) {
-        setFilteredProducts(filteredProducts?.filter(product => product.materials?.includes(material)))
-      }
+      getSort()    
       setLoading(false)
     },
     [loading, searchParams.get('sort'), searchParams.get('order'), searchParams.get('material')]

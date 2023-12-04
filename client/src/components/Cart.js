@@ -79,18 +79,20 @@ const Cart = ({ setCartOpen, cartOpen }) => {
             <Cancel />
           </div>
         </div>
-        <div className="py-3 px-5 max-h-[55vh] overflow-y-auto cartBag border-b-siennaOpaque border-b-[1px]">
+        <div className="py-3 sm:px-5 px-2 sm:max-h-[55vh] overflow-y-auto cartBag border-b-siennaOpaque border-b-[1px]">
           {cartItems?.length ?
             cartItems?.map((cart) => {
               return (
                 <div
                   key={cart.id}
-                  className="p-3 flex border-b-siennaOpaque border-b-[1px] last:border-none gap-4"
+                  className="sm:p-3 p-1 flex border-b-siennaOpaque border-b-[1px] last:border-none gap-4"
                 >
-                  <div className="basis-[20%] h-[150px] object-cover object-bottom">
+                  {/* SELECTED ITEM IMAGE */}
+                  <div className="basis-[35%] sm:basis-[20%] h-[150px] object-cover object-bottom">
                     <img className="w-full h-full" src={cart.images[0]} alt={cart.name}/>
                   </div>
-                  <div className="basis-[80%]">
+                  {/* SELECTED ITEM DESCRIPTION (TITLE, PRICE, SELECTED SIZE, SELECTED QUANTITY, AND COLOR) */}
+                  <div className="basis-[65%] sm:basis-[80%]">
                     <div className="text-sienna flex items-center justify-between">
                       <h6 className="uppercase text-[14px]">{cart.name}</h6>
                       <div
@@ -132,6 +134,7 @@ const Cart = ({ setCartOpen, cartOpen }) => {
             </div>}
             
         </div>
+        {/* CLEAR ALL AND SUBTOTAL SECTION WITH CALL TO ACTION BUTTONS */}
         <div className="py-3 px-4">
           <div className="my-2 px-2 text-sienna flex justify-between items-center">
             <p

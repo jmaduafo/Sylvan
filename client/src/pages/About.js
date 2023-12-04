@@ -167,7 +167,7 @@ const About = () => {
           <div className="mt-2 flex justify-between items-center gap-4 flex-wrap">
             {images.map((img) => {
               return (
-                <Link to={`/shop/${img.category}`} key={img}>
+                <Link to={`/shop/${img.category}`} key={img.description}>
                   <div
                     onMouseEnter={() => setCategoryHover(img.category)}
                     onMouseLeave={() => setCategoryHover("")}

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { auth } from '../firebase/config'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import LoadingSmall from '../components/LoadingSmall'
+import MainPreloader from '../components/MainPreloader'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -43,6 +44,7 @@ const Login = () => {
 
   return (
     <section className='w-full h-[85vh] flex justify-center items-center'>
+      <MainPreloader/>
       <Toast messageType={messageType} setMessage={setMessage} message={message}/>
       <div className='text-center w-[90%] sm:w-[65%] md:w-[50%] lg:w-[35%]'>
         <h3 className='text-[40px] font-semibold text-sienna font-serif'>LOG IN</h3>

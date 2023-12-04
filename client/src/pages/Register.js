@@ -5,6 +5,7 @@ import { db, auth } from "../firebase/config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, getDocs, doc, query, collection, where, serverTimestamp } from "firebase/firestore";
 import LoadingSmall from "../components/LoadingSmall";
+import MainPreloader from "../components/MainPreloader";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
@@ -68,9 +69,6 @@ const Register = () => {
             
             verify() 
             setLoading(false)
-
-            localStorage.setItem('loggedIn', user.uid)
-
             navigate('/')
       })
       .catch(err => {
@@ -83,6 +81,7 @@ const Register = () => {
 
   return (
     <section className="w-full h-[85vh] flex justify-center items-center">
+      <MainPreloader/>
       <Toast messageType={messageType} setMessage={setMessage} message={message} />
       <div className="text-center w-[90%] sm:w-[65%] md:w-[50%] lg:w-[35%]">
         <h3 className="text-[40px] font-semibold text-sienna font-serif">

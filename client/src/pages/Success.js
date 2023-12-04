@@ -6,10 +6,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import MainPreloader from '../components/MainPreloader'
 import CheckMark from '../components/icons/CheckMark'
-import { CLEAR_CART, GET_TOTALS } from '../redux/cartSlice'
+import { CLEAR_CART } from '../redux/cartSlice'
 
 const Success = () => {
-  const [ loading, setLoading ] = useState(false)
   const [ orderHist, setOrderHist ] = useState()
 
   const { cartItems } = useSelector(state => state.cart)

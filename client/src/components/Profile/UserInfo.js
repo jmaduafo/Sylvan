@@ -61,11 +61,11 @@ const UserInfo = () => {
             return (
               <div key={user.id} className="flex justify-between">
                 <div>
-                  <p className="text-sienna text-[14px] font-light">{user.username}</p> 
-                  <p className="text-sienna text-[14px] font-light">{user.email}</p>
+                  <p className="text-sienna text-[12px] sm:text-[14px] font-light">{user.username}</p> 
+                  <p className="text-sienna text-[12px] sm:text-[14px] font-light">{user.email}</p>
                 </div>
                 <div>
-                  <p className="text-sienna text-[14px] font-light">Joined at {timestamp(user.timestamp?.seconds)}</p>
+                  <p className="text-sienna text-[12px] sm:text-[14px] font-light">Joined at {timestamp(user.timestamp?.seconds)}</p>
                 </div>
               </div>
             )
@@ -90,7 +90,7 @@ const UserInfo = () => {
               allProducts?.slice(0, 8).map(card => {
                 return (
                   <Link key={card.id} to={`/${card.category}/${card.id}`}>
-                    <div className="w-[300px] h-[45vh] bg-[gray] object-cover object-bottom">
+                    <div className="lg:w-[300px] lg:h-[50vh] sm:w-[240px] sm:h-[45vh] w-[220px] h-[40vh] bg-[gray] object-cover object-bottom">
                       <img className='w-full h-full' src={card.images[0]} alt={card.name}/>
                     </div> 
                   </Link> 
@@ -99,7 +99,7 @@ const UserInfo = () => {
               :
               [0, 1, 2, 3, 4, 5, 6, 7, 8].map(place => {
                 return (
-                  <div key={place} className="w-[300px] h-[50vh] bg-siennaOpaque flex justify-center items-center animate-pulse">
+                  <div key={place} className="lg:w-[300px] lg:h-[50vh] sm:w-[240px] sm:h-[45vh] w-[220px] h-[40vh] bg-siennaOpaque flex justify-center items-center animate-pulse">
                     <h3 className="text-[60px] font-serif text-sienna">S</h3>
                   </div> 
                 )

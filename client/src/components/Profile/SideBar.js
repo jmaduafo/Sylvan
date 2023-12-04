@@ -4,11 +4,11 @@ const SideBar = ({ setSelected, selected}) => {
   const sections = ['My account', 'Past Orders', 'Logout']
 
   return (
-    <div className='h-[85vh]'>
+    <div className='sm:h-[85vh] sm:border-none sm:pb-0 h-[25vh] border-b-[1px] border-b-siennaOpaque pb-4'>
       <div className='h-[90%]'>
       {sections.map(section => {
         return (
-          <div>
+          <div key={section}>
             <p onClick={() => setSelected(section)} key={section} className={`${selected === section ? 'text-sienna' : 'text-[#9b4e1781]'} hover:text-sienna duration-[.4s] w-[fit-content] cursor-pointer capitalize text-[13px] font-light pt-2 pb-1`}>{section}</p>
           </div>
         )

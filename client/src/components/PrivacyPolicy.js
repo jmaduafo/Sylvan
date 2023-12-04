@@ -94,7 +94,7 @@ const PrivacyPolicy = ({ setPrivacyOpen, privacyOpen }) => {
     ]
   return (
     <div className={`${privacyOpen ? 'visible' : 'invisible'} duration-[.4s] fixed bg-chocolateOpaque w-full h-full z-[80] py-6 text-sienna`}>
-        <motion.div initial={{ opacity: privacyOpen ? 0 : 1 }} animate={{ opacity: privacyOpen ? 1 : 0 }} transition={{ duration: .6, ease: easeInOut}}  className='policy border-sienna border-[1px] bg-cream w-[45%] mx-auto p-4 overflow-auto max-h-[80vh]'>
+        <motion.div initial={{ opacity: privacyOpen ? 0 : 1 }} animate={{ opacity: privacyOpen ? 1 : 0 }} transition={{ duration: .6, ease: easeInOut}}  className='policy border-sienna border-[1px] bg-cream lg:w-[45%] sm:w-[65%] w-[95%] mx-auto p-4 overflow-auto max-h-[75vh] sm:max-h-[80vh]'>
             <div className='flex justify-between items-center'>
                 <h3 className='text-[22px] uppercase'>Privacy Policy for Sylvan</h3>
                 <div onClick={() => setPrivacyOpen(false)}>
