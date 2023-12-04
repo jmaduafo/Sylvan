@@ -47,7 +47,7 @@ const About = () => {
       }}
     >
       <motion.div
-        initial={{ opacity: categoryHover.length ? 0 : 1  }}
+        initial={{ opacity: categoryHover.length ? 0 : 1 }}
         animate={{ opacity: categoryHover.length ? 1 : 0, x: x, y: y }}
         transition={{ duration: 0.3, ease: easing }}
         className={`${
@@ -57,17 +57,22 @@ const About = () => {
         <p className="text-[14px] text-center">{categoryHover}</p>
       </motion.div>
       <section>
-        <MainPreloader/>
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end sm:gap-8">
-          <div className="overflow-hidden basis-full sm:basis-[65%] object-cover object-bottom">
+        <MainPreloader />
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end lg:gap-8 gap-3">
+          <div className="overflow-hidden basis-full md:basis-[65%] sm:basis-[55%] object-cover object-bottom">
             <img
               className="w-full h-full"
               src="https://res.cloudinary.com/dyxxn831a/image/upload/v1699978914/Sylvan/landon10_qwlnwy.jpg"
               alt="burnt orange background with vase and rustic sink"
             />
           </div>
-          <div className="basis-full sm:basis-[35%] sm:pb-8">
-            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: .6, delay: .8, ease: easing }} className="w-full text-[14px] sm:w-[70%] mb-8">
+          <div className="basis-full md:basis-[35%] sm:basis-[45%] sm:pb-8 p-6">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8, ease: easing }}
+              className="w-full text-[14px] md:w-[70%] mb-8"
+            >
               Sylvan, a haven for those who appreciate the intersection of
               elegance and aesthetics in home decor. Our furniture store is more
               than a showroom; it's a curated collection where every piece is a
@@ -75,7 +80,12 @@ const About = () => {
               detail, meticulously selecting and showcasing pieces that embody
               sophistication and timeless design.
             </motion.p>
-            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: .6, delay: .8, ease: easing }} className="w-full text-[14px] sm:w-[70%]">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8, ease: easing }}
+              className="w-full text-[14px] md:w-[70%]"
+            >
               With a sense of responsibility to our clientele, we pride
               ourselves on presenting not just furniture, but an elevated
               lifestyle. Each item in our collection is a testament to our
@@ -86,18 +96,28 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className="mt-[10rem]">
-        <div className="sm:w-[70%] mx-auto flex flex-col-reverse sm:flex-row sm:items-start sm:gap-[5rem]">
+      <section className="mt-[10rem] sm:p-0 p-6">
+        <div className="lg:w-[70%] w-[90%] mx-auto flex flex-col-reverse sm:flex-row sm:items-start lg:gap-[5rem] sm:gap-[5rem]">
           <div className="sm:basis-[50%]">
             <h2 className="font-serif text-[40px]">Serenity & Craftsmanship</h2>
-            <div className="sm:pl-[8rem] mt-[3rem]">
-              <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: .6, delay: .8, ease: easing }} className="text-[14px] mb-8">
+            <div className="lg:pl-[8rem] sm:pl-[4rem] mt-[3rem]">
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.8, ease: easing }}
+                className="text-[14px] mb-8"
+              >
                 Other travelling salesmen live a life of luxury. For instance,
                 whenever I go back to the guest house during the morning to copy
                 out the contract. These gentlemen are always still sitting there
                 eating.
               </motion.p>
-              <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: .6, delay: .8, ease: easing }} className="text-[14px]">
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.8, ease: easing }}
+                className="text-[14px]"
+              >
                 I ought to just try that with my boss; I'd get kicked out on the
                 spot. Doing business like this takes much more effort than doing
                 your own business at home.
@@ -105,13 +125,21 @@ const About = () => {
             </div>
           </div>
           <div className="sm:basis-[50%] flex items-start gap-5">
-            <div data-scroll data-scroll-speed='.1' className="basis-[50%] pt-[10rem] h-auto object-cover object-bottom">
+            <div
+              data-scroll
+              data-scroll-speed=".1"
+              className="basis-[50%] pt-[10rem] h-auto object-cover object-bottom"
+            >
               <img
                 className="w-full h-full"
                 src="https://res.cloudinary.com/dyxxn831a/image/upload/v1700057167/Sylvan/landon31_co8msi.png"
               />
             </div>
-            <div data-scroll data-scroll-speed='.3' className="basis-[50%] h-auto object-cover object-bottom">
+            <div
+              data-scroll
+              data-scroll-speed=".3"
+              className="basis-[50%] h-auto object-cover object-bottom"
+            >
               <img
                 className="w-full h-full"
                 src="https://res.cloudinary.com/dyxxn831a/image/upload/v1700057218/Sylvan/landon32_hkkvbc.jpg"
@@ -120,9 +148,14 @@ const About = () => {
           </div>
         </div>
       </section>
-      <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: .6, delay: .8, ease: easing }} className="mt-[10rem]">
-        <div className="sm:w-[55%] mx-auto">
-          <div className="flex items-center gap-[4rem]">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.8, ease: easing }}
+        className="mt-[10rem]"
+      >
+        <div className="lg:w-[55%] w-[70%] mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-[4rem]">
             <div className="basis-[33.333%] object-cover object-bottom">
               <img
                 className="w-full h-full"
@@ -145,7 +178,7 @@ const About = () => {
               />
             </div>
           </div>
-          <div className="text-center mt-[3rem]">
+          <div className="text-center mt-[3rem] sm:p-0 p-6">
             <h2 className="font-serif text-[40px]">Our Team</h2>
             <div className="flex justify-center items-center">
               <p className="sm:w-[75%] text-[14px]">
@@ -161,7 +194,12 @@ const About = () => {
           </div>
         </div>
       </motion.section>
-      <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: .6, delay: .8, ease: easing }} className="mt-[10rem]">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.8, ease: easing }}
+        className="mt-[10rem]"
+      >
         <div className="w-[70%] mx-auto">
           <p className="italic text-[14px]">featured categories</p>
           <div className="mt-2 flex justify-between items-center gap-4 flex-wrap">
@@ -171,7 +209,7 @@ const About = () => {
                   <div
                     onMouseEnter={() => setCategoryHover(img.category)}
                     onMouseLeave={() => setCategoryHover("")}
-                    className="overflow-hidden w-[250px] h-[320px] object-cover object-bottom cursor-none"
+                    className="overflow-hidden sm:w-[250px] sm:h-[320px] w-full object-cover object-bottom cursor-none"
                   >
                     <img
                       className="w-full h-full rounded-tr-[50px] cursor-none"
@@ -183,13 +221,13 @@ const About = () => {
               );
             })}
           </div>
-          <Link to='/shop/all'>
-          <div className="group cursor-pointer mt-2 flex justify-end items-center gap-2">
-            <p className="group-hover:italic text-[14px]">shop all</p>
-            <div className="duration-[.4s] group-hover:transform group-hover:translate-x-1">
-              <ArrowRight />
+          <Link to="/shop/all">
+            <div className="group cursor-pointer mt-2 flex justify-end items-center gap-2">
+              <p className="group-hover:italic text-[14px]">shop all</p>
+              <div className="duration-[.4s] group-hover:transform group-hover:translate-x-1">
+                <ArrowRight />
+              </div>
             </div>
-          </div>
           </Link>
         </div>
       </motion.section>
