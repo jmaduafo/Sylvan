@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Cover from "./Cover";
 import { Link } from "react-router-dom";
 import { categories } from "../utils/shopCategories";
 import { auth } from "../firebase/config";
@@ -28,7 +27,7 @@ const Footer = ({ setPolicyOpen, setPrivacyOpen }) => {
     function () {
       renderAccount();
     },
-    [auth]
+    []
   );
 
   const footerNav = [
@@ -111,8 +110,8 @@ const Footer = ({ setPolicyOpen, setPrivacyOpen }) => {
             </div>
           </div>
           {/* SUBSCRIBE EMAIL INPUT */}
-          <div className="sm:px-[3rem] sm:w-[35%] w-full">
-            <h2 className="font-serif text-[32px] xs:text-[40px]">Stay in the know</h2>
+          <div className="lg:px-[3rem] sm:w-[35%] w-full">
+            <h2 className="font-serif text-[30px] md:text-[34px] lg:text-[40px]">Stay in the know</h2>
             <div className="">
               <p className="text-[14px] sm:text-[13px]">
                 Doing business like this takes much more effort than doing your
@@ -140,17 +139,17 @@ const Footer = ({ setPolicyOpen, setPrivacyOpen }) => {
         <div className="py-1 border-b-siennaOpaque border-b-[1px] flex justify-center items-center ">
           <ul className="flex gap-10 text-[14px] font-normal">
             <li>
-              <a href="" target="_blank">
+              <a href="https://www.instagram.com/jazzimanian_devil/" target="_blank" rel="noreferrer">
                 INSTAGRAM
               </a>
             </li>
             <li>
-              <a href="" target="_blank">
+              <a href="https://www.linkedin.com/in/jasmine-maduafokwa-48070a180/" target="_blank" rel="noreferrer">
                 LINKEDIN
               </a>
             </li>
             <li>
-              <a href="" target="_blank">
+              <a href="https://github.com/jmaduafo" target="_blank" rel="noreferrer">
                 GITHUB
               </a>
             </li>
