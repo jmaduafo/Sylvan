@@ -74,7 +74,7 @@ const Success = () => {
   return (
     <section className='flex justify-center items-center pt-[4rem]'>
       <MainPreloader/>
-      <div className='p-5 mx-auto w-[30%] text-sienna text-center border-sienna border-[2px]'>
+      <div className='p-5 mx-auto sm:w-[60%] md:w-[40%] lg:w-[30%] xl:w-[20%] 2xl:w-[13%] w-[90%] text-sienna text-center border-sienna border-[2px]'>
         <div className='flex justify-center items-center'>
           <CheckMark/>
         </div>
