@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import pic from '../../assets/hero-image.jpg'
 import OrderViewMore from './OrderViewMore'
 import { motion, easeInOut } from 'framer-motion'
 import { onAuthStateChanged } from 'firebase/auth'

@@ -4,7 +4,6 @@ import { getDocs, collection, query, where } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import Heading from "../Heading";
 import { timestamp } from "../../utils/timestampConverter";
-import HomeButton from "../HomeButton";
 import { Link } from 'react-router-dom'
 
 const UserInfo = () => {
@@ -82,7 +81,7 @@ const UserInfo = () => {
             </div>
         }
         </div>
-        <p className="text-sienna text-[14px] mb-2">Edit</p>
+        {/* <p className="text-sienna text-[14px] mb-2">Edit</p> */}
         <Heading headerText="You may also like" linkText='shop all' link='/shop/all'/>
         <div className="overflow-x-auto mt-2 userScroll">
           <div className="w-[fit-content] flex gap-1">

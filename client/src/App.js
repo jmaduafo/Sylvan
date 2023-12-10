@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "../src/components/Navbar";
 import Footer from "./components/Footer";
@@ -16,7 +16,6 @@ import Profile from "./pages/Profile";
 import Api from "./pages/Api";
 import Cancel from "./pages/Cancel";
 import HomePreloader from "./components/HomePreloader";
-import MainPreloader from "./components/MainPreloader";
 import { Routes, Route } from "react-router-dom";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import ReturnPolicy from "./components/ReturnPolicy";

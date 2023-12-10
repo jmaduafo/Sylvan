@@ -7,7 +7,7 @@ const Cancel = () => {
   return (
     <section className="py-8">
       <MainPreloader/>
-      <div className="mx-auto w-[35%] mb-8">
+      <div className="mx-auto sm:w-[50%] md:w-[40%] xl:w-[35%] 2xl:w-[20%] w-[75%] mb-8">
         <div className="w-full h-auto rounded-full border-sienna border-[2px] object-cover object-bottom">
           <img
             className="w-full h-full rounded-full"
@@ -29,7 +29,7 @@ const Cancel = () => {
         </div>
         <div>
           <Link to="/shop/all">
-            <button className="hover:bg-siennaOpaque hover:text-cream duration-[.4s] border-siennaOpaque border-[1px] w-full mt-3 text-[14px] text-sienna py-2 font-light">
+            <button className="hover:bg-[#9b4e17b2] hover:text-cream duration-[.4s] border-siennaOpaque border-[1px] w-full mt-3 text-[14px] text-sienna py-2 font-light">
               CONTINUE SHOPPING
             </button>
           </Link>

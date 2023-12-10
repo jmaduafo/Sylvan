@@ -1,9 +1,6 @@
 import React from 'react'
-import pic from '../../assets/hero-image.jpg'
 import LeftArrow from '../icons/LeftArrow'
 import { easeInOut, motion } from 'framer-motion'
-import { epoch } from '../../utils/epochConverter'
-import { totals } from '../../utils/getTotals'
 
 const OrderViewMore = ({order, setViewMore, viewMore}) => {
   console.log(order)

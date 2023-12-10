@@ -1,8 +1,6 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React from "react";
 import Button from "../HomeButton";
 import Cover from "../Cover";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { easeInOut, motion } from "framer-motion";
 import { easing } from "../../utils/easing";
 
