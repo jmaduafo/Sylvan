@@ -62,7 +62,7 @@ const OrderHistory = () => {
   <motion.div initial={{ opacity: viewMore ? 1 : 0 }} animate={{ opacity: viewMore ? 0 : 1 }} transition={{ duration: .5, ease: easeInOut}}>
     {allOrders?.length ?
     <>
-    <div className='flex text-sienna border-b-siennaOpaque border-b-[1px] pb-2 px-4'>
+    <div className='flex text-sienna border-b-siennaOpaque border-b-[1px] pb-2 sm:px-4 px-1 mt-3'>
       <div className='basis-[35%]'>
         <p className='font-light text-[11px]'>Order Items</p>
       </div>
@@ -78,21 +78,21 @@ const OrderHistory = () => {
     </div>
     {allOrders?.map(order => {
       return (
-        <div key={order.purchasedAt} onClick={() => {setOrder(order); setViewMore(true)}} className='hover:bg-siennaOpaque duration-[.4s] cursor-pointer hover:text-cream flex text-sienna items-center py-3 px-4 border-b-siennaOpaque border-b-[1px]'>
+        <div key={order.purchasedAt} onClick={() => {setOrder(order); setViewMore(true)}} className='hover:bg-siennaOpaque duration-[.4s] cursor-pointer hover:text-cream flex text-sienna items-center py-3 sm:px-4 px-1 border-b-siennaOpaque border-b-[1px]'>
           <div className='basis-[35%] flex gap-2 items-center'>
             <div className='w-[90px] h-[120px] object-cover object-bottom'>
               <img className='w-full h-full' src={order.items[0]?.images[0]} alt={order.items[0]?.images[0]}/>
             </div>
-            <p className='text-[13px] font-light'>{totals(order.items)?.itemQuantity && totals(order.items)?.itemQuantity} item{totals(order.items).itemQuantity === 1 ? '' : 's'}</p>
+            <p className='sm:text-[13px] text-[10px] font-light'>{totals(order.items)?.itemQuantity && totals(order.items)?.itemQuantity} item{totals(order.items).itemQuantity === 1 ? '' : 's'}</p>
           </div>
           <div className='basis-[15%]'>
-            <p className='text-[13px] font-light'>${totals(order.items).itemTotal?.toString().length > 6 && totals(order.items).itemTotal ? Intl.NumberFormat().format(parseFloat(totals(order.items).itemTotal).toFixed(2)) : parseFloat(totals(order.items).itemTotal).toFixed(2)}</p>
+            <p className='sm:text-[13px] text-[10px] font-light'>${totals(order.items).itemTotal?.toString().length > 6 && totals(order.items).itemTotal ? Intl.NumberFormat().format(parseFloat(totals(order.items).itemTotal).toFixed(2)) : parseFloat(totals(order.items).itemTotal).toFixed(2)}</p>
           </div>
           <div className='basis-[20%]'>
-            <p className='text-[13px] font-light'>{order.purchasedAt && epoch(order.purchasedAt)}</p>
+            <p className='sm:text-[13px] text-[10px] font-light'>{order.purchasedAt && epoch(order.purchasedAt)}</p>
           </div>
           <div className='basis-[30%]'>
-            <p className='py-[2px] px-6 bg-olive font-light text-cream text-[13px] w-fit rounded-full'>Pending</p>
+            <p className='py-[2px] sm:px-6 px-3 bg-olive font-light text-cream sm:text-[13px] text-[11px] w-fit rounded-full'>Pending</p>
           </div>
       </div>
       )
