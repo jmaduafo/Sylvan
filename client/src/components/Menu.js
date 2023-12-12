@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { auth } from "../firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 
 const Menu = ({ setMenuOpen, menuOpen }) => {
-    
+  const [link, setLink] = useState("/login");
+
   const menu = ["Shop", "Home", "About", "lookbook", "Account", "Contact"];
   const easing = [0.39, 0.41, 0.37, 0.87];
 
   function checkLoggedIn() {
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            return '/profile/user'
+            setLink('/profile/user')
         } else {
-            return '/login'
+            setLink('/login')
         }
     })
   }
@@ -75,13 +76,20 @@ const Menu = ({ setMenuOpen, menuOpen }) => {
     }
   }
 
+  useEffect(
+    function () {
+      checkLoggedIn();
+    },
+    []
+  );
+
   function menuLinks(nav) {
     if (nav === 'Home') {
         return '/'
     } else if (nav === 'Shop') {
         return '/shop/all'
     } else if (nav === 'Account') {
-        checkLoggedIn()
+        return link
     } else {
         return `/${nav.toLowerCase()}`
     }

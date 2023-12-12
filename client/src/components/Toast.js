@@ -33,11 +33,10 @@ const Toast = ({ messageType, setMessage, message }) => {
       >
         <div className="flex justify-between items-center text-sienna">
           <h5 className="uppercase font-light-semibol">{messageType}</h5>
-          <CancelIcon
-            onClick={() => {
-              setIsOpen(false);
-            }}
-          />
+          <div onClick={() => {setIsOpen(false)}}>
+            <CancelIcon/>
+          </div>
+          
         </div>
         <p className="font-light text-sienna text-[15px] mt-4">{message}</p>
       </motion.div>
