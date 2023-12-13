@@ -76,6 +76,7 @@ function DisplayShop({ cartOpen, setCartOpen }) {
     let sort = searchParams.get('sort')
     let order = searchParams.get('order')
     let material = searchParams.get('material')
+    let materialSort = material && material.charAt(0).toUpperCase() + material.slice(1)
 
      // SORT FURNITURE TITLE IN ASSCENDING ORDER
      if (sort === 'name' && order === 'asc') {
@@ -112,7 +113,7 @@ function DisplayShop({ cartOpen, setCartOpen }) {
         return parseFloat(b.price) - parseFloat(a.price);
     }))
     } else if (material) {
-      setFilteredProducts(filteredProducts?.filter(product => product.materials?.includes(material)))
+      setFilteredProducts(filteredProducts?.filter(product => product.materials?.includes(materialSort)))      
     }
   }
 
