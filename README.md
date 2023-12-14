@@ -19,7 +19,7 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Usage
 
-The application is deployed at [:star2: this link :star2:](https://sylvan-127ad.web.app/).
+The application is deployed at [ :star2: this link :star2: ](https://sylvan-127ad.web.app/).
 
 Provide instructions and examples for use. Include screenshots as needed.
 
