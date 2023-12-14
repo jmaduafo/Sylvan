@@ -3,7 +3,6 @@ import LeftArrow from '../icons/LeftArrow'
 import { easeInOut, motion } from 'framer-motion'
 
 const OrderViewMore = ({order, setViewMore, viewMore}) => {
-  console.log(order)
   return (
     <motion.div initial={{ opacity: viewMore ? 0 : 1 }} animate={{ opacity: viewMore ? 1 : 0 }} transition={{ duration: .5, ease: easeInOut}}>
       <div onClick={() => setViewMore(false)} className='group text-sienna flex items-center gap-2 mb-3 cursor-pointer pl-2 w-fit mt-3 sm:mt-0'>

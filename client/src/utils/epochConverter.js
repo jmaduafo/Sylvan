@@ -1,13 +1,17 @@
 export const epoch = (time) => {
+    // Always use const with new Date
     const date = new Date()
-    var d = Date(time * 1000) 
+    const myDate = new Date(time);
     
     let fullDay; 
 
-    if (+d.substring(11, 15) === date.getFullYear()) {
-        fullDay = d.substring(4, 10)
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+    'Oct', 'Nov', 'Dec']
+
+    if (myDate.getFullYear() === date.getFullYear()) {
+        fullDay = months[myDate.getMonth()] + ' ' + myDate.getDate()
     } else {
-        fullDay = d.substring(4, 15)
+        fullDay = months[myDate.getMonth()] + ' ' + myDate.getDate() + ' ' + myDate.getFullYear()
     }
 
     return fullDay

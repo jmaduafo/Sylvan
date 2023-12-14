@@ -53,7 +53,7 @@ const Profile = () => {
       <EnterPassword passwordEnter={passwordEnter} setPasswordEnter={setPasswordEnter} confirmDelete={confirmDelete} setConfirmDelete={setConfirmDelete} 
       deleteModalOpen={deleteModalOpen} setDeleteModalOpen={setDeleteModalOpen} setMessageType={setMessageType} setMessage={setMessage}/>
       <Toast messageType={messageType} message={message} setMessage={setMessage}/>
-      <div className='max-w-[90%] mx-auto flex sm:flex-row flex-col sm:max-h-[85vh] py-6'>
+      <div className='max-w-[90%] mx-auto flex sm:flex-row flex-col sm:min-h-[85vh] py-6'>
         <div className='sm:basis-[25%] basis-full'>
           <SideBar setSelected={setSelected} selected={selected}/>
         </div>
