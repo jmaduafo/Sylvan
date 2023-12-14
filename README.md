@@ -47,15 +47,11 @@ If you followed tutorials, include links to those here as well.
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+Developers are not permitted to modify, use, or add to the code. The project is meant to showcase my knowledge and skills with full-stack languages as well as design. It's imperative that this project only has my hands on it but feel free to draw inspiration from the application if it does happen to inspire you.
 
 ---
 
 ## Features
 
 If your project has a lot of features, list them here.
-
-## How to Contribute
-
-Note: Contribution not needed
 
