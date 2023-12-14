@@ -63,7 +63,7 @@ const Footer = ({ setPolicyOpen, setPrivacyOpen }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6, delay: 1 }}
       viewport={{ once: true }}
-      className="mt-[3rem]"
+      className="mt-3"
     >
       {/* FOOTER NAVIGATIONS */}
       <div className="bg-cream text-sienna font-light border-t-siennaOpaque border-t-[1px]">
