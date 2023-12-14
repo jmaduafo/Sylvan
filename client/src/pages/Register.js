@@ -56,15 +56,22 @@ const Register = () => {
                     
             // Linking auth with firestore database
             async function verify() {
+              try {
                 await setDoc(doc(db, 'users', user.uid), {
-                    id: user.uid,
-                    username: userName,
-                    email: email,
-                    orderHistory: [],                    
-                    timestamp: serverTimestamp()
+                  id: user.uid,
+                  username: userName,
+                  email: email,
+                  orderHistory: [],                    
+                  timestamp: serverTimestamp()
                 })
-
+                
                 setLoading(false)
+              } catch (err) {
+                setMessageType('Error message')
+                setMessage('User information was unable to process. Please try again.')
+                setLoading(false)
+              }
+                
             }
             
             verify() 
