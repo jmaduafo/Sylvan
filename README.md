@@ -21,13 +21,23 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 The application is deployed at :star2: [this link](https://sylvan-127ad.web.app/) :star2:.
 
-Provide instructions and examples for use. Include screenshots as needed.
+Sylvan Home Furniture is intended to be used just like any other ecommerce store, so feel free to indulge in perusing through our selection and browse through the array of luxury items, choosing which product would look best in your home. Users can register and login as needed and receive details on their order history, receiving more insight on their tracking status.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
 
-![alt text](assets/images/screenshot.png)
-Example: 
-![alt text](Develop/assets/images/horiseon-module1-screenshot-2.png)
+Homepage:
+
+<img width="453" alt="Screenshot 2023-12-14 025023" src="https://github.com/jmaduafo/Sylvan/assets/87540591/5267d765-0860-4e6b-8239-f68a7b98e1aa">
+
+
+Product Detail Page:
+
+<img width="489" alt="Screenshot 2023-12-14 024925" src="https://github.com/jmaduafo/Sylvan/assets/87540591/8065eb51-afc2-46a6-ba67-775667c01358">
+
+
+Lookbook Page Mobile View:
+
+<img width="182" alt="sylvan-screen3" src="https://github.com/jmaduafo/Sylvan/assets/87540591/6de08969-9117-4d39-861a-18ccb14185f8">
+
 
 ## Credits
 
