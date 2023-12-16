@@ -4,7 +4,7 @@ const SideBar = ({ setSelected, selected}) => {
   const sections = ['My account', 'Past Orders', 'Logout']
 
   return (
-    <div className='sm:h-[85vh] sm:border-none sm:pb-0 h-[25vh] border-b-[1px] border-b-siennaOpaque pb-4'>
+    <aside className='sm:h-[85vh] sm:border-none sm:pb-0 h-[25vh] border-b-[1px] border-b-siennaOpaque pb-4'>
       <div className='h-[90%]'>
       {sections.map(section => {
         return (
@@ -17,7 +17,7 @@ const SideBar = ({ setSelected, selected}) => {
       <div className='h-[10%]'>
         <p className='text-[13px] text-[red] cursor-pointer w-[fit-content]' onClick={(e) => setSelected(e.target.innerText)}>Delete Account</p>
       </div>
-    </div>
+    </aside>
   )
 }
 
